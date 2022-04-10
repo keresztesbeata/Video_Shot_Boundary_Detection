@@ -553,7 +553,7 @@ void showHistogram(const std::string& name, int* hist, const int  hist_cols, con
 	imshow(name, imgHist);
 }
 
-int main()
+int main1()
 {
 	int op;
 	do
