@@ -89,7 +89,7 @@ int main() {
 				int index = f.first;
 				sprintf(outputFileName, outputDirPaths[2], index);
 				// save the current frame
-				//imwrite(outputFileName, f.second);
+				imwrite(outputFileName, f.second);
 			}
 			waitKey(0);
 			break;

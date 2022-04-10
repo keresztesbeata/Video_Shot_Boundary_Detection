@@ -207,11 +207,15 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src) {
 
 	for (int i = 1; i < height - 1; i++) {
 		for (int j = 1; j < width - 1; j++) {
-			Vec3b average = { 0,0,0 };
+			float r = 0, g = 0, b = 0;
 			for (int k = 0; k < n; k++) {
-				average += src(i + dx[k], j + dy[k]);
+				r += src(i + dx[k], j + dy[k])[2];
+				g += src(i + dx[k], j + dy[k])[1];
+				b += src(i + dx[k], j + dy[k])[0];
 			}
-			dst(i, j) = average / (float)n;
+			dst(i, j)[2] = r / n;
+			dst(i, j)[1] = g / n;
+			dst(i, j)[0] = b / n;
 		}
 	}
 
@@ -241,13 +245,13 @@ vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileNa
 	while (videoCapture.read(currentFrame))
 	{
 		float d = 0;
-
+		Mat filteredPrevFrame, filteredCurrFrame;
 		if (nrChannels == 1) {
 			// grayscale video
 
 			// pre-processing step on frames beofre comparing them:
-			Mat_<uchar> filteredPrevFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)previousFrame);
-			Mat_<uchar> filteredCurrFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)currentFrame);
+			filteredPrevFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)previousFrame);
+			filteredCurrFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)currentFrame);
 
 			d = getDCGrayScale(filteredPrevFrame, filteredCurrFrame, T1);
 		}
@@ -255,8 +259,8 @@ vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileNa
 			// colour video
 
 			// pre-processing step on frames beofre comparing them:
-			Mat_<Vec3b> filteredPrevFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)previousFrame);
-			Mat_<Vec3b> filteredCurrFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)currentFrame);
+			filteredPrevFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)previousFrame);
+			filteredCurrFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)currentFrame);
 
 			d = getDCColour(filteredPrevFrame, filteredCurrFrame, T1);
 		}
@@ -264,6 +268,11 @@ vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileNa
 		if (d > T2) {
 			keyFrames.push_back(make_pair(nrFrames, previousFrame));
 			logFile << "Key frame #" << nrFrames << endl;
+			if (nrFrames % 2 == 0) {
+				imshow("original", previousFrame);
+				imshow("avg", filteredPrevFrame);
+				waitKey(0);
+			}
 		}
 
 		previousFrame = currentFrame.clone();
