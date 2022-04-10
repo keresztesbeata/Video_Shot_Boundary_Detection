@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "CutDetectionAlgorithms.h"
+#include "PBAalgorithms.h"
 
-vector<pair<int, Mat>> pixelBasedApproach(const char * fileName, float threshold, ofstream& logFile) {
+vector<pair<int, Mat>> PBA(const char * fileName, float T, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
@@ -26,12 +26,12 @@ vector<pair<int, Mat>> pixelBasedApproach(const char * fileName, float threshold
 
 		float d = 
 			(nrChannels == 1)? 
-			getDissimilarityFactorForGrayScale(previousFrame, currentFrame)
+			getDFGrayScale(previousFrame, currentFrame)
 			: 
-			getDissimilarityFactorForColour(previousFrame, currentFrame)
+			getDFColour(previousFrame, currentFrame)
 			;
 
-		if (d > threshold) {
+		if (d > T) {
 			keyFrames.push_back(make_pair(nrFrames,previousFrame));
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -40,7 +40,7 @@ vector<pair<int, Mat>> pixelBasedApproach(const char * fileName, float threshold
 		
 		nrFrames++;
 	}
-	logFile << " -> PBA with single threshold: T = " << threshold << endl;
+	logFile << " -> PBA with single threshold: T = " << T << endl;
 	logFile << "	Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
@@ -48,7 +48,7 @@ FINISH:
 	return keyFrames;
 }
 
-float getDissimilarityFactorForGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame) {
+float getDFGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
 
@@ -62,7 +62,7 @@ float getDissimilarityFactorForGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> 
 	return sum / (float)(height * width);
 }
 
-float getDissimilarityFactorForColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
+float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
 
@@ -77,14 +77,14 @@ float getDissimilarityFactorForColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> cur
 	Mat_<uchar> b_curr(height, width);
 	extractRGBChannelsFromColourImage(currentFrame, r_curr, g_curr, b_curr);
 
-	float d_r = getDissimilarityFactorForGrayScale(r_prev, r_curr);
-	float d_g = getDissimilarityFactorForGrayScale(g_prev, g_curr);
-	float d_b = getDissimilarityFactorForGrayScale(b_prev, b_curr);
+	float d_r = getDFGrayScale(r_prev, r_curr);
+	float d_g = getDFGrayScale(g_prev, g_curr);
+	float d_b = getDFGrayScale(b_prev, b_curr);
 
 	return d_r + d_g + d_b;
 }
 
-vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholds(const char* fileName, float threshold1, float threshold2, ofstream& logFile) {
+vector<pair<int, Mat>> PBAmultipleThresholds(const char* fileName, float T1, float T2, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
@@ -101,7 +101,7 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholds(const char* file
 		goto FINISH;
 	}
 
-	// get the nr of channels to determine if it is a grayscale/image video
+	// get the nr of channels to determine if it is a grayscale/colour video
 	int nrChannels = previousFrame.channels();
 
 	while (videoCapture.read(currentFrame))
@@ -109,12 +109,12 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholds(const char* file
 
 		float d =
 			(nrChannels == 1) ?
-			getDissimilarityCountForGrayScale(previousFrame, currentFrame, threshold1)
+			getDCGrayScale(previousFrame, currentFrame, T1)
 			:
-			getDissimilarityCountForColour(previousFrame, currentFrame, threshold1)
+			getDCColour(previousFrame, currentFrame, T1)
 			;
 
-		if (d > threshold2) {
+		if (d > T2) {
 			keyFrames.push_back(make_pair(nrFrames,previousFrame));
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -125,8 +125,8 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholds(const char* file
 	}
 
 	logFile << " -> PBA with multiple thresholds: " << endl;
-	logFile << "	T1 = " << threshold1 << endl;
-	logFile << "	T2 = " << threshold2 << endl;
+	logFile << "	T1 = " << T1 << endl;
+	logFile << "	T2 = " << T2 << endl;
 	logFile << "Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
@@ -134,14 +134,14 @@ FINISH:
 	return keyFrames;
 }
 
-float getDissimilarityCountForGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, float threshold) {
+float getDCGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, float T) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
 
 	int count = 0;
 	for (int x = 0; x < height; x++) {
 		for (int y = 0; y < width; y++) {
-			if (abs(previousFrame(x, y) - currentFrame(x, y)) > threshold) {
+			if (abs(previousFrame(x, y) - currentFrame(x, y)) > T) {
 				count++;
 			}
 		}
@@ -150,7 +150,7 @@ float getDissimilarityCountForGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> c
 	return count / (float)(height * width);
 }
 
-float getDissimilarityCountForColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, float threshold) {
+float getDCColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, float T) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
 
@@ -165,9 +165,9 @@ float getDissimilarityCountForColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> curr
 	Mat_<uchar> b_curr(height, width);
 	extractRGBChannelsFromColourImage(currentFrame, r_curr, g_curr, b_curr);
 
-	float d_r = getDissimilarityCountForGrayScale(r_prev, r_curr, threshold);
-	float d_g = getDissimilarityCountForGrayScale(g_prev, g_curr, threshold);
-	float d_b = getDissimilarityCountForGrayScale(b_prev, b_curr, threshold);
+	float d_r = getDCGrayScale(r_prev, r_curr, T);
+	float d_g = getDCGrayScale(g_prev, g_curr, T);
+	float d_b = getDCGrayScale(b_prev, b_curr, T);
 
 	return d_r + d_g + d_b;
 }
@@ -218,7 +218,7 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src) {
 	return dst;
 }
 
-vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholdsAndNoiseFiltering(const char* fileName, float threshold1, float threshold2, ofstream& logFile) {
+vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileName, float T1, float T2, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
@@ -235,7 +235,7 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholdsAndNoiseFiltering
 		goto FINISH;
 	}
 
-	// get the nr of channels to determine if it is a grayscale/image video
+	// get the nr of channels to determine if it is a grayscale/colour video
 	int nrChannels = previousFrame.channels();
 
 	while (videoCapture.read(currentFrame))
@@ -249,7 +249,7 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholdsAndNoiseFiltering
 			Mat_<uchar> filteredPrevFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)previousFrame);
 			Mat_<uchar> filteredCurrFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)currentFrame);
 
-			d = getDissimilarityCountForGrayScale(filteredPrevFrame, filteredCurrFrame, threshold1);
+			d = getDCGrayScale(filteredPrevFrame, filteredCurrFrame, T1);
 		}
 		else {
 			// colour video
@@ -258,10 +258,10 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholdsAndNoiseFiltering
 			Mat_<Vec3b> filteredPrevFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)previousFrame);
 			Mat_<Vec3b> filteredCurrFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)currentFrame);
 
-			d = getDissimilarityCountForColour(filteredPrevFrame, filteredCurrFrame, threshold1);
+			d = getDCColour(filteredPrevFrame, filteredCurrFrame, T1);
 		}
 
-		if (d > threshold2) {
+		if (d > T2) {
 			keyFrames.push_back(make_pair(nrFrames, previousFrame));
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -272,11 +272,120 @@ vector<pair<int, Mat>> pixelBasedApproachWithMultipleThresholdsAndNoiseFiltering
 	}
 
 	logFile << " -> PBA with multiple thresholds and noise filtering: " << endl;
-	logFile << "	T1 = " << threshold1 << endl;
-	logFile << "	T2 = " << threshold2 << endl;
+	logFile << "	T1 = " << T1 << endl;
+	logFile << "	T2 = " << T2 << endl;
 	logFile << "Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
 FINISH:
 	return keyFrames;
+}
+
+vector<pair<int, Mat>> PBAwithAdaptiveThresholding(const char* fileName, int M, int N, ofstream& logFile) {
+	vector<pair<int, Mat>> keyFrames;
+	vector<float> difference;
+	Mat previousFrame, currentFrame;
+	int n = 0;
+
+	logFile << "---------------------------" << endl;
+	logFile << "	M = " << M << endl;
+	logFile << "	N = " << N << endl;
+	logFile << "---------------------------" << endl;
+
+	// open video file for reading
+	VideoCapture videoCapture(fileName);
+	if (!videoCapture.isOpened()) {
+		cerr << "Cannot open video file!" << endl;
+		goto FINISH;
+	}
+
+	if (!videoCapture.read(previousFrame)) {
+		cerr << "No frames contained in the video!" << endl;
+		goto FINISH;
+	}
+
+	// get the nr of channels to determine if it is a grayscale/colour video
+	int nrChannels = previousFrame.channels();
+
+	logFile << " -> PBA with adaptive thresholding: " << endl;
+
+	while (videoCapture.read(currentFrame))
+	{
+		float d = 0;
+
+		if (nrChannels == 1) {
+			// grayscale video
+
+			// pre-processing step on frames beofre comparing them:
+			Mat_<uchar> filteredPrevFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)previousFrame);
+			Mat_<uchar> filteredCurrFrame = applyAveragingFilterOnGrayScaleImage((Mat_<uchar>)currentFrame);
+
+			d = getDFGrayScale(filteredPrevFrame, filteredCurrFrame);
+		}
+		else {
+			// colour video
+
+			// pre-processing step on frames beofre comparing them:
+			Mat_<Vec3b> filteredPrevFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)previousFrame);
+			Mat_<Vec3b> filteredCurrFrame = applyAveragingFilterOnColourImage((Mat_<Vec3b>)currentFrame);
+
+			d = getDFColour(filteredPrevFrame, filteredCurrFrame);
+		}
+
+		difference.push_back(d);
+
+		float mean = getAverageDFFromSlidingWindow(difference, n, M);
+
+		float T1 = 5 * mean;
+		float T2 = 1.5 * mean;
+		/*
+		logFile << "---------------------------" << endl;
+		logFile << "	T1 = " << T1 << endl;
+		logFile << "	T2 = " << T2 << endl;
+		logFile << "---------------------------" << endl;
+		*/
+
+		float max = getMaxDFFromSlidingWindow(difference, n, N);
+
+		if (max > T1) {
+			// cut shot boundary
+			keyFrames.push_back(make_pair(n, previousFrame));
+			logFile << "HT (cut) shot #" << n << endl;
+		}
+		else if(max > T2){
+			// start of a frame or the middle of a gradual transition
+			keyFrames.push_back(make_pair(n, previousFrame));
+			logFile << "ST (gradual transition) shot #" << n << endl;
+		}
+
+		previousFrame = currentFrame.clone();
+
+		n++;
+	}
+	logFile << "Nr of all frames / nr of key frames (" << n << "," << keyFrames.size() << ")" << endl;
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+FINISH:
+	return keyFrames;
+}
+
+
+float getAverageDFFromSlidingWindow(vector<float> difference, int n, int windowSize) {
+	float mean = 0;
+	for (int i = n- windowSize; i < n; i++) {
+		mean += difference[i];
+	}
+
+	return mean / (float)windowSize;
+}
+
+float getMaxDFFromSlidingWindow(vector<float> difference, int n, int windowSize) {
+	float max = 0;
+	for (int i = n - windowSize; i < n; i++) {
+		if (difference[i] > max) {
+			max = difference[i];
+		}
+	}
+
+	return max;
 }
