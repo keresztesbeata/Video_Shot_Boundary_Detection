@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PBAalgorithms.h"
 
-vector<pair<int, Mat>> PBA(const char * fileName, float T, ofstream& logFile) {
+vector<pair<int, Mat>> PBA_v1(const char * fileName, float T, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
@@ -84,7 +84,7 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
 	return d_r + d_g + d_b;
 }
 
-vector<pair<int, Mat>> PBAmultipleThresholds(const char* fileName, float T1, float T2, ofstream& logFile) {
+vector<pair<int, Mat>> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
@@ -222,7 +222,7 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src) {
 	return dst;
 }
 
-vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileName, float T1, float T2, ofstream& logFile) {
+vector<pair<int, Mat>> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
@@ -290,7 +290,7 @@ FINISH:
 	return keyFrames;
 }
 
-vector<pair<int, Mat>> PBAwithAdaptiveThresholding(const char* fileName, int M, int N, ofstream& logFile) {
+vector<pair<int, Mat>> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PBAalgorithms.h"
+#include "HBAalgorithms.h"
 #include <fstream>
 #include <ctime>
 #include <iostream>
@@ -8,16 +9,21 @@
 
 const char videoFilePath[] = "Videos/Megamind.avi";
 const char outputDirPaths[][MAX_PATH] = { 
+	// PBA test results
 	"Videos/keyFrames/PBA_1/key_frame_%d.jpg" , 
-"Videos/keyFrames/PBA_2/key_frame_%d.jpg", 
-"Videos/keyFrames/PBA_3/key_frame_%d.jpg", 
-"Videos/keyFrames/PBA_4/test_2/key_frame_%d.jpg" };
+	"Videos/keyFrames/PBA_2/key_frame_%d.jpg", 
+	"Videos/keyFrames/PBA_3/key_frame_%d.jpg", 
+	"Videos/keyFrames/PBA_4/test_2/key_frame_%d.jpg",
+	// HBA test results
+	"Videos/keyFrames/HBA_1/key_frame_%d.jpg" ,
+	"Videos/keyFrames/HBA_2/key_frame_%d.jpg",
+	"Videos/keyFrames/HBA_3/key_frame_%d.jpg", };
 
-const char logFilePath[] = "logs/pba_logs_2.txt";
+const char logsFilePath[] = "logs/pba_logs_3.txt";
 
 int main() {
 	int op;
-	ofstream logFile(logFilePath, ofstream::out | ofstream::app);
+	ofstream logFile(logsFilePath, ofstream::out | ofstream::app);
 	time_t now = time(0);
 	logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 	logFile << "<<<< " << ctime(&now);
@@ -28,10 +34,13 @@ int main() {
 		system("cls");
 		destroyAllWindows();
 		cout << "Menu:" << endl;
-		cout << " 1 - PBA: single custom threshold" << endl;
-		cout << " 2 - PBA: multiple thresholds" << endl;
-		cout << " 3 - PBA: multiple thresholds and noise filtering" << endl;
-		cout << " 4 - PBA: adaptive thresholds (sliding window)" << endl;
+		cout << " 1 - PBA_v1: single custom threshold" << endl;
+		cout << " 2 - PBA_v2: multiple thresholds" << endl;
+		cout << " 3 - PBA_v3: multiple thresholds and noise filtering" << endl;
+		cout << " 4 - PBA_v4: adaptive thresholds (sliding window)" << endl;
+		cout << " 5 - HBA_v1: bin-to-bin difference" << endl;
+		cout << " 6 - HBA_v2: chi-square test" << endl;
+		cout << " 7 - HBA_v3: histogram intersection" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
@@ -42,7 +51,7 @@ int main() {
 			cout << "threshold = ";
 			cin >> threshold;
 
-			vector<pair<int, Mat>> frames = PBA(videoFilePath, threshold, logFile);
+			vector<pair<int, Mat>> frames = PBA_v1(videoFilePath, threshold, logFile);
 			for (auto f : frames) {
 				// compute the output path for the current frame
 				char outputFileName[MAX_PATH];
@@ -62,7 +71,7 @@ int main() {
 			cout << "threshold2 = ";
 			cin >> threshold2;
 
-			vector<pair<int, Mat>> frames = PBAmultipleThresholds(videoFilePath, threshold1, threshold2, logFile);
+			vector<pair<int, Mat>> frames = PBA_v2(videoFilePath, threshold1, threshold2, logFile);
 			for (auto f : frames) {
 				// compute the output path for the current frame
 				char outputFileName[MAX_PATH];
@@ -82,7 +91,7 @@ int main() {
 			cout << "threshold2 = ";
 			cin >> threshold2;
 
-			vector<pair<int, Mat>> frames = PBAmultipleThresholdsAndNoiseFiltering(videoFilePath, threshold1, threshold2, logFile);
+			vector<pair<int, Mat>> frames = PBA_v3(videoFilePath, threshold1, threshold2, logFile);
 			for (auto f : frames) {
 				// compute the output path for the current frame
 				char outputFileName[MAX_PATH];
@@ -104,7 +113,67 @@ int main() {
 			cin >> N;
 
 
-			vector<pair<int, Mat>> frames = PBAwithAdaptiveThresholding(videoFilePath, M, N, logFile);
+			vector<pair<int, Mat>> frames = PBA_v4(videoFilePath, M, N, logFile);
+			for (auto f : frames) {
+				// compute the output path for the current frame
+				char outputFileName[MAX_PATH];
+				int index = f.first;
+				sprintf(outputFileName, outputDirPaths[3], index);
+
+				// save the current frame
+				imwrite(outputFileName, f.second);
+			}
+			waitKey(0);
+			break;
+		}
+		case 5: {
+			// todo: change it to use TH and TL thresholds! (HD > TH => cut, TL < HD < TH => ST)
+
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
+
+			vector<pair<int, Mat>> frames = HBA(videoFilePath, threshold, logFile, BIN_TO_BIN_DIFFERENCE);
+			for (auto f : frames) {
+				// compute the output path for the current frame
+				char outputFileName[MAX_PATH];
+				int index = f.first;
+				sprintf(outputFileName, outputDirPaths[3], index);
+
+				// save the current frame
+				imwrite(outputFileName, f.second);
+			}
+			waitKey(0);
+			break;
+		}
+		case 6: {
+			// todo: change it to use TH and TL thresholds! (HD > TH => cut, TL < HD < TH => ST)
+
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
+
+			vector<pair<int, Mat>> frames = HBA(videoFilePath, threshold, logFile, CHI_SQUARE_TEST);
+			for (auto f : frames) {
+				// compute the output path for the current frame
+				char outputFileName[MAX_PATH];
+				int index = f.first;
+				sprintf(outputFileName, outputDirPaths[3], index);
+
+				// save the current frame
+				imwrite(outputFileName, f.second);
+			}
+			waitKey(0);
+			break;
+		}
+		case 7: {
+			// todo: change it to use TH and TL thresholds! (HD > TH => cut, TL < HD < TH => ST)
+
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
+
+			vector<pair<int, Mat>> frames = HBA(videoFilePath, threshold, logFile, HIST_INTERSECTION);
 			for (auto f : frames) {
 				// compute the output path for the current frame
 				char outputFileName[MAX_PATH];

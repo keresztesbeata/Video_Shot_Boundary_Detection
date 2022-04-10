@@ -5,11 +5,16 @@
 
 using namespace std;
 
+/*
+* PBA = Pixel Based Approach
+* The main drawback of Pixel based approaches (i.e. intensity pixels), whatever the metric used, is that they are unable to differentiate 
+* between a large change in a small area and a smaller change in a large area. 
+* However, pixel-based techniques are the most sensitive to surrounding disturbances (i.e. noises, illumination changes) that may interfere with a given scene.
+*/
+
 /*---------------------------------- version 1: basic PBA based on a dissimilarity factor and custom threshold ---------------------------------------*/
 
 /**
-* PBA = Pixel Based Approach
-* used to determine HT (cut);
 * Steps:
 * 1. Compare 2 corresponding pixels of 2 consecutive video frames;
 * 2. The average of pixel differences is computed and compared too a threshold
@@ -21,10 +26,10 @@ using namespace std;
 * Return value: 
 *	key frames representing the cuts and their index in the original frame sequence
 **/
-vector<pair<int,Mat>> PBA(const char* fileName, float T, ofstream& logFile);
+vector<pair<int,Mat>> PBA_v1(const char* fileName, float T, ofstream& logFile);
 
 /**
-* Get the dissimilarity factor between 2 GRAYSCALE images.
+* Get the dissimilarity factor between 2 GRAYSCALE images: DF = Sum(abs(f(n,x,y) - f(n-1,x,y))).
 * 
 * Params: 
 *	previousFrame = the previous video frame
@@ -55,7 +60,7 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 * Return value:
 *	key frames representing the cuts
 */
-vector<pair<int, Mat>> PBAmultipleThresholds(const char* fileName, float T1, float T2, ofstream& logFile);
+vector<pair<int, Mat>> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile);
 
 /**
 * Count the pixels which have a dissimilarity factor greater than a given local threshold, applied on GRAYSCALE images.
@@ -85,7 +90,7 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src);
 * 
 * Steps: (same as for the multiple thresholding)
 */
-vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileName, float T1, float T2, ofstream& logFile);
+vector<pair<int, Mat>> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile);
 
 /*------------------------------------------------ version 4: adaptive threshold ---------------------------------------------------------*/
 /**
@@ -101,6 +106,6 @@ vector<pair<int, Mat>> PBAmultipleThresholdsAndNoiseFiltering(const char* fileNa
 *	- T1 = 5 * mean
 *	- T2 = 1.5 * mean
 */
-vector<pair<int, Mat>> PBAwithAdaptiveThresholding(const char* fileName, int M, int N, ofstream& logFile);
+vector<pair<int, Mat>> PBA_v4(const char* fileName, int M, int N, ofstream& logFile);
 float getAverageDFFromSlidingWindow(vector<float> difference, int n, int windowSize);
 float getMaxDFFromSlidingWindow(vector<float> difference, int n, int windowSize);
