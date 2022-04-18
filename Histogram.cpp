@@ -69,15 +69,15 @@ void showHistogram(const char* name, int* hist, const int hist_height, const int
 }
 
 int * computeHistogramWithBins(Mat_<uchar> img, int nr_bins) {
-	int* hist = (int*)malloc(sizeof(int) * 256);
+	int* hist = (int*)malloc(sizeof(int) * nr_bins);
 	// initialize the histogram array
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < nr_bins; i++) {
 		hist[i] = 0;
 	}
+	int range = 256 / nr_bins;
 	for (int i = 0; i < img.rows; i++) {
 		for (int j = 0; j < img.cols; j++) {
 			// each pixel belongs to a bin based on its gray level intensity
-			int range = 256 / nr_bins;
 			hist[img(i, j) / range]++;
 		}
 	}

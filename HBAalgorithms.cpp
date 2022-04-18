@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "HBAalgorithms.h"
 
-float getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
+double getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
 	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
 	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
 
 	float difference = 0;
-	float sum = 0;
+	double sum = 0;
 
 	for (int g = 0; g < nrBins; g++) {
 		difference += abs(histPrev[g] - histCurr[g]);
@@ -14,29 +14,29 @@ float getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame,
 
 	int N = previousFrame.rows * previousFrame.cols;
 
-	return difference / (float)(2 * N);
+	return difference / (double)(2 * N);
 }
 
-float getChiSquareTest(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
+double getChiSquareTest(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
 	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
 	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
 
-	float difference = 0;
+	double difference = 0;
 
 	for (int g = 0; g < nrBins; g++) {
-		difference += (histPrev[g] - histCurr[g]) * (histPrev[g] - histCurr[g])/(float)(histCurr[g]*histCurr[g]);
+		difference += (double)(histPrev[g] - histCurr[g]) * (histPrev[g] - histCurr[g]) / (double)(histCurr[g] * histCurr[g]);
 	}
 
 	int N = previousFrame.rows * previousFrame.cols;
 
-	return difference/(float)(N*N);
+	return difference/(double)(N*N);
 }
 
-float getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
+double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
 	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
 	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
 
-	float sum = 255;
+	double sum = 255;
 
 	for (int g = 0; g < nrBins; g++) {
 		sum += (histPrev[g] < histCurr[g]) ? histPrev[g] : histCurr[g];
@@ -44,10 +44,10 @@ float getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFra
 
 	int N = previousFrame.rows * previousFrame.cols;
 
-	return 1 - sum/(float)N;
+	return 1 - sum/(double)N;
 }
 
-float getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, int nrBins, HDmetric metric) {
+double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, int nrBins, HDmetric metric) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
 
@@ -62,8 +62,8 @@ float getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentF
 	Mat_<uchar> b_curr(height, width);
 	extractRGBChannelsFromColourImage(currentFrame, r_curr, g_curr, b_curr);
 
-	float d_r = 0, d_g = 0, d_b = 0;
-	for (int b = 1; b <= nrBins; b++) {
+	double d_r = 0, d_g = 0, d_b = 0;
+	int b = nrBins;
 		switch (metric) {
 		case BIN_TO_BIN_DIFFERENCE: {
 			d_r += getBinToBinDifference(r_prev, r_curr, b);
@@ -85,7 +85,6 @@ float getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentF
 		}
 		default: break;
 		}
-	}
 
 	return d_r + d_g + d_b;
 }
@@ -109,22 +108,24 @@ vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDm
 
 	// get the nr of channels to determine if it is a grayscale/image video
 	int nrChannels = previousFrame.channels();
+	const int nrBinsGrayscale = 256;
+	const int nrBinsColour = 64;
 
 	while (videoCapture.read(currentFrame))
 	{
 
-		float d = 0;
+		double d = 0;
 		switch (metric) {
 		case BIN_TO_BIN_DIFFERENCE: {
-			d = (nrChannels == 1) ? getBinToBinDifference(previousFrame, currentFrame, 256) : getHDMetricForColourFrames(previousFrame, currentFrame, 64, BIN_TO_BIN_DIFFERENCE);
+			d = (nrChannels == 1) ? getBinToBinDifference(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, BIN_TO_BIN_DIFFERENCE);
 			break;
 		}
 		case CHI_SQUARE_TEST: {
-			d = (nrChannels == 1) ? getChiSquareTest(previousFrame, currentFrame, 256) : getHDMetricForColourFrames(previousFrame, currentFrame, 64, CHI_SQUARE_TEST);
+			d = (nrChannels == 1) ? getChiSquareTest(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, CHI_SQUARE_TEST);
 			break;
 		}
 		case HIST_INTERSECTION: {
-			d = (nrChannels == 1) ? getHistogramIntersection(previousFrame, currentFrame, 256) : getHDMetricForColourFrames(previousFrame, currentFrame, 64, HIST_INTERSECTION);
+			d = (nrChannels == 1) ? getHistogramIntersection(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, HIST_INTERSECTION);
 			break;
 		}
 		default: break;
