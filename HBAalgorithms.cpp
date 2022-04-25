@@ -206,7 +206,7 @@ vector<Mat> readAllFrames(const char* fileName) {
 	return frames;
 }
 
-void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farSimilarityThreshold, ofstream& logFile) {
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farDissimilarityThreshold, ofstream& logFile) {
 	int partLen = rightIdx - leftIdx;
 	int midIdx = leftIdx + partLen / 2;
 	int shotLoc = 0;
@@ -219,12 +219,11 @@ void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep,
 	}
 	
 	if (partLen > minPartLen) {
-		double T = farSimilarityThreshold;
-		if (GDF(leftRep, leftMidRep) < farSimilarityThreshold) {
-			quickShotSearch(frames, leftRep, leftIdx, rightMidRep, midIdx, minPartLen, shots, farSimilarityThreshold, logFile);
+		if (GDF(leftRep, leftMidRep) > farDissimilarityThreshold) {
+			quickShotSearch(frames, leftRep, leftIdx, rightMidRep, midIdx, minPartLen, shots, farDissimilarityThreshold, logFile);
 		}
-		if(GDF(rightMidRep, rightRep) < farSimilarityThreshold) {
-			quickShotSearch(frames, rightMidRep, midIdx, rightRep, rightIdx, minPartLen, shots, farSimilarityThreshold, logFile);
+		if(GDF(rightMidRep, rightRep) > farDissimilarityThreshold) {
+			quickShotSearch(frames, rightMidRep, midIdx, rightRep, rightIdx, minPartLen, shots, farDissimilarityThreshold, logFile);
 		}
 	}
 }

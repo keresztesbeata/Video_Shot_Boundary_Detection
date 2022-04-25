@@ -59,7 +59,7 @@ int LDF(Mat* frames, int start, int end);
 	frames in the right part of shot change location. 
 **/
 void shotDetector(Mat* frames, int midIdx, int minPartLen, int& shotLoc, Mat& leftMidRep, Mat& rightMidRep);
-void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farSimilarityThreshold, ofstream& logFile);
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farDissimilarityThreshold, ofstream& logFile);
 vector<Mat> readAllFrames(const char* fileName);
 
 
