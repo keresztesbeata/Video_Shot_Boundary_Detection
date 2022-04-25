@@ -1,12 +1,93 @@
 #include "stdafx.h"
 #include "HBAalgorithms.h"
 
+double GDFGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame);
+double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
+
+Mat_<uchar> computeRepresentativeFrameGrayScale(Mat_<uchar>* frames, int start, int end);
+Mat_<Vec3b> computeRepresentativeFrameColour(Mat_<Vec3b>* frames, int start, int end);
+
+vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
+	vector<pair<int, Mat>> keyFrames;
+	Mat previousFrame, currentFrame;
+	int nrFrames = 0;
+
+	// open video file for reading
+	VideoCapture videoCapture(fileName);
+	if (!videoCapture.isOpened()) {
+		cerr << "Cannot open video file!" << endl;
+		goto FINISH;
+	}
+
+	if (!videoCapture.read(previousFrame)) {
+		cerr << "No frames contained in the video!" << endl;
+		goto FINISH;
+	}
+
+	// get the nr of channels to determine if it is a grayscale/image video
+	int nrChannels = previousFrame.channels();
+	const int nrBinsGrayscale = 256;
+	const int nrBinsColour = 256;
+
+	int i = 0;
+	while (videoCapture.read(currentFrame))
+	{
+
+		double d = 0;
+		switch (metric) {
+		case BIN_TO_BIN_DIFFERENCE: {
+			d = (nrChannels == 1) ? getBinToBinDifference(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, BIN_TO_BIN_DIFFERENCE);
+			break;
+		}
+		case CHI_SQUARE_TEST: {
+			d = (nrChannels == 1) ? getChiSquareTest(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, CHI_SQUARE_TEST);
+			break;
+		}
+		case HIST_INTERSECTION: {
+			d = (nrChannels == 1) ? getHistogramIntersection(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, HIST_INTERSECTION);
+			break;
+		}
+		default: break;
+		}
+
+		if (d > T) {
+			keyFrames.push_back(make_pair(nrFrames, previousFrame));
+			logFile << "Key frame #" << nrFrames << endl;
+		}
+
+		previousFrame = currentFrame.clone();
+
+		nrFrames++;
+	}
+
+	switch (metric) {
+	case BIN_TO_BIN_DIFFERENCE: {
+		logFile << " -> HBA_v1 (bin-to-bin-difference):";
+		break;
+	}
+	case CHI_SQUARE_TEST: {
+		logFile << " -> HBA_v2 (chi-square test):";
+		break;
+	}
+	case HIST_INTERSECTION: {
+		logFile << " -> HBA_v3 (histogram intersection):";
+		break;
+	}
+	default: break;
+	}
+	logFile << " T = " << T << endl;
+	logFile << "	Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+FINISH:
+	return keyFrames;
+}
+
 double getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
 	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
 	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
 
-	float difference = 0;
-	double sum = 0;
+	double difference = 0;
 
 	for (int g = 0; g < nrBins; g++) {
 		difference += abs(histPrev[g] - histCurr[g]);
@@ -24,19 +105,18 @@ double getChiSquareTest(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int
 	double difference = 0;
 
 	for (int g = 0; g < nrBins; g++) {
-		difference += (double)(histPrev[g] - histCurr[g]) * (histPrev[g] - histCurr[g]) / (double)(histCurr[g] * histCurr[g]);
+		double value = abs(histPrev[g] - histCurr[g]);
+		difference += (value * value) / (double)(histPrev[g] + histCurr[g]);
 	}
 
-	int N = previousFrame.rows * previousFrame.cols;
-
-	return difference/(double)(N*N);
+	return difference;
 }
 
 double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
 	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
 	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
 
-	double sum = 255;
+	double sum = 0;
 
 	for (int g = 0; g < nrBins; g++) {
 		sum += (histPrev[g] < histCurr[g]) ? histPrev[g] : histCurr[g];
@@ -89,77 +169,185 @@ double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> current
 	return d_r + d_g + d_b;
 }
 
-vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
+vector<pair<int, Mat>> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile) {
 	vector<pair<int, Mat>> keyFrames;
-	Mat previousFrame, currentFrame;
-	int nrFrames = 0;
+	
+	vector<Mat> frames = readAllFrames(fileName);
+
+	int minPartLen = 10;
+	int N = frames.size();
+
+	Mat leftRep, rightRep;
+	leftRep = computeRepresentativeFrame(frames.data(), 0, minPartLen - 1);
+	rightRep = computeRepresentativeFrame(frames.data(), N - minPartLen, N - 1);
+	quickShotSearch(frames, leftRep, minPartLen/2, rightRep, N - minPartLen / 2, minPartLen, keyFrames, T, logFile);
+	
+	logFile << " -> HBA_v4 (quick-sort search):";
+	logFile << " T = " << T << endl;
+	logFile << "	Nr of all frames / nr of key frames (" << N << "," << keyFrames.size() << ")" << endl;
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+	return keyFrames;
+}
+
+vector<Mat> readAllFrames(const char* fileName) {
+	vector<Mat> frames;
+	Mat currentFrame;
 
 	// open video file for reading
 	VideoCapture videoCapture(fileName);
 	if (!videoCapture.isOpened()) {
 		cerr << "Cannot open video file!" << endl;
-		goto FINISH;
 	}
-
-	if (!videoCapture.read(previousFrame)) {
-		cerr << "No frames contained in the video!" << endl;
-		goto FINISH;
+	int i = 0;
+	while (videoCapture.read(currentFrame)) {
+		frames.push_back(currentFrame.clone());
 	}
+	return frames;
+}
 
-	// get the nr of channels to determine if it is a grayscale/image video
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farSimilarityThreshold, ofstream& logFile) {
+	int partLen = rightIdx - leftIdx;
+	int midIdx = leftIdx + partLen / 2;
+	int shotLoc = 0;
+	Mat leftMidRep, rightMidRep;
+	shotDetector(frames.data(), midIdx, minPartLen, shotLoc, leftMidRep, rightMidRep);
+	
+	if (shotLoc > 0) {
+		shots.push_back(make_pair(shotLoc, frames[shotLoc]));
+		logFile << "Key frame #" << shotLoc << endl;
+	}
+	
+	if (partLen > minPartLen) {
+		double T = farSimilarityThreshold;
+		if (GDF(leftRep, leftMidRep) < farSimilarityThreshold) {
+			quickShotSearch(frames, leftRep, leftIdx, rightMidRep, midIdx, minPartLen, shots, farSimilarityThreshold, logFile);
+		}
+		if(GDF(rightMidRep, rightRep) < farSimilarityThreshold) {
+			quickShotSearch(frames, rightMidRep, midIdx, rightRep, rightIdx, minPartLen, shots, farSimilarityThreshold, logFile);
+		}
+	}
+}
+
+double GDF(Mat previousFrame, Mat currentFrame) {
 	int nrChannels = previousFrame.channels();
-	const int nrBinsGrayscale = 256;
-	const int nrBinsColour = 64;
+	if (nrChannels == 1) {
+		return GDFGrayScale(previousFrame, currentFrame);
+	}
+	return GDFColour(previousFrame, currentFrame);
+}
 
-	while (videoCapture.read(currentFrame))
-	{
+double GDFGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame) {
+	int nrBins = 256;
+	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
+	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
 
-		double d = 0;
-		switch (metric) {
-		case BIN_TO_BIN_DIFFERENCE: {
-			d = (nrChannels == 1) ? getBinToBinDifference(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, BIN_TO_BIN_DIFFERENCE);
-			break;
-		}
-		case CHI_SQUARE_TEST: {
-			d = (nrChannels == 1) ? getChiSquareTest(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, CHI_SQUARE_TEST);
-			break;
-		}
-		case HIST_INTERSECTION: {
-			d = (nrChannels == 1) ? getHistogramIntersection(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, HIST_INTERSECTION);
-			break;
-		}
-		default: break;
-		}
+	double difference = 0;
 
-		if (d > T) {
-			keyFrames.push_back(make_pair(nrFrames, previousFrame));
-			logFile << "Key frame #" << nrFrames << endl;
+	for (int g = 0; g < nrBins; g++) {
+		double d = abs(histPrev[g] - histCurr[g]);
+		difference += d * d;
+	}
+	return sqrt(difference);
+}
+
+double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
+	int height = previousFrame.rows;
+	int width = previousFrame.cols;
+
+	int*** histPrev = computeColorHistogram(previousFrame);
+	int*** histCurr = computeColorHistogram(currentFrame);
+
+	double difference = 0;
+	int nrBins = 256;
+
+	for (int r = 0; r < nrBins; r++) {
+		for (int g = 0; g < nrBins; g++) {
+			for (int b = 0; b < nrBins; b++) {
+				double d = abs(histPrev[r][g][b] - histCurr[r][g][b]);
+				difference += d*d;
+			}
 		}
-
-		previousFrame = currentFrame.clone();
-
-		nrFrames++;
 	}
 
-	switch (metric) {
-	case BIN_TO_BIN_DIFFERENCE: {
-		logFile << " -> HBA_v1 (bin-to-bin-difference):";
-		break;
-	}
-	case CHI_SQUARE_TEST: {
-		logFile << " -> HBA_v2 (chi-square test):";
-		break;
-	}
-	case HIST_INTERSECTION: {
-		logFile << " -> HBA_v3 (histogram intersection):";
-		break;
-	}
-	default: break;
-	}
-	logFile << " T = " << T << endl;
-	logFile << "	Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
-	logFile << " --------------------------------------------------------------------------------------" << endl;
+	return sqrt(difference);
+}
 
-FINISH:
-	return keyFrames;
+
+int LDF(Mat* frames, int start, int end) {
+	double maxDiff = 0;
+	int idx = 0;
+	for (int i = start; i < end; i++) {
+		double d = getHDMetricForColourFrames(frames[i], frames[i + 1], 256, HIST_INTERSECTION);
+		if (d > maxDiff) {
+			maxDiff = d;
+			idx = i+1;
+		}
+	}
+	return idx;
+}
+
+void shotDetector(Mat* frames, int midIdx, int minPartLen, int& shotLoc, Mat& leftMidRep, Mat& rightMidRep) {
+	shotLoc = LDF(frames, midIdx - minPartLen/2, midIdx + minPartLen/2);
+	if (shotLoc > 0) {
+		leftMidRep = computeRepresentativeFrame(frames, midIdx - minPartLen / 2, shotLoc - 1);
+		rightMidRep = computeRepresentativeFrame(frames, shotLoc, midIdx + minPartLen / 2);
+	}
+	else {
+		leftMidRep = computeRepresentativeFrame(frames, midIdx - minPartLen / 2, midIdx + minPartLen / 2);
+		rightMidRep = leftMidRep;
+	}
+}
+
+Mat computeRepresentativeFrame(Mat* frames, int start, int end) {
+	int nrChannels = frames[start].channels();
+	if (nrChannels == 1) {
+		return computeRepresentativeFrameGrayScale((Mat_<uchar> *)frames, start, end);
+	}
+	return computeRepresentativeFrameColour((Mat_<Vec3b> *)frames, start, end);
+}
+
+Mat_<Vec3b> computeRepresentativeFrameColour(Mat_<Vec3b> * frames, int start, int end) {
+	int height = frames[start].rows;
+	int width = frames[start].cols;
+	Mat_<Vec3b> rep(height, width);
+
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			vector<Vec3b> v;
+			for (int k = start; k <= end; k++) {
+				v.push_back(frames[k][i][j]);
+			}
+			sort(v.begin(), v.end(), [](const Vec3b& lhs, const Vec3b& rhs)
+				{
+					return (lhs[2] < rhs[2]) || (lhs[2] == rhs[2] && lhs[1] < rhs[1]) || (lhs[2] == rhs[2] && lhs[1] == rhs[1] && lhs[0] < rhs[0]);
+				});
+			int n = v.size();
+			// add the median pixel to the representative frame
+			rep[i][j] = v[n / 2];
+		}
+	}
+
+	return rep;
+}
+
+Mat_<uchar> computeRepresentativeFrameGrayScale(Mat_<uchar>* frames, int start, int end) {
+	int height = frames[start].rows;
+	int width = frames[start].cols;
+	Mat_<uchar> rep(height, width);
+
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			vector<uchar> v;
+			for (int k = start; k <= end; k++) {
+				v.push_back(frames[k][i][j]);
+			}
+			sort(v.begin(), v.end());
+			int n = v.size();
+			// add the median pixel to the representative frame
+			rep[i][j] = v[n / 2];
+		}
+	}
+
+	return rep;
 }

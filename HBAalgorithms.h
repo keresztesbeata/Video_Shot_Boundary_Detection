@@ -30,6 +30,37 @@ double getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame
 double getChiSquareTest(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins);
 
 /*---------------------------------- version 3: HBA with histogram intersection ---------------------------------------*/
+/**
+* 1. Compare the freqeuncy value of a gray level in the histograms of 2 consecutive frames and select each time the minimum.
+* 2. Calculate the average of these minimum values and subtract it from 1.
+**/
 double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins);
+
+/*---------------------------------- version 4: HBA with Quick Search Algorithm -----------------------------------------*/
+vector<pair<int, Mat>> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile);
+/**
+* GDF = Global Dissimilarity Function
+*  => used to compare frames which are far from each other 
+*	This shot search algorithm compares the first and the last representative frame of a specified part of the video. If they look the same, the algorithm skips searching inside that part as there is a low chance
+	of finding a shot change, this way reducing the computation time. Because the constant change of frame details, in case of non-consecutive frames, the comparison should be based on the public features such as
+	background and color histogram.  
+*	The GDF returns the distance between two color histograms of representative frames which is computed based on color histogram euclidean distance.
+**/
+double GDF(Mat previousFrame, Mat currentFrame);
+/* Representative frame is used a background extraction filter.*/
+Mat computeRepresentativeFrame(Mat * frames, int start, int end);
+/**
+* LDF looks for a shot change in a local region and it returns frame index if finds it and zero otherwise.
+**/
+int LDF(Mat* frames, int start, int end);
+/**
+*	ShotDetector function does a local search in the frame set by calling LDF function. If LDF function finds any shot change it will return its location.
+	Afterwards, ShotDetector function will be repeated to compute left representative frame in remained frames in the left part of shot change location and right representative frame in remained
+	frames in the right part of shot change location. 
+**/
+void shotDetector(Mat* frames, int midIdx, int minPartLen, int& shotLoc, Mat& leftMidRep, Mat& rightMidRep);
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farSimilarityThreshold, ofstream& logFile);
+vector<Mat> readAllFrames(const char* fileName);
+
 
 

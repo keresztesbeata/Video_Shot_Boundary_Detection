@@ -85,6 +85,29 @@ int * computeHistogramWithBins(Mat_<uchar> img, int nr_bins) {
 	return hist;
 }
 
+int*** computeColorHistogram(Mat_<Vec3b> img) {
+	int*** hist = (int***)malloc(sizeof(int**) * 256);
+	for (int i = 0; i < 256; i++) {
+		hist[i] = (int**)malloc(sizeof(int*) * 256);
+		for (int j = 0; j < 256; j++) {
+			hist[i][j] = (int*)malloc(sizeof(int) * 256);
+			for (int k = 0; k < 256; k++) {
+				hist[i][j][k] = 0;
+			}
+		}
+	}
+	for (int i = 0; i < img.rows; i++) {
+		for (int j = 0; j < img.cols; j++) {
+			int r = img(i, j)[2];
+			int g = img(i, j)[1];
+			int b = img(i, j)[0];
+			hist[r][g][b]++;
+		}
+	}
+
+	return hist;
+}
+
 std::vector<int> getHistogramMaxima(float* pdf) {
 	std::vector<int> histMax;
 	const int WH = 5;

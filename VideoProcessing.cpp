@@ -21,8 +21,10 @@ char outputDirPaths[][MAX_PATH] = {
 	// HBA test results
 	"Videos/keyFrames/HBA_1" ,
 	"Videos/keyFrames/HBA_2",
-	"Videos/keyFrames/HBA_3", };
-const char logsFilePath[] = "logs/hba_logs_1.txt";
+	"Videos/keyFrames/HBA_3",
+	"Videos/keyFrames/HBA_4"
+};
+const char logsFilePath[] = "logs/hba_logs_3.txt";
 char genericFileName[] = "/key_frame_%d.jpg";
 
 int main() {
@@ -45,6 +47,7 @@ int main() {
 		cout << " 5 - HBA_v1: bin-to-bin difference" << endl;
 		cout << " 6 - HBA_v2: chi-square test" << endl;
 		cout << " 7 - HBA_v3: histogram intersection" << endl;
+		cout << " 8 - HBA_v4: quick shot search" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
@@ -226,6 +229,28 @@ int main() {
 			}
 			waitKey(0);
 			break;
+		}
+		case 8: {
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
+
+			fs::remove_all(outputDirPaths[7]);
+			fs::create_directory(outputDirPaths[7]);
+
+			vector<pair<int, Mat>> frames = HBA_quickShotSearch(videoFilePath, threshold, logFile);
+			for (auto f : frames) {
+				// compute the output path for the current frame
+				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
+				int index = f.first;
+				strcpy(outputFile, outputDirPaths[7]);
+				strcat(outputFile, genericFileName);
+				sprintf(outputFileName, outputFile, index);
+
+				// save the current frame
+				imwrite(outputFileName, f.second);
+			}
+			waitKey(0);
 		}
 		default:break;
 		}
