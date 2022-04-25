@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PBAalgorithms.h"
 #include "HBAalgorithms.h"
+#include "EBAalgorithms.h"
 #include <fstream>
 #include <ctime>
 #include <iostream>
@@ -22,9 +23,11 @@ char outputDirPaths[][MAX_PATH] = {
 	"Videos/keyFrames/HBA_1" ,
 	"Videos/keyFrames/HBA_2",
 	"Videos/keyFrames/HBA_3",
-	"Videos/keyFrames/HBA_4"
+	"Videos/keyFrames/HBA_4",
+	// EBA test results
+	"Videos/keyFrames/EBA_1"
 };
-const char logsFilePath[] = "logs/hba_logs_3.txt";
+const char logsFilePath[] = "logs/eba_logs_1.txt";
 char genericFileName[] = "/key_frame_%d.jpg";
 
 int main() {
@@ -48,6 +51,7 @@ int main() {
 		cout << " 6 - HBA_v2: chi-square test" << endl;
 		cout << " 7 - HBA_v3: histogram intersection" << endl;
 		cout << " 8 - HBA_v4: quick shot search" << endl;
+		cout << " 9 - EBA_v1: edge change ratio" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
@@ -129,7 +133,7 @@ int main() {
 			break;
 		}
 		case 4: {
-			float M,N;
+			float M, N;
 
 			cout << "Bigger sliding window size = ";
 			cin >> M;
@@ -252,7 +256,37 @@ int main() {
 			}
 			waitKey(0);
 		}
-		default:break;
+		case 9: {
+			float T, M, N;
+
+			cout << "Threshold = ";
+			cin >> T;
+
+			cout << "Bigger sliding window size = ";
+			cin >> M;
+
+			cout << "Smaller sliding window size = ";
+			cin >> N;
+
+			fs::remove_all(outputDirPaths[8]);
+			fs::create_directory(outputDirPaths[8]);
+
+			vector<pair<int, Mat>> frames = EBA_v1(videoFilePath, T, N, M, logFile);
+			for (auto f : frames) {
+				// compute the output path for the current frame
+				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
+				int index = f.first;
+				strcpy(outputFile, outputDirPaths[8]);
+				strcat(outputFile, genericFileName);
+				sprintf(outputFileName, outputFile, index);
+
+				// save the current frame
+				imwrite(outputFileName, f.second);
+			}
+			waitKey(0);
+			break;
+		}
+		default: break;
 		}
 	} while (op != 0);
 
