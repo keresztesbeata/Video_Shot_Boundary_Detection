@@ -17,7 +17,7 @@ using namespace std;
 * N = size of the smaller sliding window
 * M = size of the larger sliding window (could be equal to N)
 **/
-vector<pair<int, Mat>> EBA_v1(const char* fileName, float T, int N, int M, ofstream& logFile);
+vector<Shot> EBA_v1(const char* fileName, float T, int N, int M, ofstream& logFile);
 float ECR(Mat previousFrame, Mat currentFrame);
 float getDistanceToClosestEdgePixel(Mat img, int x, int y, int w);
 float getMeanOfRegion(vector<float> difference, int start, int end);

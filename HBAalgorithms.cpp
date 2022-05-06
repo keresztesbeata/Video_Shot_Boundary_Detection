@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "HBAalgorithms.h"
+#include "EBAalgorithms.h"
 
 double GDFGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame);
 double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
@@ -7,8 +8,8 @@ double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 Mat_<uchar> computeRepresentativeFrameGrayScale(Mat_<uchar>* frames, int start, int end);
 Mat_<Vec3b> computeRepresentativeFrameColour(Mat_<Vec3b>* frames, int start, int end);
 
-vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
+	vector<Shot> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
 
@@ -39,10 +40,6 @@ vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDm
 			d = (nrChannels == 1) ? getBinToBinDifference(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, BIN_TO_BIN_DIFFERENCE);
 			break;
 		}
-		case CHI_SQUARE_TEST: {
-			d = (nrChannels == 1) ? getChiSquareTest(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, CHI_SQUARE_TEST);
-			break;
-		}
 		case HIST_INTERSECTION: {
 			d = (nrChannels == 1) ? getHistogramIntersection(previousFrame, currentFrame, nrBinsGrayscale) : getHDMetricForColourFrames(previousFrame, currentFrame, nrBinsColour, HIST_INTERSECTION);
 			break;
@@ -51,7 +48,8 @@ vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDm
 		}
 
 		if (d > T) {
-			keyFrames.push_back(make_pair(nrFrames, previousFrame));
+			Shot shot = { nrFrames, previousFrame, HARD_CUT };
+			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
 
@@ -63,10 +61,6 @@ vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDm
 	switch (metric) {
 	case BIN_TO_BIN_DIFFERENCE: {
 		logFile << " -> HBA_v1 (bin-to-bin-difference):";
-		break;
-	}
-	case CHI_SQUARE_TEST: {
-		logFile << " -> HBA_v2 (chi-square test):";
 		break;
 	}
 	case HIST_INTERSECTION: {
@@ -96,20 +90,6 @@ double getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame
 	int N = previousFrame.rows * previousFrame.cols;
 
 	return difference / (double)(2 * N);
-}
-
-double getChiSquareTest(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
-	int* histPrev = computeHistogramWithBins(previousFrame, nrBins);
-	int* histCurr = computeHistogramWithBins(currentFrame, nrBins);
-
-	double difference = 0;
-
-	for (int g = 0; g < nrBins; g++) {
-		double value = abs(histPrev[g] - histCurr[g]);
-		difference += (value * value) / (double)(histPrev[g] + histCurr[g]);
-	}
-
-	return difference;
 }
 
 double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins) {
@@ -151,12 +131,6 @@ double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> current
 			d_b += getBinToBinDifference(b_prev, b_curr, b);
 			break;
 		}
-		case CHI_SQUARE_TEST: {
-			d_r += getChiSquareTest(r_prev, r_curr, b);
-			d_g += getChiSquareTest(g_prev, g_curr, b);
-			d_b += getChiSquareTest(b_prev, b_curr, b);
-			break;
-		}
 		case HIST_INTERSECTION: {
 			d_r += getHistogramIntersection(r_prev, r_curr, b);
 			d_g += getHistogramIntersection(g_prev, g_curr, b);
@@ -169,8 +143,8 @@ double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> current
 	return d_r + d_g + d_b;
 }
 
-vector<pair<int, Mat>> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile) {
+	vector<Shot> keyFrames;
 	
 	vector<Mat> frames = readAllFrames(fileName);
 
@@ -206,7 +180,7 @@ vector<Mat> readAllFrames(const char* fileName) {
 	return frames;
 }
 
-void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farDissimilarityThreshold, ofstream& logFile) {
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<Shot>& shots, double farDissimilarityThreshold, ofstream& logFile) {
 	int partLen = rightIdx - leftIdx;
 	int midIdx = leftIdx + partLen / 2;
 	int shotLoc = 0;
@@ -214,7 +188,8 @@ void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep,
 	shotDetector(frames.data(), midIdx, minPartLen, shotLoc, leftMidRep, rightMidRep);
 	
 	if (shotLoc > 0) {
-		shots.push_back(make_pair(shotLoc, frames[shotLoc]));
+		Shot shot = { shotLoc, frames[shotLoc], HARD_CUT };
+		shots.push_back(shot);
 		logFile << "Key frame #" << shotLoc << endl;
 	}
 	
@@ -280,7 +255,7 @@ int LDF(Mat* frames, int start, int end) {
 		double d = getHDMetricForColourFrames(frames[i], frames[i + 1], 256, HIST_INTERSECTION);
 		if (d > maxDiff) {
 			maxDiff = d;
-			idx = i+1;
+			idx = i + 1;
 		}
 	}
 	return idx;

@@ -4,7 +4,7 @@
 #include <fstream>
 
 // histogram difference metrics considered
-enum HDmetric {BIN_TO_BIN_DIFFERENCE, CHI_SQUARE_TEST, HIST_INTERSECTION};
+enum HDmetric {BIN_TO_BIN_DIFFERENCE, HIST_INTERSECTION};
 
 using namespace std;
 
@@ -15,7 +15,7 @@ using namespace std;
 * 
 * For picture-in-picture transitions, change in small region (CSR), the histograms of two consecutive frames are expected to show similarities because of the minimal change in the frames.
 */
-vector<pair<int, Mat>> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric);
+vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric);
 double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, int nrBins, HDmetric metric);
 
 /*---------------------------------- version 1: HBA with bin-to-bin difference ---------------------------------------*/
@@ -26,18 +26,16 @@ double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> current
 **/
 double getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins);
 
-/*---------------------------------- version 2: HBA with Chi-square test --------------------------------------------*/
-double getChiSquareTest(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins);
 
-/*---------------------------------- version 3: HBA with histogram intersection ---------------------------------------*/
+/*---------------------------------- version 2: HBA with histogram intersection ---------------------------------------*/
 /**
 * 1. Compare the freqeuncy value of a gray level in the histograms of 2 consecutive frames and select each time the minimum.
 * 2. Calculate the average of these minimum values and subtract it from 1.
 **/
 double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins);
 
-/*---------------------------------- version 4: HBA with Quick Search Algorithm -----------------------------------------*/
-vector<pair<int, Mat>> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile);
+/*---------------------------------- version 3: HBA with Quick Search Algorithm -----------------------------------------*/
+vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile);
 /**
 * GDF = Global Dissimilarity Function
 *  => used to compare frames which are far from each other 
@@ -59,7 +57,7 @@ int LDF(Mat* frames, int start, int end);
 	frames in the right part of shot change location. 
 **/
 void shotDetector(Mat* frames, int midIdx, int minPartLen, int& shotLoc, Mat& leftMidRep, Mat& rightMidRep);
-void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<pair<int, Mat>>& shots, double farDissimilarityThreshold, ofstream& logFile);
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<Shot>& shots, double farDissimilarityThreshold, ofstream& logFile);
 vector<Mat> readAllFrames(const char* fileName);
 
 

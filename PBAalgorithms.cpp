@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "PBAalgorithms.h"
+#include "Utils.h"
 
-vector<pair<int, Mat>> PBA_v1(const char * fileName, float T, ofstream& logFile) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> PBA_v1(const char * fileName, float T, ofstream& logFile) {
+	vector<Shot> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
 
@@ -32,7 +33,8 @@ vector<pair<int, Mat>> PBA_v1(const char * fileName, float T, ofstream& logFile)
 			;
 
 		if (d > T) {
-			keyFrames.push_back(make_pair(nrFrames,previousFrame));
+			Shot shot = { nrFrames,previousFrame, HARD_CUT };
+			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
 
@@ -84,8 +86,8 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
 	return d_r + d_g + d_b;
 }
 
-vector<pair<int, Mat>> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile) {
+	vector<Shot> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
 
@@ -115,7 +117,8 @@ vector<pair<int, Mat>> PBA_v2(const char* fileName, float T1, float T2, ofstream
 			;
 
 		if (d > T2) {
-			keyFrames.push_back(make_pair(nrFrames,previousFrame));
+			Shot shot = { nrFrames, previousFrame, HARD_CUT };
+			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
 
@@ -222,8 +225,8 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src) {
 	return dst;
 }
 
-vector<pair<int, Mat>> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile) {
+	vector<Shot> keyFrames;
 	Mat previousFrame, currentFrame;
 	int nrFrames = 0;
 
@@ -266,13 +269,9 @@ vector<pair<int, Mat>> PBA_v3(const char* fileName, float T1, float T2, ofstream
 		}
 
 		if (d > T2) {
-			keyFrames.push_back(make_pair(nrFrames, previousFrame));
+			Shot shot = { nrFrames,previousFrame, HARD_CUT };
+			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
-			if (nrFrames % 2 == 0) {
-				imshow("original", previousFrame);
-				imshow("avg", filteredPrevFrame);
-				waitKey(0);
-			}
 		}
 
 		previousFrame = currentFrame.clone();
@@ -290,8 +289,8 @@ FINISH:
 	return keyFrames;
 }
 
-vector<pair<int, Mat>> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
+	vector<Shot> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
 	int n = 0;
@@ -347,23 +346,19 @@ vector<pair<int, Mat>> PBA_v4(const char* fileName, int M, int N, ofstream& logF
 
 		float T1 = 5 * mean;
 		float T2 = 1.5 * mean;
-		/*
-		logFile << "---------------------------" << endl;
-		logFile << "	T1 = " << T1 << endl;
-		logFile << "	T2 = " << T2 << endl;
-		logFile << "---------------------------" << endl;
-		*/
 
 		float max = getMaxDFFromSlidingWindow(difference, n, N);
 
 		if (max > T1) {
 			// cut shot boundary
-			keyFrames.push_back(make_pair(n, previousFrame));
+			Shot shot = { n,previousFrame, HARD_CUT };
+			keyFrames.push_back(shot);
 			logFile << "HT (cut) shot #" << n << endl;
 		}
 		else if(max > T2){
 			// start of a frame or the middle of a gradual transition
-			keyFrames.push_back(make_pair(n, previousFrame));
+			Shot shot = { n,previousFrame, SOFT_CUT };
+			keyFrames.push_back(shot);
 			logFile << "ST (gradual transition) shot #" << n << endl;
 		}
 

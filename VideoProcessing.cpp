@@ -13,6 +13,7 @@
 namespace fs = std::filesystem;
 
 const char videoFilePath[] = "Videos/Megamind.avi";
+
 char outputDirPaths[][MAX_PATH] = { 
 	// PBA test results
 	"Videos/keyFrames/PBA_1" , 
@@ -23,20 +24,14 @@ char outputDirPaths[][MAX_PATH] = {
 	"Videos/keyFrames/HBA_1" ,
 	"Videos/keyFrames/HBA_2",
 	"Videos/keyFrames/HBA_3",
-	"Videos/keyFrames/HBA_4",
 	// EBA test results
 	"Videos/keyFrames/EBA_1"
 };
-const char logsFilePath[] = "logs/eba_logs_1.txt";
-char genericFileName[] = "/key_frame_%d.jpg";
+
+vector<Shot> selectAlgorithm(int op, ofstream& logFile);
 
 int main() {
 	int op;
-	ofstream logFile(logsFilePath, ofstream::out | ofstream::app);
-	time_t now = time(0);
-	logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
-	logFile << "<<<< " << ctime(&now);
-	logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 
 	do
 	{
@@ -48,37 +43,66 @@ int main() {
 		cout << " 3 - PBA_v3: multiple thresholds and noise filtering" << endl;
 		cout << " 4 - PBA_v4: adaptive thresholds (sliding window)" << endl;
 		cout << " 5 - HBA_v1: bin-to-bin difference" << endl;
-		cout << " 6 - HBA_v2: chi-square test" << endl;
-		cout << " 7 - HBA_v3: histogram intersection" << endl;
-		cout << " 8 - HBA_v4: quick shot search" << endl;
-		cout << " 9 - EBA_v1: edge change ratio" << endl;
+		cout << " 6 - HBA_v2: histogram intersection" << endl;
+		cout << " 7 - HBA_v3: quick shot search" << endl;
+		cout << " 8 - EBA_v1: edge change ratio" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
-		switch (op)
-		{
+
+		if (op < 1 || op > 8) {
+			continue;
+		}
+
+		// clean and remove the output directory
+		fs::remove_all(outputDirPaths[op-1]);
+		// create a new output directory to store the detected keyframes
+		fs::create_directory(outputDirPaths[op-1]);
+
+		char logsFilePath[] = "logs/logs_%d.txt";
+		char genericFileName[] = "/%s_shot_%d.jpg";
+
+		// generate a logs file to store the run parameters
+		sprintf(logsFilePath, logsFilePath, op);
+		ofstream logFile(logsFilePath, ofstream::out | ofstream::app);
+		time_t now = time(0);
+		logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+		logFile << "<<<< " << ctime(&now);
+		logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+
+		// declare a vector of keyframes which will be populated by the selected shot detection method
+		vector<Shot> frames = selectAlgorithm(op, logFile);
+
+		for (auto f : frames) {
+			// compute the output path for the current frame
+			char outputFile[MAX_PATH], outputFileName[MAX_PATH];
+			int index = f.index;
+			strcpy(outputFile, outputDirPaths[op - 1]);
+			strcat(outputFile, genericFileName);
+			sprintf(outputFileName, outputFile, enumToString(f.type), index);
+
+			// save the current frame
+			imwrite(outputFileName, f.keyFrame);
+		}
+		logFile.close();
+		waitKey(0);
+
+	} while (op != 0);
+
+	return 0;
+}
+
+
+vector<Shot> selectAlgorithm(int op, ofstream& logFile) {
+
+	switch (op)
+	{
 		case 1: {
 			float threshold;
 			cout << "threshold = ";
 			cin >> threshold;
 
-			fs::remove_all(outputDirPaths[0]);
-			fs::create_directory(outputDirPaths[0]);
-
-			vector<pair<int, Mat>> frames = PBA_v1(videoFilePath, threshold, logFile);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[0]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return PBA_v1(videoFilePath, threshold, logFile);
 		}
 		case 2: {
 			float threshold1, threshold2;
@@ -88,23 +112,7 @@ int main() {
 			cout << "threshold2 = ";
 			cin >> threshold2;
 
-			fs::remove_all(outputDirPaths[1]);
-			fs::create_directory(outputDirPaths[1]);
-
-			vector<pair<int, Mat>> frames = PBA_v2(videoFilePath, threshold1, threshold2, logFile);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[1]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return PBA_v2(videoFilePath, threshold1, threshold2, logFile);
 		}
 		case 3: {
 			float threshold1, threshold2;
@@ -114,23 +122,7 @@ int main() {
 			cout << "threshold2 = ";
 			cin >> threshold2;
 
-			fs::remove_all(outputDirPaths[2]);
-			fs::create_directory(outputDirPaths[2]);
-
-			vector<pair<int, Mat>> frames = PBA_v3(videoFilePath, threshold1, threshold2, logFile);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[2]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return PBA_v3(videoFilePath, threshold1, threshold2, logFile);
 		}
 		case 4: {
 			float M, N;
@@ -141,23 +133,7 @@ int main() {
 			cout << "Smaller sliding window size = ";
 			cin >> N;
 
-			fs::remove_all(outputDirPaths[3]);
-			fs::create_directory(outputDirPaths[3]);
-
-			vector<pair<int, Mat>> frames = PBA_v4(videoFilePath, M, N, logFile);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[3]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return PBA_v4(videoFilePath, M, N, logFile);
 		}
 		case 5: {
 			// todo: change it to use TH and TL thresholds! (HD > TH => cut, TL < HD < TH => ST)
@@ -166,23 +142,7 @@ int main() {
 			cout << "threshold = ";
 			cin >> threshold;
 
-			fs::remove_all(outputDirPaths[4]);
-			fs::create_directory(outputDirPaths[4]);
-
-			vector<pair<int, Mat>> frames = HBA(videoFilePath, threshold, logFile, BIN_TO_BIN_DIFFERENCE);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[4]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return HBA(videoFilePath, threshold, logFile, BIN_TO_BIN_DIFFERENCE);
 		}
 		case 6: {
 			// todo: change it to use TH and TL thresholds! (HD > TH => cut, TL < HD < TH => ST)
@@ -191,72 +151,16 @@ int main() {
 			cout << "threshold = ";
 			cin >> threshold;
 
-			fs::remove_all(outputDirPaths[5]);
-			fs::create_directory(outputDirPaths[5]);
-
-			vector<pair<int, Mat>> frames = HBA(videoFilePath, threshold, logFile, CHI_SQUARE_TEST);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[5]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return HBA(videoFilePath, threshold, logFile, HIST_INTERSECTION);
 		}
 		case 7: {
-			// todo: change it to use TH and TL thresholds! (HD > TH => cut, TL < HD < TH => ST)
-
 			float threshold;
 			cout << "threshold = ";
 			cin >> threshold;
 
-			fs::remove_all(outputDirPaths[6]);
-			fs::create_directory(outputDirPaths[6]);
-
-			vector<pair<int, Mat>> frames = HBA(videoFilePath, threshold, logFile, HIST_INTERSECTION);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[6]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return HBA_quickShotSearch(videoFilePath, threshold, logFile);
 		}
 		case 8: {
-			float threshold;
-			cout << "threshold = ";
-			cin >> threshold;
-
-			fs::remove_all(outputDirPaths[7]);
-			fs::create_directory(outputDirPaths[7]);
-
-			vector<pair<int, Mat>> frames = HBA_quickShotSearch(videoFilePath, threshold, logFile);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[7]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-		}
-		case 9: {
 			float T, M, N;
 
 			cout << "Threshold = ";
@@ -268,28 +172,10 @@ int main() {
 			cout << "Smaller sliding window size = ";
 			cin >> N;
 
-			fs::remove_all(outputDirPaths[8]);
-			fs::create_directory(outputDirPaths[8]);
-
-			vector<pair<int, Mat>> frames = EBA_v1(videoFilePath, T, N, M, logFile);
-			for (auto f : frames) {
-				// compute the output path for the current frame
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-				int index = f.first;
-				strcpy(outputFile, outputDirPaths[8]);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, index);
-
-				// save the current frame
-				imwrite(outputFileName, f.second);
-			}
-			waitKey(0);
-			break;
+			return EBA_v1(videoFilePath, T, N, M, logFile);
 		}
-		default: break;
+		default: {
+			return vector<Shot>();
 		}
-	} while (op != 0);
-
-	logFile.close();
-	return 0;
+	}
 }

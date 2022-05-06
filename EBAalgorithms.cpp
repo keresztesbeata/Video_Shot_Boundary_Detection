@@ -68,9 +68,9 @@ float getDistanceToClosestEdgePixel(Mat img, int x, int y, int w) {
 	int height = img.rows;
 	int width = img.cols;
 	float minDist = height + width;
-	for (int i = x - w; i >= 0 && i <= x + w && i < height; i++) {
-		for (int j = y - w; j >= 0 && j <= y + w && j < width; j++) {
-			if ((i != x || j != y) && isEdgePixel(img, i, j)) {
+	for (int i = x - w; i <= x + w; i++) {
+		for (int j = y - w; j <= y + w; j++) {
+			if ((i != x || j != y) && isInside(img, i, j) && isEdgePixel(img, i, j)) {
 				float dist = sqrt((x - i) * (x - i) + (y - j) * (y - j));
 				if (dist < minDist) {
 					minDist = dist;
@@ -81,8 +81,8 @@ float getDistanceToClosestEdgePixel(Mat img, int x, int y, int w) {
 	return minDist;
 }
 
-vector<pair<int, Mat>> EBA_v1(const char* fileName, float T, int N, int M, ofstream& logFile) {
-	vector<pair<int, Mat>> keyFrames;
+vector<Shot> EBA_v1(const char* fileName, float T, int N, int M, ofstream& logFile) {
+	vector<Shot> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
 	vector<Mat> frames;
@@ -127,7 +127,8 @@ vector<pair<int, Mat>> EBA_v1(const char* fileName, float T, int N, int M, ofstr
 
 		if (ecr >= max && ecr > Ts) {
 			// cut shot boundary
-			keyFrames.push_back(make_pair(n, frames[n]));
+			Shot shot = { n, frames[n], HARD_CUT };
+			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}
 	}
