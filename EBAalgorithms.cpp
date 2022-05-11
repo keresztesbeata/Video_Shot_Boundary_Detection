@@ -16,7 +16,7 @@ float ECR(Mat previousFrame, Mat currentFrame) {
 	// count total edge pixels in prev and current frames
 	int prevTotalEdgeCount = 1;
 	int currTotalEdgeCount = 1;
-	// ocunt only the incoming edge pixels: missing from previous frame, but present in the current frame
+	// count only the incoming edge pixels: missing from previous frame, but present in the current frame
 	int incomingEdgeCount = 0;
 	// ocunt only the outgoing edge pixels: present in the previous frame, but missing from current frame
 	int outgoingEdgeCount = 0;
@@ -37,25 +37,8 @@ float ECR(Mat previousFrame, Mat currentFrame) {
 			if (prev && !curr) {
 				outgoingEdgeCount++;
 			}
-			/*
-			if (!curr) {
-				float dist = getDistanceToClosestEdgePixel(currEdges, i, j, 10);
-				if (!prev && dist < r) {
-					incomingEdgeCount++;
-				}
-				if (prev && dist > r) {
-					outgoingEdgeCount++;
-				}
-			}
-			*/
 		}
 	}
-	/*
-	cout << "total prev = " << prevTotalEdgeCount << endl;
-	cout << "total curr = " << currTotalEdgeCount << endl;
-	cout << "incoming = " << incomingEdgeCount << endl;
-	cout << "outgoing = " << outgoingEdgeCount << endl;
-	*/
 
 	float ecr_in = (float)incomingEdgeCount / (float)currTotalEdgeCount;
 	float ecr_out = (float)outgoingEdgeCount / (float)prevTotalEdgeCount;
@@ -81,7 +64,7 @@ float getDistanceToClosestEdgePixel(Mat img, int x, int y, int w) {
 	return minDist;
 }
 
-vector<Shot> EBA_v1(const char* fileName, float T, int N, int M, ofstream& logFile) {
+vector<Shot> EBA(const char* fileName, float T, int N, int M, ofstream& logFile) {
 	vector<Shot> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
@@ -133,7 +116,7 @@ vector<Shot> EBA_v1(const char* fileName, float T, int N, int M, ofstream& logFi
 		}
 	}
 
-	logFile << " -> EBA_v1 (ecr):";
+	logFile << " -> EBA (ecr):";
 	logFile << " T = " << T << endl;
 	logFile << "	Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
@@ -143,32 +126,3 @@ FINISH:
 }
 
 
-float getMeanOfRegion(vector<float> difference, int start, int end) {
-	float mean = 0;
-	for (int i = start; i < end; i++) {
-		mean += difference[i];
-	}
-
-	return mean / (float)(end-start);
-}
-
-float getVarianceOfRegion(vector<float> difference, int start, int end, float mean) {
-	float variance = 0;
-	int total = end - start;
-	for (int i = start; i < end; i++) {
-		variance += (difference[i] - mean) * (difference[i] - mean);
-	}
-
-	return mean / (float)total;
-}
-
-float getMaxOfRegion(vector<float> difference, int start, int end) {
-	float max = 0;
-	for (int i = start; i < end; i++) {
-		if (difference[i] > max) {
-			max = difference[i];
-		}
-	}
-
-	return max;
-}

@@ -16,6 +16,7 @@ using namespace std;
 * For picture-in-picture transitions, change in small region (CSR), the histograms of two consecutive frames are expected to show similarities because of the minimal change in the frames.
 */
 vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric);
+
 double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, int nrBins, HDmetric metric);
 
 /*---------------------------------- version 1: HBA with bin-to-bin difference ---------------------------------------*/
@@ -36,6 +37,8 @@ double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFr
 
 /*---------------------------------- version 3: HBA with Quick Search Algorithm -----------------------------------------*/
 vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile);
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<Shot>& shots, double farDissimilarityThreshold, ofstream& logFile);
+
 /**
 * GDF = Global Dissimilarity Function
 *  => used to compare frames which are far from each other 
@@ -45,6 +48,7 @@ vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFil
 *	The GDF returns the distance between two color histograms of representative frames which is computed based on color histogram euclidean distance.
 **/
 double GDF(Mat previousFrame, Mat currentFrame);
+
 /* Representative frame is used a background extraction filter.*/
 Mat computeRepresentativeFrame(Mat * frames, int start, int end);
 /**
@@ -57,7 +61,7 @@ int LDF(Mat* frames, int start, int end);
 	frames in the right part of shot change location. 
 **/
 void shotDetector(Mat* frames, int midIdx, int minPartLen, int& shotLoc, Mat& leftMidRep, Mat& rightMidRep);
-void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<Shot>& shots, double farDissimilarityThreshold, ofstream& logFile);
+
 vector<Mat> readAllFrames(const char* fileName);
 
 

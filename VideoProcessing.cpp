@@ -2,6 +2,7 @@
 #include "PBAalgorithms.h"
 #include "HBAalgorithms.h"
 #include "EBAalgorithms.h"
+#include "MBAalgorithms.h"
 #include <fstream>
 #include <ctime>
 #include <iostream>
@@ -10,9 +11,12 @@
 #include <cstdlib>
 #include <filesystem>
 
+#define NR_VARIANTS 9
+
 namespace fs = std::filesystem;
 
 const char videoFilePath[] = "Videos/Megamind.avi";
+const char videoAllFrames[] = "Videos/keyFrames/all";
 
 char outputDirPaths[][MAX_PATH] = { 
 	// PBA test results
@@ -25,12 +29,19 @@ char outputDirPaths[][MAX_PATH] = {
 	"Videos/keyFrames/HBA_2",
 	"Videos/keyFrames/HBA_3",
 	// EBA test results
-	"Videos/keyFrames/EBA_1"
+	"Videos/keyFrames/EBA_1",
+	// MBA test results
+	"Videos/keyFrames/MBA_1",
 };
 
 vector<Shot> selectAlgorithm(int op, ofstream& logFile);
+void saveAllFrames();
 
 int main() {
+	
+	// extract and save all frames from the video sequence
+	//saveAllFrames();
+
 	int op;
 
 	do
@@ -46,11 +57,12 @@ int main() {
 		cout << " 6 - HBA_v2: histogram intersection" << endl;
 		cout << " 7 - HBA_v3: quick shot search" << endl;
 		cout << " 8 - EBA_v1: edge change ratio" << endl;
+		cout << " 9 - MBA_v1: block matching" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
 
-		if (op < 1 || op > 8) {
+		if (op < 1 || op > NR_VARIANTS) {
 			continue;
 		}
 
@@ -172,10 +184,43 @@ vector<Shot> selectAlgorithm(int op, ofstream& logFile) {
 			cout << "Smaller sliding window size = ";
 			cin >> N;
 
-			return EBA_v1(videoFilePath, T, N, M, logFile);
+			return EBA(videoFilePath, T, N, M, logFile);
+		}
+		case 9: {
+			float T, M, N, B;
+
+			cout << "Threshold = ";
+			cin >> T;
+
+			cout << "Bigger sliding window size = ";
+			cin >> M;
+
+			cout << "Smaller sliding window size = ";
+			cin >> N;
+
+			cout << "Size of macro block = ";
+			cin >> B;
+
+			return MBA(videoFilePath, T, N, M, B, logFile);
 		}
 		default: {
 			return vector<Shot>();
 		}
+	}
+}
+
+void saveAllFrames() {
+	fs::remove_all(videoAllFrames);
+	fs::create_directory(videoAllFrames);
+
+	// retrieve and store all video frames
+	vector<Mat> allFrames = readAllFrames(videoFilePath);
+
+	int n = allFrames.size();
+	for (int i = 0; i < n; i++) {
+		char outputFile[] = "Videos/keyFrames/all/frame_%ld.jpg";
+		sprintf(outputFile, outputFile, i);
+
+		imwrite(outputFile, allFrames[i]);
 	}
 }
