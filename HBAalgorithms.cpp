@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "HBAalgorithms.h"
 #include "EBAalgorithms.h"
+#include "VideoProcessing.h"
 
 double GDFGrayScale(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame);
 double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
@@ -48,7 +49,7 @@ vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metr
 		}
 
 		if (d > T) {
-			Shot shot = { nrFrames, previousFrame, HARD_CUT };
+			Shot shot = { nrFrames, previousFrame, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -164,22 +165,6 @@ vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFil
 	return keyFrames;
 }
 
-vector<Mat> readAllFrames(const char* fileName) {
-	vector<Mat> frames;
-	Mat currentFrame;
-
-	// open video file for reading
-	VideoCapture videoCapture(fileName);
-	if (!videoCapture.isOpened()) {
-		cerr << "Cannot open video file!" << endl;
-	}
-	int i = 0;
-	while (videoCapture.read(currentFrame)) {
-		frames.push_back(currentFrame.clone());
-	}
-	return frames;
-}
-
 void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<Shot>& shots, double farDissimilarityThreshold, ofstream& logFile) {
 	int partLen = rightIdx - leftIdx;
 	int midIdx = leftIdx + partLen / 2;
@@ -188,7 +173,7 @@ void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep,
 	shotDetector(frames.data(), midIdx, minPartLen, shotLoc, leftMidRep, rightMidRep);
 	
 	if (shotLoc > 0) {
-		Shot shot = { shotLoc, frames[shotLoc], HARD_CUT };
+		Shot shot = { shotLoc, frames[shotLoc], CUT };
 		shots.push_back(shot);
 		logFile << "Key frame #" << shotLoc << endl;
 	}

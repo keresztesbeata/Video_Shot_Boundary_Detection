@@ -62,7 +62,6 @@ int LDF(Mat* frames, int start, int end);
 **/
 void shotDetector(Mat* frames, int midIdx, int minPartLen, int& shotLoc, Mat& leftMidRep, Mat& rightMidRep);
 
-vector<Mat> readAllFrames(const char* fileName);
 
 
 

@@ -42,6 +42,37 @@ float computeStandardDeviation(Mat_<uchar> img) {
 	return sqrt(standardDeviation);
 }
 
+Vec3f computeMeanIntensitiyValueColor(Mat_<Vec3b> img) {
+	int height = img.rows;
+	int width = img.cols;
+	// extract the 3 colour channels: R, G, B from both previous and current frames
+	Mat_<uchar> r(height, width);
+	Mat_<uchar> g(height, width);
+	Mat_<uchar> b(height, width);
+	extractRGBChannelsFromColourImage(img, r, g, b);
+
+	float d_r = computeMeanIntensitiyValue(r);
+	float d_g = computeMeanIntensitiyValue(g);
+	float d_b = computeMeanIntensitiyValue(b);
+
+	return { d_r, d_g, d_b };
+}
+
+Vec3f computeStandardDeviationColor(Mat_<Vec3b> img) {
+	int height = img.rows;
+	int width = img.cols;
+	// extract the 3 colour channels: R, G, B from both previous and current frames
+	Mat_<uchar> r(height, width);
+	Mat_<uchar> g(height, width);
+	Mat_<uchar> b(height, width);
+	extractRGBChannelsFromColourImage(img, r, g, b);
+
+	float d_r = computeStandardDeviation(r);
+	float d_g = computeStandardDeviation(g);
+	float d_b = computeStandardDeviation(b);
+
+	return { d_r, d_g, d_b };
+}
 
 int findMinIntensity(int* hist) {
 	int g = 0;

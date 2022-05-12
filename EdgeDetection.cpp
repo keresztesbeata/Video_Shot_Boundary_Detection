@@ -5,10 +5,11 @@
 #include "Histogram.h"
 #include <queue>
 
+/*
 Mat cannyEdgeDetector(Mat src) {
 	return cannyEdgeDetection(src, 0.1, 0.4);
 }
-/*
+*/
 Mat cannyEdgeDetector(Mat src) {
 
     if (src.channels() == 3) {
@@ -26,8 +27,6 @@ Mat cannyEdgeDetector(Mat src) {
     
     return edges;
 }
-*/
-
 
 bool isEdgePixel(Mat img, int i, int j) {
     return img.at<uchar>(i, j) > 0;

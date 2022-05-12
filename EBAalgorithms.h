@@ -22,6 +22,7 @@ vector<Shot> EBA(const char* fileName, float T, int N, int M, ofstream& logFile)
 * Compute the edge change ratio between 2 consecutive frames.
 **/
 float ECR(Mat previousFrame, Mat currentFrame);
+void computeECR(Mat previousFrame, Mat currentFrame, float& ecr_in, float& ecr_out);
 /**
 * Get the distance to the closest edge pixel relative to the current pixel inside a w x w search boundary.
 **/

@@ -1,6 +1,49 @@
 #include "stdafx.h"
 #include "EBAalgorithms.h"
 
+void computeECR(Mat previousFrame, Mat currentFrame, float& ecr_in, float& ecr_out) {
+	int height = previousFrame.rows;
+	int width = previousFrame.cols;
+
+	Mat prevEdges, currEdges;
+
+	prevEdges = cannyEdgeDetector(previousFrame);
+	currEdges = cannyEdgeDetector(currentFrame);
+
+	// max distance between edge pixels of 2 consecutive frames considered as part of the same edge
+	float r = 5;
+
+	// count total edge pixels in prev and current frames
+	int prevTotalEdgeCount = 1;
+	int currTotalEdgeCount = 1;
+	// count only the incoming edge pixels: missing from previous frame, but present in the current frame
+	int incomingEdgeCount = 0;
+	// ocunt only the outgoing edge pixels: present in the previous frame, but missing from current frame
+	int outgoingEdgeCount = 0;
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			bool prev = isEdgePixel(prevEdges, i, j);
+			bool curr = isEdgePixel(currEdges, i, j);
+			if (prev) {
+				prevTotalEdgeCount++;
+			}
+			if (curr) {
+				currTotalEdgeCount++;
+			}
+
+			if (!prev && curr) {
+				incomingEdgeCount++;
+			}
+			if (prev && !curr) {
+				outgoingEdgeCount++;
+			}
+		}
+	}
+
+	ecr_in = (float)incomingEdgeCount / (float)currTotalEdgeCount;
+	ecr_out = (float)outgoingEdgeCount / (float)prevTotalEdgeCount;
+}
+
 float ECR(Mat previousFrame, Mat currentFrame) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
@@ -110,7 +153,7 @@ vector<Shot> EBA(const char* fileName, float T, int N, int M, ofstream& logFile)
 
 		if (ecr >= max && ecr > Ts) {
 			// cut shot boundary
-			Shot shot = { n, frames[n], HARD_CUT };
+			Shot shot = { n, frames[n], CUT };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}

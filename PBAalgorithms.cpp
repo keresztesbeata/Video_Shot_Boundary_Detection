@@ -33,7 +33,7 @@ vector<Shot> PBA_v1(const char * fileName, float T, ofstream& logFile) {
 			;
 
 		if (d > T) {
-			Shot shot = { nrFrames,previousFrame, HARD_CUT };
+			Shot shot = { nrFrames,previousFrame, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -117,7 +117,7 @@ vector<Shot> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile)
 			;
 
 		if (d > T2) {
-			Shot shot = { nrFrames, previousFrame, HARD_CUT };
+			Shot shot = { nrFrames, previousFrame, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -269,7 +269,7 @@ vector<Shot> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile)
 		}
 
 		if (d > T2) {
-			Shot shot = { nrFrames,previousFrame, HARD_CUT };
+			Shot shot = { nrFrames,previousFrame, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << nrFrames << endl;
 		}
@@ -351,13 +351,13 @@ vector<Shot> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
 
 		if (max > T1) {
 			// cut shot boundary
-			Shot shot = { n,previousFrame, HARD_CUT };
+			Shot shot = { n,previousFrame, CUT };
 			keyFrames.push_back(shot);
 			logFile << "HT (cut) shot #" << n << endl;
 		}
 		else if(max > T2){
 			// start of a frame or the middle of a gradual transition
-			Shot shot = { n,previousFrame, SOFT_CUT };
+			Shot shot = { n,previousFrame, GRADUAL };
 			keyFrames.push_back(shot);
 			logFile << "ST (gradual transition) shot #" << n << endl;
 		}

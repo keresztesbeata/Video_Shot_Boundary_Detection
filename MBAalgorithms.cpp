@@ -40,12 +40,6 @@ float TSS(Mat currentFrame, Mat prevFrame, int N) {
 	}
 
 	// the resulting loc for S=1 is the min cost function and this macro block is the best match
-	/*
-	Mat roi = extractBlock(currentFrame, N, cx, cy);
-	imshow("ROI: ", roi);
-	waitKey(0);
-	*/
-
 	return minCost;
 }
 
@@ -141,13 +135,13 @@ vector<Shot> MBA(const char* fileName, float T, int N, int M, int B, ofstream& l
 
 		if (diff >= max && diff > TH) {
 			// abrupt shot boundary
-			Shot shot = { n, frames[n], HARD_CUT };
+			Shot shot = { n, frames[n], CUT };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}
 		else if (diff > TL) {
 			// gradual shot boundary
-			Shot shot = { n, frames[n], SOFT_CUT };
+			Shot shot = { n, frames[n], GRADUAL };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}
