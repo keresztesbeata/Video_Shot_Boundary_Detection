@@ -35,44 +35,25 @@ void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* outputDirPa
 	}
 }
 
-void saveKeyFrames(vector<Shot> keyFrames, char* outputDirPath) {
-	char genericFileName[] = "/%s_shot_%d.jpg";
 
-	// clean and remove the output directory
-	fs::remove_all(outputDirPath);
-	// create a new output directory to store the detected keyframes
-	fs::create_directory(outputDirPath);
-
-	for (auto f : keyFrames) {
-		// compute the output path for the current frame
-		char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-		int index = f.index;
-		strcpy(outputFile, outputDirPath);
-		strcat(outputFile, genericFileName);
-		sprintf(outputFileName, outputFile, transitionToString(f.type), index);
-
-		// save the current frame
-		imwrite(outputFileName, f.keyFrame);
-	}
-}
-
-
-void saveTransitionFrames(vector<GradualTransition> gradTransitions, vector<Mat> allFrames, char* outputDirPath) {
-	char genericFileName[] = "/%s_frame_%d.jpg";
+void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, char* outputDirPath) {
+	char genericFileName[] = "/kf#%ld_%s_%ld.jpg";
 	
-	for (auto gt : gradTransitions) {
-		int index = gt.start;
-		const char* effect = effectToString(gt.effect);
-		while (index <= gt.end) {
+	int nr = 0;
+	for (auto kf : keyFrames) {
+		int i = kf.start;
+		const char* type = transitionToString(kf.type);
+		while (i <= kf.end) {
 			// compute the output path for the current frame transitions
 			char outputFile[MAX_PATH], outputFileName[MAX_PATH];
 
 			strcpy(outputFile, outputDirPath);
 			strcat(outputFile, genericFileName);
-			sprintf(outputFileName, outputFile, effect, index);
+			sprintf(outputFileName, outputFile, nr, type, i);
 			// save the current frame
-			imwrite(outputFileName, allFrames[index]);
-			index++;
+			imwrite(outputFileName, allFrames[i]);
+			i++;
 		}
+		nr++;
 	}
 }

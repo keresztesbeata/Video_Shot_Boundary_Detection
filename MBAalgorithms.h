@@ -17,7 +17,7 @@ using namespace std;
 * M = size of the larger sliding window (could be equal to N)
 * B = size of the macro block used for comparing consecutive frames
 **/
-vector<Shot> MBA(const char* fileName, float T, int N, int M, int B, ofstream& logFile);
+vector<FrameTransition> MBA(const char* fileName, float T, int N, int M, int B, ofstream& logFile);
 
 /**
 * BMA = Block Matching Algorithms  

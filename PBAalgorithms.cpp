@@ -2,10 +2,10 @@
 #include "PBAalgorithms.h"
 #include "Utils.h"
 
-vector<Shot> PBA_v1(const char * fileName, float T, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> PBA_v1(const char * fileName, float T, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
-	int nrFrames = 0;
+	int frameNr = 0;
 
 	// open video file for reading
 	VideoCapture videoCapture(fileName); 
@@ -33,17 +33,17 @@ vector<Shot> PBA_v1(const char * fileName, float T, ofstream& logFile) {
 			;
 
 		if (d > T) {
-			Shot shot = { nrFrames,previousFrame, CUT };
+			FrameTransition shot = { frameNr,frameNr, CUT };
 			keyFrames.push_back(shot);
-			logFile << "Key frame #" << nrFrames << endl;
+			logFile << "Key frame #" << frameNr << endl;
 		}
 
 		previousFrame = currentFrame.clone();
 		
-		nrFrames++;
+		frameNr++;
 	}
 	logFile << " -> PBA with single threshold: T = " << T << endl;
-	logFile << "	Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
+	logFile << "	Nr of all frames / nr of key frames (" << frameNr << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
 FINISH:
@@ -86,10 +86,10 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
 	return d_r + d_g + d_b;
 }
 
-vector<Shot> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
-	int nrFrames = 0;
+	int frameNr = 0;
 
 	// open video file for reading
 	VideoCapture videoCapture(fileName);
@@ -117,20 +117,20 @@ vector<Shot> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile)
 			;
 
 		if (d > T2) {
-			Shot shot = { nrFrames, previousFrame, CUT };
+			FrameTransition shot = { frameNr, frameNr, CUT };
 			keyFrames.push_back(shot);
-			logFile << "Key frame #" << nrFrames << endl;
+			logFile << "Key frame #" << frameNr << endl;
 		}
 
 		previousFrame = currentFrame.clone();
 
-		nrFrames++;
+		frameNr++;
 	}
 
 	logFile << " -> PBA with multiple thresholds: " << endl;
 	logFile << "	T1 = " << T1 << endl;
 	logFile << "	T2 = " << T2 << endl;
-	logFile << "Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
+	logFile << "Nr of all frames / nr of key frames (" << frameNr << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
 FINISH:
@@ -225,10 +225,10 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src) {
 	return dst;
 }
 
-vector<Shot> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
-	int nrFrames = 0;
+	int frameNr = 0;
 
 	// open video file for reading
 	VideoCapture videoCapture(fileName);
@@ -269,28 +269,28 @@ vector<Shot> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile)
 		}
 
 		if (d > T2) {
-			Shot shot = { nrFrames,previousFrame, CUT };
+			FrameTransition shot = { frameNr,frameNr, CUT };
 			keyFrames.push_back(shot);
-			logFile << "Key frame #" << nrFrames << endl;
+			logFile << "Key frame #" << frameNr << endl;
 		}
 
 		previousFrame = currentFrame.clone();
 
-		nrFrames++;
+		frameNr++;
 	}
 
 	logFile << " -> PBA with multiple thresholds and noise filtering: " << endl;
 	logFile << "	T1 = " << T1 << endl;
 	logFile << "	T2 = " << T2 << endl;
-	logFile << "Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
+	logFile << "Nr of all frames / nr of key frames (" << frameNr << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
 FINISH:
 	return keyFrames;
 }
 
-vector<Shot> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
 	int n = 0;
@@ -351,13 +351,13 @@ vector<Shot> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
 
 		if (max > T1) {
 			// cut shot boundary
-			Shot shot = { n,previousFrame, CUT };
+			FrameTransition shot = { n,n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "HT (cut) shot #" << n << endl;
 		}
 		else if(max > T2){
 			// start of a frame or the middle of a gradual transition
-			Shot shot = { n,previousFrame, GRADUAL };
+			FrameTransition shot = { n,n, GRADUAL };
 			keyFrames.push_back(shot);
 			logFile << "ST (gradual transition) shot #" << n << endl;
 		}

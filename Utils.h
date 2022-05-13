@@ -7,23 +7,25 @@ using namespace std;
 // Check is point is inside the image.
 bool isInside(Mat img, int i, int j);
 
-enum TransitionType {CUT, GRADUAL};
+enum TransitionType {CUT, GRADUAL, FADE_IN, FADE_OUT};
 
 inline const char* transitionToString(TransitionType type)
 {
     switch (type)
     {
-    case CUT:       return "CT";
-    case GRADUAL:   return "ST";
+    case CUT:       return "cut";
+    case GRADUAL:   return "soft_cut";
+    case FADE_IN:   return "fade_in";
+    case FADE_OUT:   return "fade_out";
     default:        return "";
     }
 }
 
 typedef struct _shot {
-	int index;
-	Mat keyFrame;
+    int start; // start frame index
+    int end;  // end frame index
 	TransitionType type;
-}Shot;
+}FrameTransition;
 
 /*
 * Compute different statistical properties of an image in a given frame sequence (region).

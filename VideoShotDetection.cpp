@@ -14,13 +14,12 @@
 #include <cstdlib>
 #include <filesystem>
 
-#define NR_CUT_DETECTION_ALG 7
-#define NR_GRAD_TRANS_DETECTION_ALG 2
-
 namespace fs = std::filesystem;
 
+#define NR_SHOT_DETECTION_ALG 9
+
 char parentDir[] = "Videos/gradual_transitions/tests/";
-char videoFilePath[] = "Videos/gradual_transitions/fade_transition.mp4";
+char videoFilePath[] = "Videos/movie_trailers/harry_potter_1_trailer.mp4";
 char videoAllFrames[] = "Videos/gradual_transitions/tests/all";
 
 char outputDirPaths[][MAX_PATH] = {
@@ -36,11 +35,11 @@ char outputDirPaths[][MAX_PATH] = {
 	// MBA test results
 	"/MBA_bma",
 	// FADE in/out
+	"/fade_ecr",
 	"/fade"
 };
 
-vector<Shot> selectCutDetectionAlgorithm(int op, ofstream& logFile);
-vector<GradualTransition> selectGradTransitionAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile);
+vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile);
 
 int main() {
 
@@ -48,7 +47,7 @@ int main() {
 	vector<Mat> allFrames = readAllFrames(videoFilePath);
 
 	// extract and save all frames from the video sequence
-	//saveAllFrames(allFrames, videoFilePath, videoAllFrames);
+	saveAllFrames(allFrames, videoFilePath, videoAllFrames);
 
 	int op;
 
@@ -67,12 +66,12 @@ int main() {
 		cout << " 7 - MBA: block matching" << endl;
 		cout << " --------------- Gradual Transition Detection -------------- " << endl;
 		cout << " 8 - GT: Detect Fade in/out with Std deviation" << endl;
-		cout << " 9 - GT: Detect Fade in/out with ECR" << endl;
+		cout << " 9 - GT: Detect Fade in/out based on varying luminance" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
 
-		if (op < 1 || op > NR_CUT_DETECTION_ALG + NR_GRAD_TRANS_DETECTION_ALG) {
+		if (op < 1 || op > NR_SHOT_DETECTION_ALG) {
 			continue;
 		}
 
@@ -95,19 +94,11 @@ int main() {
 		logFile << "<<<< " << ctime(&now);
 		logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 
-		if (op <= NR_CUT_DETECTION_ALG) {
-			// declare a vector of keyframes which will be populated by the selected shot detection method
-			vector<Shot> keyFrames = selectCutDetectionAlgorithm(op, logFile);
-			// save the results
-			saveKeyFrames(keyFrames, outputDir);
-		}
-		else {
-			// declare a vector of keyframes which will be populated by the selected gardual transition detection method
-			vector<GradualTransition> transitionFrames = selectGradTransitionAlgorithm(op, allFrames, logFile);
-			// save the results
-			saveTransitionFrames(transitionFrames, allFrames, outputDir);
-		}
-		
+		// declare a vector of keyframes which will be populated by the selected shot detection method
+		vector<FrameTransition> keyFrames = selectAlgorithm(op, allFrames, logFile);
+		// save the results
+		saveKeyFrames(keyFrames, allFrames, outputDir);
+
 		logFile.close();
 		waitKey(0);
 
@@ -116,94 +107,82 @@ int main() {
 	return 0;
 }
 
-vector<Shot> selectCutDetectionAlgorithm(int op, ofstream& logFile) {
-
+vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile) {
 	switch (op)
 	{
-	case 1: {
-		float threshold1, threshold2;
-		cout << "threshold1 = ";
-		cin >> threshold1;
+		case 1: {
+			float threshold1, threshold2;
+			cout << "threshold1 = ";
+			cin >> threshold1;
 
-		cout << "threshold2 = ";
-		cin >> threshold2;
+			cout << "threshold2 = ";
+			cin >> threshold2;
 
-		return PBA_v3(videoFilePath, threshold1, threshold2, logFile);
-	}
-	case 2: {
-		float M, N;
+			return PBA_v3(videoFilePath, threshold1, threshold2, logFile);
+		}
+		case 2: {
+			float M, N;
 
-		cout << "Bigger sliding window size = ";
-		cin >> M;
+			cout << "Bigger sliding window size = ";
+			cin >> M;
 
-		cout << "Smaller sliding window size = ";
-		cin >> N;
+			cout << "Smaller sliding window size = ";
+			cin >> N;
 
-		return PBA_v4(videoFilePath, M, N, logFile);
-	}
-	case 3: {
-		float threshold;
-		cout << "threshold = ";
-		cin >> threshold;
+			return PBA_v4(videoFilePath, M, N, logFile);
+		}
+		case 3: {
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
 
-		return HBA(videoFilePath, threshold, logFile, BIN_TO_BIN_DIFFERENCE);
-	}
-	case 4: {
-		float threshold;
-		cout << "threshold = ";
-		cin >> threshold;
+			return HBA(videoFilePath, threshold, logFile, BIN_TO_BIN_DIFFERENCE);
+		}
+		case 4: {
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
 
-		return HBA(videoFilePath, threshold, logFile, HIST_INTERSECTION);
-	}
-	case 5: {
-		float threshold;
-		cout << "threshold = ";
-		cin >> threshold;
+			return HBA(videoFilePath, threshold, logFile, HIST_INTERSECTION);
+		}
+		case 5: {
+			float threshold;
+			cout << "threshold = ";
+			cin >> threshold;
 
-		return HBA_quickShotSearch(videoFilePath, threshold, logFile);
-	}
-	case 6: {
-		float T, M, N;
+			return HBA_quickShotSearch(videoFilePath, threshold, logFile);
+		}
+		case 6: {
+			float T, M, N;
 
-		cout << "Threshold = ";
-		cin >> T;
+			cout << "Threshold = ";
+			cin >> T;
 
-		cout << "Bigger sliding window size = ";
-		cin >> M;
+			cout << "Bigger sliding window size = ";
+			cin >> M;
 
-		cout << "Smaller sliding window size = ";
-		cin >> N;
+			cout << "Smaller sliding window size = ";
+			cin >> N;
 
-		return EBA(videoFilePath, T, N, M, logFile);
-	}
-	case 7: {
-		float T, M, N, B;
+			return EBA(videoFilePath, T, N, M, logFile);
+		}
+		case 7: {
+			float T, M, N, B;
 
-		cout << "Threshold = ";
-		cin >> T;
+			cout << "Threshold = ";
+			cin >> T;
 
-		cout << "Bigger sliding window size = ";
-		cin >> M;
+			cout << "Bigger sliding window size = ";
+			cin >> M;
 
-		cout << "Smaller sliding window size = ";
-		cin >> N;
+			cout << "Smaller sliding window size = ";
+			cin >> N;
 
-		cout << "Size of macro block = ";
-		cin >> B;
+			cout << "Size of macro block = ";
+			cin >> B;
 
-		return MBA(videoFilePath, T, N, M, B, logFile);
-	}
-	default: {
-		return vector<Shot>();
-	}
-	}
-}
-
-
-vector<GradualTransition> selectGradTransitionAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile) {
-
-	switch (op)
-	{
+			return MBA(videoFilePath, T, N, M, B, logFile);
+		}
 		case 8: {
 			float maxStdDev, minLength, maxChange;
 
@@ -219,6 +198,18 @@ vector<GradualTransition> selectGradTransitionAlgorithm(int op, vector<Mat> allF
 			return detectFadeTransitions_v1(allFrames, maxStdDev, maxChange, minLength, logFile);
 		}
 		case 9: {
+			float maxStdDev, minLength;
+
+			cout << "Threshold for maxStdDev = ";
+			cin >> maxStdDev;
+
+			cout << "Min length of transition = ";
+			cin >> minLength;
+
+			return detectFadeTransitions_v3(allFrames, maxStdDev, minLength, logFile);
+		}
+		/*
+		case 10: {
 			float T, minLength;
 
 			cout << "Threshold for ECR = ";
@@ -229,8 +220,9 @@ vector<GradualTransition> selectGradTransitionAlgorithm(int op, vector<Mat> allF
 
 			return detectFadeTransitions_v2(allFrames, T, minLength, logFile);
 		}
+		*/
 		default: {
-			return vector<GradualTransition>();
+			return vector<FrameTransition>();
 		}
 	}
 }

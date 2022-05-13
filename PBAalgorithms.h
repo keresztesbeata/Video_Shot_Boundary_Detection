@@ -26,7 +26,7 @@ using namespace std;
 * Return value: 
 *	key frames representing the cuts and their index in the original frame sequence
 **/
-vector<Shot> PBA_v1(const char* fileName, float T, ofstream& logFile);
+vector<FrameTransition> PBA_v1(const char* fileName, float T, ofstream& logFile);
 
 /**
 * Get the dissimilarity factor between 2 GRAYSCALE images: DF = Sum(abs(f(n,x,y) - f(n-1,x,y))).
@@ -60,7 +60,7 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 * Return value:
 *	key frames representing the cuts
 */
-vector<Shot> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile);
+vector<FrameTransition> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile);
 
 /**
 * Count the pixels which have a dissimilarity factor greater than a given local threshold, applied on GRAYSCALE images.
@@ -90,7 +90,7 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src);
 * 
 * Steps: (same as for the multiple thresholding)
 */
-vector<Shot> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile);
+vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile);
 
 /*------------------------------------------------ version 4: adaptive threshold ---------------------------------------------------------*/
 /**
@@ -106,6 +106,6 @@ vector<Shot> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile)
 *	- T1 = 5 * mean
 *	- T2 = 1.5 * mean
 */
-vector<Shot> PBA_v4(const char* fileName, int M, int N, ofstream& logFile);
+vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& logFile);
 float getAverageDFFromSlidingWindow(vector<float> difference, int n, int windowSize);
 float getMaxDFFromSlidingWindow(vector<float> difference, int n, int windowSize);

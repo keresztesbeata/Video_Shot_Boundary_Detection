@@ -107,8 +107,8 @@ float getDistanceToClosestEdgePixel(Mat img, int x, int y, int w) {
 	return minDist;
 }
 
-vector<Shot> EBA(const char* fileName, float T, int N, int M, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> EBA(const char* fileName, float T, int N, int M, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
 	vector<Mat> frames;
@@ -153,7 +153,7 @@ vector<Shot> EBA(const char* fileName, float T, int N, int M, ofstream& logFile)
 
 		if (ecr >= max && ecr > Ts) {
 			// cut shot boundary
-			Shot shot = { n, frames[n], CUT };
+			FrameTransition shot = { n, n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}

@@ -87,8 +87,8 @@ int selectShot_BMA(Mat* frames, int start, int end, int N) {
 	return maxIdx;
 }
 
-vector<Shot> MBA(const char* fileName, float T, int N, int M, int B, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> MBA(const char* fileName, float T, int N, int M, int B, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
 	vector<Mat> frames;
@@ -135,13 +135,13 @@ vector<Shot> MBA(const char* fileName, float T, int N, int M, int B, ofstream& l
 
 		if (diff >= max && diff > TH) {
 			// abrupt shot boundary
-			Shot shot = { n, frames[n], CUT };
+			FrameTransition shot = { n, n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}
 		else if (diff > TL) {
 			// gradual shot boundary
-			Shot shot = { n, frames[n], GRADUAL };
+			FrameTransition shot = { n, n, GRADUAL };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}

@@ -13,5 +13,4 @@
 
 vector<Mat> readAllFrames(const char* fileName);
 void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* outputDirPath);
-void saveKeyFrames(vector<Shot> keyFrames, char* outputDirPath);
-void saveTransitionFrames(vector<GradualTransition> gradTransitions, vector<Mat> allFrames, char* outputDirPath);
+void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, char* outputDirPath);

@@ -24,20 +24,24 @@ float computeMeanIntensitiyValue(Mat_<uchar> img) {
 }
 
 float computeStandardDeviation(Mat_<uchar> img) {
-	// normalize the histogram
-	float * p = computePDF(img);
-
 	// maximum grey level
-	int L = 255;
+	int height = img.rows;
+	int width = img.cols;
+
+	int M = height * width;
 
 	// compute mean value
 	float mean = computeMeanIntensitiyValue(img);
 
 	// compute standard deviation
 	float standardDeviation = 0.0;
-	for (int g = 0; g <= L; g++) {
-		standardDeviation += (g - mean) * (g - mean) * p[g];
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			standardDeviation += (img(i, j) - mean) * (img(i, j) - mean);
+		}
 	}
+
+	standardDeviation /= (float)M;
 
 	return sqrt(standardDeviation);
 }
@@ -130,4 +134,24 @@ Mat_<uchar> basicTresholding(Mat_<uchar> src) {
 
 	// threshold the image using T
 	return convertGrayScaleToBlackAndWhite(src, T);
+}
+
+int getMinIntensityLevel(Mat_<uchar> src) {
+	int* hist = computeHistogram(src);
+
+	int i = 0;
+	while (i < 256 && hist[i] == 0) {
+		i++;
+	}
+	return i;
+}
+
+int getMaxIntensityLevel(Mat_<uchar> src) {
+	int* hist = computeHistogram(src);
+
+	int i = 255;
+	while (i >= 0 && hist[i] == 0) {
+		i--;
+	}
+	return i;
 }

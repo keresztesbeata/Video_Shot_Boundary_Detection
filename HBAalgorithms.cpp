@@ -9,10 +9,10 @@ double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 Mat_<uchar> computeRepresentativeFrameGrayScale(Mat_<uchar>* frames, int start, int end);
 Mat_<Vec3b> computeRepresentativeFrameColour(Mat_<Vec3b>* frames, int start, int end);
 
-vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
+	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
-	int nrFrames = 0;
+	int frameNr = 0;
 
 	// open video file for reading
 	VideoCapture videoCapture(fileName);
@@ -49,14 +49,14 @@ vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metr
 		}
 
 		if (d > T) {
-			Shot shot = { nrFrames, previousFrame, CUT };
+			FrameTransition shot = { frameNr, frameNr, CUT };
 			keyFrames.push_back(shot);
-			logFile << "Key frame #" << nrFrames << endl;
+			logFile << "Key frame #" << frameNr << endl;
 		}
 
 		previousFrame = currentFrame.clone();
 
-		nrFrames++;
+		frameNr++;
 	}
 
 	switch (metric) {
@@ -71,7 +71,7 @@ vector<Shot> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metr
 	default: break;
 	}
 	logFile << " T = " << T << endl;
-	logFile << "	Nr of all frames / nr of key frames (" << nrFrames << "," << keyFrames.size() << ")" << endl;
+	logFile << "	Nr of all frames / nr of key frames (" << frameNr << "," << keyFrames.size() << ")" << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
 FINISH:
@@ -144,8 +144,8 @@ double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> current
 	return d_r + d_g + d_b;
 }
 
-vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile) {
-	vector<Shot> keyFrames;
+vector<FrameTransition> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile) {
+	vector<FrameTransition> keyFrames;
 	
 	vector<Mat> frames = readAllFrames(fileName);
 
@@ -165,7 +165,7 @@ vector<Shot> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFil
 	return keyFrames;
 }
 
-void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<Shot>& shots, double farDissimilarityThreshold, ofstream& logFile) {
+void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<FrameTransition>& shots, double farDissimilarityThreshold, ofstream& logFile) {
 	int partLen = rightIdx - leftIdx;
 	int midIdx = leftIdx + partLen / 2;
 	int shotLoc = 0;
@@ -173,7 +173,7 @@ void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep,
 	shotDetector(frames.data(), midIdx, minPartLen, shotLoc, leftMidRep, rightMidRep);
 	
 	if (shotLoc > 0) {
-		Shot shot = { shotLoc, frames[shotLoc], CUT };
+		FrameTransition shot = { shotLoc, shotLoc, CUT };
 		shots.push_back(shot);
 		logFile << "Key frame #" << shotLoc << endl;
 	}

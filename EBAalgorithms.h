@@ -17,7 +17,7 @@ using namespace std;
 * N = size of the smaller sliding window
 * M = size of the larger sliding window (could be equal to N)
 **/
-vector<Shot> EBA(const char* fileName, float T, int N, int M, ofstream& logFile);
+vector<FrameTransition> EBA(const char* fileName, float T, int N, int M, ofstream& logFile);
 /**
 * Compute the edge change ratio between 2 consecutive frames.
 **/
