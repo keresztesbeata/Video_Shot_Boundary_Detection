@@ -1,0 +1,2879 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:01:18 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:01:59 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:04:01 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:04:23 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:07:17 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:08:01 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:08:41 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:10:09 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+keyFrame #25
+keyFrame #54
+keyFrame #76
+keyFrame #97
+keyFrame #153
+keyFrame #177
+keyFrame #199
+keyFrame #245
+ -> MBA (bma): T = 0.5
+	Nr of all frames / nr of key frames (270,8)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:13:00 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+keyFrame #25
+keyFrame #54
+keyFrame #76
+keyFrame #97
+keyFrame #153
+keyFrame #177
+keyFrame #199
+keyFrame #245
+ -> MBA (bma): T = 0.5
+	Nr of all frames / nr of key frames (270,8)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:13:38 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Wed May 11 14:13:48 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+keyFrame #25
+keyFrame #54
+keyFrame #76
+keyFrame #97
+keyFrame #153
+keyFrame #177
+keyFrame #199
+keyFrame #245
+ -> MBA (bma): T = 0.5
+	Nr of all frames / nr of key frames (270,8)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:46:32 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+fade in frames [0, 57]
+fade in frames [59, 77]
+fade out frames [86, 101]
+fade out frames [122, 137]
+fade out frames [122, 138]
+fade out frames [122, 139]
+fade in frames [139, 161]
+fade out frames [165, 180]
+fade out frames [165, 181]
+fade in frames [463, 489]
+fade out frames [517, 541]
+fade out frames [517, 542]
+fade out frames [517, 543]
+fade out frames [517, 544]
+fade in frames [547, 579]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:48:33 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+fade in frames [0, 57]
+fade in frames [59, 77]
+fade out frames [86, 101]
+fade out frames [122, 137]
+fade out frames [122, 138]
+fade out frames [122, 139]
+fade in frames [139, 161]
+fade out frames [165, 180]
+fade out frames [165, 181]
+fade in frames [463, 489]
+fade out frames [517, 541]
+fade out frames [517, 542]
+fade out frames [517, 543]
+fade out frames [517, 544]
+fade in frames [547, 579]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:50:54 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 25
+ --------------------------------------------------------------------------------------
+fade in frames [0, 57]
+fade in frames [463, 489]
+fade out frames [517, 542]
+fade out frames [517, 543]
+fade out frames [517, 544]
+fade in frames [547, 579]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:51:17 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 20
+ --------------------------------------------------------------------------------------
+fade in frames [0, 57]
+fade in frames [139, 161]
+fade in frames [463, 489]
+fade out frames [517, 542]
+fade out frames [517, 543]
+fade out frames [517, 544]
+fade in frames [547, 579]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:52:26 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 50
+ --------------------------------------------------------------------------------------
+fade in frames [0, 57]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:52:56 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 60
+ --------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May 13 23:57:01 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 20
+ --------------------------------------------------------------------------------------
+fade in frames [0, 57]
+fade in frames [139, 161]
+fade in frames [463, 489]
+fade out frames [517, 542]
+fade out frames [517, 543]
+fade out frames [517, 544]
+fade in frames [547, 579]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 00:06:48 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+fade in frames [0, 58]
+fade in frames [59, 78]
+fade out frames [85, 101]
+fade out frames [121, 137]
+fade out frames [121, 138]
+fade out frames [121, 139]
+fade in frames [139, 162]
+fade out frames [164, 180]
+fade out frames [164, 181]
+fade in frames [463, 490]
+fade out frames [516, 542]
+fade out frames [516, 543]
+fade out frames [516, 544]
+fade in frames [547, 580]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 00:10:30 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 20
+ --------------------------------------------------------------------------------------
+fade in frames [2, 58]
+fade in frames [139, 162]
+fade in frames [463, 490]
+fade out frames [516, 542]
+fade out frames [516, 543]
+fade out frames [516, 544]
+fade in frames [547, 580]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 00:12:50 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect fade in/out (Based on histogram difference):
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames [7, 26]
+fade out frames [28, 45]
+fade out frames [28, 46]
+fade in frames [46, 61]
+fade out frames [65, 83]
+fade out frames [65, 84]
+fade out frames [65, 85]
+fade out frames [65, 86]
+fade out frames [65, 87]
+fade in frames [87, 112]
+fade out frames [97, 124]
+fade out frames [97, 125]
+fade out frames [97, 126]
+fade out frames [97, 127]
+fade out frames [97, 128]
+fade in frames [128, 142]
+fade in frames [411, 438]
+fade out frames [464, 490]
+fade out frames [464, 491]
+fade out frames [464, 492]
+fade in frames [495, 528]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:13:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 15
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+fade in frames[2, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:15:20 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[2, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:17:44 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[2, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:23:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[2, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:24:25 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 15
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+fade in frames[2, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:26:58 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 10
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+std  dev : 0.0222124
+std  dev : 0.0128283
+std  dev : 0.0128283
+std  dev : 0.0128283
+std  dev : 0
+std  dev : 0
+std  dev : 0.0128283
+std  dev : 0.124406
+std  dev : 0.443068
+std  dev : 1.63477
+std  dev : 3.63318
+std  dev : 6.37119
+std  dev : 9.85552
+std  dev : 13.9392
+std  dev : 19.1708
+std  dev : 24.9173
+std  dev : 32.4733
+std  dev : 40.602
+std  dev : 41.1399
+std  dev : 41.763
+std  dev : 41.9112
+std  dev : 42.1685
+std  dev : 42.4604
+std  dev : 42.6878
+std  dev : 42.7029
+std  dev : 42.8938
+std  dev : 42.9457
+std  dev : 43.0151
+std  dev : 43.2036
+std  dev : 43.2017
+std  dev : 43.1192
+std  dev : 36.3519
+std  dev : 31.0816
+std  dev : 25.7736
+std  dev : 21.3385
+std  dev : 17.4039
+std  dev : 13.7246
+std  dev : 10.1978
+std  dev : 7.43364
+std  dev : 4.72455
+std  dev : 2.52716
+std  dev : 0.81131
+std  dev : 0.241821
+std  dev : 0.142476
+std  dev : 0.0361056
+std  dev : 0.0311545
+std  dev : 0.0311545
+std  dev : 0.207202
+std  dev : 1.21422
+std  dev : 3.4267
+std  dev : 5.71079
+std  dev : 8.24846
+std  dev : 10.9969
+std  dev : 13.6592
+std  dev : 16.6532
+std  dev : 20.0506
+std  dev : 24.0791
+std  dev : 30.1545
+std  dev : 30.8644
+std  dev : 31.5594
+std  dev : 31.7718
+std  dev : 31.9772
+std  dev : 31.9571
+std  dev : 32.0971
+std  dev : 32.0893
+std  dev : 32.172
+std  dev : 32.2125
+std  dev : 31.9668
+std  dev : 28.4863
+std  dev : 24.814
+std  dev : 21.328
+std  dev : 18.3722
+std  dev : 15.896
+std  dev : 13.258
+std  dev : 10.8358
+std  dev : 8.35635
+std  dev : 6.13642
+std  dev : 4.07452
+std  dev : 2.06989
+std  dev : 0.843896
+std  dev : 0.453018
+std  dev : 0.237945
+std  dev : 0.133223
+std  dev : 0.131966
+std  dev : 0.0692574
+std  dev : 0.084863
+std  dev : 0.484758
+std  dev : 1.53708
+std  dev : 3.59097
+std  dev : 6.28458
+std  dev : 9.67591
+std  dev : 13.8174
+std  dev : 18.8056
+std  dev : 23.9934
+std  dev : 28.2858
+std  dev : 32.4191
+std  dev : 36.8915
+std  dev : 36.8612
+std  dev : 36.7295
+std  dev : 36.7337
+std  dev : 36.5991
+std  dev : 36.4085
+std  dev : 36.3189
+std  dev : 36.1104
+std  dev : 35.8845
+std  dev : 35.9297
+std  dev : 35.7129
+std  dev : 35.516
+std  dev : 32.2725
+std  dev : 29.1693
+std  dev : 26.0043
+std  dev : 22.6426
+std  dev : 18.6929
+std  dev : 15.1577
+std  dev : 11.841
+std  dev : 8.94018
+std  dev : 6.02127
+std  dev : 4.08945
+std  dev : 2.49095
+std  dev : 1.25495
+std  dev : 0.601358
+std  dev : 0.496834
+std  dev : 0.421476
+std  dev : 0.123489
+std  dev : 0.0475976
+std  dev : 0.0452839
+std  dev : 0.0951344
+std  dev : 0.387671
+std  dev : 0.87444
+std  dev : 1.98961
+std  dev : 3.9101
+std  dev : 6.18625
+std  dev : 8.78408
+std  dev : 11.6257
+std  dev : 15.1804
+std  dev : 18.2192
+std  dev : 21.9669
+std  dev : 25.6561
+std  dev : 25.6554
+std  dev : 30.3229
+std  dev : 35.5388
+std  dev : 40.8974
+std  dev : 41.1759
+std  dev : 41.3884
+std  dev : 41.5232
+std  dev : 41.6663
+std  dev : 41.9996
+std  dev : 42.2393
+std  dev : 42.489
+std  dev : 42.651
+std  dev : 42.8812
+std  dev : 43.0608
+std  dev : 43.2362
+std  dev : 43.2468
+std  dev : 43.6028
+std  dev : 43.8927
+std  dev : 44.1055
+std  dev : 44.1229
+std  dev : 44.4474
+std  dev : 44.6198
+std  dev : 44.8926
+std  dev : 44.9505
+std  dev : 45.3097
+std  dev : 45.4456
+std  dev : 45.6958
+std  dev : 45.7266
+std  dev : 45.8665
+std  dev : 45.8109
+std  dev : 45.8334
+std  dev : 45.7293
+std  dev : 45.866
+std  dev : 45.73
+std  dev : 45.6711
+std  dev : 45.2994
+std  dev : 45.2813
+std  dev : 45.0511
+std  dev : 44.8836
+std  dev : 44.5821
+std  dev : 44.4526
+std  dev : 44.2156
+std  dev : 44.0544
+std  dev : 43.6124
+std  dev : 43.5909
+std  dev : 43.2971
+std  dev : 43.1278
+std  dev : 42.8746
+std  dev : 43.0614
+std  dev : 43.0784
+std  dev : 43.3051
+std  dev : 43.2599
+std  dev : 43.488
+std  dev : 43.414
+std  dev : 43.497
+std  dev : 43.341
+std  dev : 43.3375
+std  dev : 40.1909
+std  dev : 37.3562
+std  dev : 35.0886
+std  dev : 33.1841
+std  dev : 31.5258
+std  dev : 30.2765
+std  dev : 29.1503
+std  dev : 28.4574
+std  dev : 28.9915
+std  dev : 29.6095
+std  dev : 30.7487
+std  dev : 32.5956
+std  dev : 35.1443
+std  dev : 37.9188
+std  dev : 38.0855
+std  dev : 38.2043
+std  dev : 38.4899
+std  dev : 38.5733
+std  dev : 38.8118
+std  dev : 39.0547
+std  dev : 39.6155
+std  dev : 40.3942
+std  dev : 41.4703
+std  dev : 43.0655
+std  dev : 44.9263
+std  dev : 46.5976
+std  dev : 46.5981
+std  dev : 45.8075
+std  dev : 45.2094
+std  dev : 44.5953
+std  dev : 43.9704
+std  dev : 43.7166
+std  dev : 43.7107
+std  dev : 43.6742
+std  dev : 43.7122
+std  dev : 43.6336
+std  dev : 43.5998
+std  dev : 43.5686
+std  dev : 43.5441
+std  dev : 43.4832
+std  dev : 43.4356
+std  dev : 43.3274
+std  dev : 43.4311
+std  dev : 43.3872
+std  dev : 43.3161
+std  dev : 43.2714
+std  dev : 43.1968
+std  dev : 43.1354
+std  dev : 43.2078
+std  dev : 43.2693
+std  dev : 43.3888
+std  dev : 43.6607
+std  dev : 43.9662
+std  dev : 44.3071
+std  dev : 44.3106
+std  dev : 44.7562
+std  dev : 45.3929
+std  dev : 45.6615
+std  dev : 46.0587
+std  dev : 46.2628
+std  dev : 46.95
+std  dev : 47.3509
+std  dev : 47.6593
+std  dev : 47.9015
+std  dev : 48.371
+std  dev : 48.6674
+std  dev : 48.9322
+std  dev : 49.0776
+std  dev : 49.384
+std  dev : 49.6753
+std  dev : 49.8976
+std  dev : 50.0052
+std  dev : 50.1192
+std  dev : 50.1912
+std  dev : 50.3865
+std  dev : 50.3363
+std  dev : 50.3809
+std  dev : 50.6744
+std  dev : 50.7293
+std  dev : 50.659
+std  dev : 50.612
+std  dev : 50.5878
+std  dev : 50.6502
+std  dev : 50.5985
+std  dev : 50.7911
+std  dev : 50.7288
+std  dev : 50.7777
+std  dev : 50.8798
+std  dev : 51.1848
+std  dev : 51.2627
+std  dev : 51.4469
+std  dev : 51.5982
+std  dev : 51.5123
+std  dev : 51.6758
+std  dev : 51.684
+std  dev : 51.6865
+std  dev : 51.7804
+std  dev : 51.734
+std  dev : 51.6714
+std  dev : 51.6811
+std  dev : 51.6413
+std  dev : 51.6069
+std  dev : 51.7532
+std  dev : 51.6849
+std  dev : 51.4614
+std  dev : 51.2917
+std  dev : 51.2288
+std  dev : 51.1148
+std  dev : 51.1937
+std  dev : 51.2556
+std  dev : 51.2322
+std  dev : 51.2432
+std  dev : 51.2319
+std  dev : 51.366
+std  dev : 51.6692
+std  dev : 51.7424
+std  dev : 51.4185
+std  dev : 51.0754
+std  dev : 51.4677
+std  dev : 51.489
+std  dev : 51.7324
+std  dev : 51.445
+std  dev : 51.8596
+std  dev : 51.4485
+std  dev : 51.1371
+std  dev : 50.5217
+std  dev : 50.3406
+std  dev : 50.2045
+std  dev : 49.8297
+std  dev : 49.7544
+std  dev : 49.5942
+std  dev : 49.3726
+std  dev : 49.1468
+std  dev : 49.1185
+std  dev : 48.6306
+std  dev : 48.2614
+std  dev : 48.8293
+std  dev : 48.1923
+std  dev : 47.7322
+std  dev : 47.2961
+std  dev : 46.9248
+std  dev : 46.5544
+std  dev : 30.0565
+std  dev : 30.1266
+std  dev : 27.0502
+std  dev : 32.002
+std  dev : 27.1978
+std  dev : 27.4194
+std  dev : 26.6962
+std  dev : 26.9287
+std  dev : 25.6467
+std  dev : 25.7832
+std  dev : 25.788
+std  dev : 25.9425
+std  dev : 26.049
+std  dev : 26.2711
+std  dev : 26.5763
+std  dev : 26.9332
+std  dev : 27.1011
+std  dev : 27.3762
+std  dev : 27.4813
+std  dev : 27.5884
+std  dev : 27.5333
+std  dev : 27.5932
+std  dev : 27.5336
+std  dev : 27.5921
+std  dev : 27.5353
+std  dev : 27.6393
+std  dev : 27.608
+std  dev : 27.5712
+std  dev : 27.4408
+std  dev : 27.469
+std  dev : 27.3365
+std  dev : 27.2546
+std  dev : 26.9686
+std  dev : 26.6862
+std  dev : 26.5413
+std  dev : 27.946
+std  dev : 28.0152
+std  dev : 28.0449
+std  dev : 28.0936
+std  dev : 27.9932
+std  dev : 28.0457
+std  dev : 28.1031
+std  dev : 28.0499
+std  dev : 28.044
+std  dev : 28.061
+std  dev : 28.0676
+std  dev : 28.0951
+std  dev : 28.046
+std  dev : 27.9638
+std  dev : 27.8585
+std  dev : 27.9319
+std  dev : 27.7854
+std  dev : 27.9103
+std  dev : 27.9058
+std  dev : 27.9336
+std  dev : 27.9479
+std  dev : 27.9595
+std  dev : 27.8862
+std  dev : 27.854
+std  dev : 27.8493
+std  dev : 27.9143
+std  dev : 27.9087
+std  dev : 27.9113
+std  dev : 27.9787
+std  dev : 28.2075
+std  dev : 28.3602
+std  dev : 28.4532
+std  dev : 28.4871
+std  dev : 28.6189
+std  dev : 28.6092
+std  dev : 28.6349
+std  dev : 0.0848418
+std  dev : 0.0259444
+std  dev : 0.0259444
+std  dev : 0.240737
+std  dev : 0.56475
+std  dev : 0.834107
+std  dev : 0.835653
+std  dev : 1.46673
+std  dev : 2.43252
+std  dev : 3.59523
+std  dev : 4.98408
+std  dev : 6.8467
+std  dev : 8.65063
+std  dev : 10.9105
+std  dev : 13.3082
+std  dev : 15.7385
+std  dev : 18.2802
+std  dev : 21.2275
+std  dev : 24.2252
+std  dev : 27.5196
+std  dev : 30.8313
+std  dev : 34.4851
+std  dev : 37.949
+std  dev : 41.7695
+std  dev : 45.6336
+std  dev : 45.8136
+std  dev : 45.7875
+std  dev : 45.8857
+std  dev : 45.8797
+std  dev : 46.0114
+std  dev : 46.0254
+std  dev : 46.0669
+std  dev : 46.0422
+std  dev : 46.2222
+std  dev : 46.2191
+std  dev : 46.2257
+std  dev : 46.1426
+std  dev : 46.243
+std  dev : 46.119
+std  dev : 46.1275
+std  dev : 46.0979
+std  dev : 46.1894
+std  dev : 46.2731
+std  dev : 46.3137
+std  dev : 46.2722
+std  dev : 46.3541
+std  dev : 46.3606
+std  dev : 46.3492
+std  dev : 46.2924
+std  dev : 46.3005
+std  dev : 46.2726
+std  dev : 46.2884
+std  dev : 46.2547
+std  dev : 46.2569
+std  dev : 42.9379
+std  dev : 39.476
+std  dev : 36.4046
+std  dev : 33.1564
+std  dev : 30.38
+std  dev : 27.8493
+std  dev : 24.8328
+std  dev : 24.8408
+std  dev : 22.0196
+std  dev : 19.9151
+std  dev : 17.4604
+std  dev : 15.4199
+std  dev : 13.41
+std  dev : 11.2742
+std  dev : 9.37709
+std  dev : 7.71993
+std  dev : 5.81812
+std  dev : 4.39672
+std  dev : 3.03644
+std  dev : 2.12667
+std  dev : 1.26833
+std  dev : 0.842285
+std  dev : 0.581154
+std  dev : 0.505899
+std  dev : 0.407148
+std  dev : 0.0705346
+std  dev : 0.0658942
+std  dev : 0.0637318
+std  dev : 0.109828
+std  dev : 0.119723
+std  dev : 0.060046
+std  dev : 0.0310704
+std  dev : 0.0450555
+std  dev : 0.0197653
+std  dev : 0.0197653
+std  dev : 0.0283071
+std  dev : 0.0336058
+std  dev : 0.0654918
+std  dev : 0.136355
+std  dev : 0.199591
+std  dev : 0.39896
+std  dev : 0.797801
+std  dev : 1.10179
+std  dev : 1.60377
+std  dev : 2.15566
+std  dev : 2.53989
+std  dev : 3.1518
+std  dev : 3.71027
+std  dev : 4.15111
+std  dev : 4.85244
+std  dev : 5.82714
+std  dev : 7.17284
+std  dev : 8.0325
+std  dev : 9.09457
+std  dev : 10.0761
+std  dev : 11.3311
+std  dev : 12.6314
+std  dev : 13.659
+std  dev : 14.7918
+std  dev : 15.8956
+std  dev : 17.5995
+std  dev : 17.5978
+std  dev : 19.779
+std  dev : 21.3949
+std  dev : 22.7242
+std  dev : 23.455
+std  dev : 24.6464
+std  dev : 26.3378
+std  dev : 28.3356
+std  dev : 30.0715
+std  dev : 31.5204
+std  dev : 32.6081
+std  dev : 33.4945
+std  dev : 34.4079
+std  dev : 35.5438
+std  dev : 35.4447
+std  dev : 35.3542
+std  dev : 35.2578
+std  dev : 34.7781
+std  dev : 34.5125
+std  dev : 34.3304
+std  dev : 34.354
+std  dev : 34.2606
+std  dev : 34.3404
+std  dev : 34.4471
+std  dev : 33.831
+std  dev : 34.0219
+std  dev : 33.7042
+std  dev : 33.5901
+std  dev : 33.5484
+std  dev : 33.2577
+std  dev : 32.6576
+std  dev : 32.4536
+std  dev : 32.3063
+std  dev : 32.0681
+std  dev : 32.2031
+std  dev : 32.1614
+std  dev : 32.0741
+std  dev : 31.994
+std  dev : 31.9792
+std  dev : 31.8605
+std  dev : 31.7515
+std  dev : 31.5313
+std  dev : 31.4476
+std  dev : 31.3881
+std  dev : 31.1172
+std  dev : 30.857
+std  dev : 30.6889
+std  dev : 30.3978
+std  dev : 30.511
+std  dev : 30.5596
+std  dev : 30.476
+std  dev : 30.4838
+std  dev : 30.5765
+std  dev : 30.5373
+std  dev : 30.3919
+std  dev : 30.4296
+std  dev : 30.0768
+std  dev : 29.8173
+std  dev : 29.6423
+std  dev : 29.5513
+std  dev : 29.2362
+std  dev : 29.0996
+std  dev : 29.0208
+std  dev : 28.9812
+std  dev : 28.9975
+std  dev : 29.0558
+std  dev : 28.951
+std  dev : 29.1872
+std  dev : 28.9789
+std  dev : 29.1473
+std  dev : 29.1919
+std  dev : 29.2596
+std  dev : 29.0899
+std  dev : 28.9967
+std  dev : 28.8384
+std  dev : 28.9083
+std  dev : 28.8912
+std  dev : 28.8849
+std  dev : 28.782
+std  dev : 28.7444
+std  dev : 28.5752
+std  dev : 28.5359
+std  dev : 28.5105
+std  dev : 28.8178
+std  dev : 28.8852
+std  dev : 29.0481
+std  dev : 29.1461
+std  dev : 29.5197
+std  dev : 29.5567
+std  dev : 29.8041
+std  dev : 29.8909
+std  dev : 30.0221
+std  dev : 29.957
+std  dev : 30.0204
+std  dev : 29.9309
+std  dev : 30.1953
+std  dev : 30.1419
+std  dev : 30.1708
+std  dev : 30.1047
+std  dev : 30.1691
+std  dev : 30.0726
+std  dev : 30.0488
+std  dev : 30.0423
+std  dev : 29.9512
+std  dev : 30.0426
+std  dev : 29.9648
+std  dev : 29.8958
+std  dev : 29.8777
+std  dev : 29.9171
+std  dev : 29.9028
+std  dev : 29.7724
+std  dev : 29.7721
+std  dev : 29.8454
+std  dev : 29.7168
+std  dev : 29.7413
+std  dev : 29.6685
+std  dev : 29.7238
+std  dev : 29.6757
+std  dev : 29.6897
+std  dev : 29.4503
+std  dev : 29.5708
+std  dev : 29.4312
+std  dev : 29.5311
+std  dev : 29.4082
+std  dev : 29.4404
+std  dev : 29.3265
+std  dev : 29.4033
+std  dev : 29.2101
+std  dev : 29.2675
+std  dev : 29.1037
+std  dev : 29.0873
+std  dev : 28.9065
+std  dev : 28.9542
+std  dev : 28.846
+std  dev : 28.8211
+std  dev : 28.6742
+std  dev : 28.7057
+std  dev : 28.6594
+std  dev : 28.7033
+std  dev : 28.5744
+std  dev : 28.6136
+std  dev : 28.471
+std  dev : 28.3798
+std  dev : 28.1551
+std  dev : 28.2501
+std  dev : 28.1398
+std  dev : 28.0543
+std  dev : 27.927
+std  dev : 27.9552
+std  dev : 27.8635
+std  dev : 27.8734
+std  dev : 27.6686
+std  dev : 27.7244
+std  dev : 27.5297
+std  dev : 27.484
+std  dev : 26.9027
+std  dev : 26.434
+std  dev : 25.9814
+std  dev : 25.4595
+std  dev : 25.0327
+std  dev : 24.5431
+std  dev : 24.0917
+std  dev : 23.7853
+std  dev : 23.5579
+std  dev : 23.3135
+std  dev : 22.9802
+std  dev : 22.9615
+std  dev : 22.7831
+std  dev : 22.7186
+std  dev : 23.0164
+std  dev : 23.2751
+std  dev : 23.6817
+std  dev : 24.3438
+std  dev : 24.9728
+std  dev : 25.9376
+std  dev : 26.2158
+std  dev : 26.6145
+std  dev : 27.2854
+std  dev : 28.4815
+std  dev : 29.5202
+std  dev : 30.6985
+std  dev : 30.93
+std  dev : 31.3405
+std  dev : 31.4455
+std  dev : 31.4998
+std  dev : 31.7272
+std  dev : 31.6847
+std  dev : 31.7742
+std  dev : 31.7793
+std  dev : 31.9802
+std  dev : 32.1841
+std  dev : 32.4019
+std  dev : 32.4964
+std  dev : 32.7371
+std  dev : 32.9075
+std  dev : 33.0976
+std  dev : 33.2855
+std  dev : 33.5337
+std  dev : 33.5996
+std  dev : 33.7858
+std  dev : 33.8012
+std  dev : 33.8371
+std  dev : 33.9265
+std  dev : 34.0844
+std  dev : 34.229
+std  dev : 34.6061
+std  dev : 34.8512
+std  dev : 34.9656
+std  dev : 34.9549
+std  dev : 34.8879
+std  dev : 34.7453
+std  dev : 34.6464
+std  dev : 34.4991
+std  dev : 34.1757
+std  dev : 34.1113
+std  dev : 33.9117
+std  dev : 33.576
+std  dev : 32.5928
+std  dev : 31.7451
+std  dev : 30.7997
+std  dev : 30.7778
+std  dev : 29.8019
+std  dev : 29.0645
+std  dev : 28.6127
+std  dev : 28.0029
+std  dev : 27.4417
+std  dev : 27.4403
+std  dev : 27.2772
+std  dev : 27.448
+std  dev : 27.6005
+std  dev : 27.7133
+std  dev : 27.9429
+std  dev : 28.0753
+std  dev : 28.0174
+std  dev : 28.3908
+std  dev : 28.6889
+std  dev : 29.2458
+std  dev : 29.6228
+std  dev : 29.8127
+std  dev : 29.8684
+std  dev : 30.2512
+std  dev : 30.7059
+std  dev : 31.2798
+std  dev : 31.5122
+std  dev : 31.7798
+std  dev : 31.8556
+std  dev : 31.9168
+std  dev : 31.7399
+std  dev : 32.0547
+std  dev : 31.6365
+std  dev : 31.6618
+std  dev : 31.5934
+std  dev : 31.7928
+std  dev : 31.9663
+std  dev : 32.2122
+std  dev : 32.29
+std  dev : 32.4228
+std  dev : 32.6135
+std  dev : 32.7315
+std  dev : 32.6067
+std  dev : 32.5585
+std  dev : 32.5629
+std  dev : 32.6045
+std  dev : 32.5941
+std  dev : 32.8571
+std  dev : 33.0038
+std  dev : 33.1985
+std  dev : 33.323
+std  dev : 33.4687
+std  dev : 33.4077
+std  dev : 33.508
+std  dev : 33.5386
+std  dev : 33.6928
+std  dev : 33.9215
+std  dev : 34.083
+std  dev : 34.086
+std  dev : 34.2482
+std  dev : 34.3474
+std  dev : 34.3997
+std  dev : 34.5644
+std  dev : 34.6795
+std  dev : 34.9092
+std  dev : 35.1362
+std  dev : 35.4111
+std  dev : 35.6605
+std  dev : 35.8838
+std  dev : 36.0337
+std  dev : 36.1098
+std  dev : 36.2604
+std  dev : 36.3385
+std  dev : 36.3351
+std  dev : 36.3794
+std  dev : 36.5072
+std  dev : 36.601
+std  dev : 36.7566
+std  dev : 36.6571
+std  dev : 36.7097
+std  dev : 36.7555
+std  dev : 36.7665
+std  dev : 36.856
+std  dev : 36.9325
+std  dev : 36.9892
+std  dev : 36.9997
+std  dev : 37.0616
+std  dev : 37.1748
+std  dev : 37.0696
+std  dev : 37.1524
+std  dev : 37.3596
+std  dev : 37.5054
+std  dev : 37.6534
+std  dev : 37.9421
+std  dev : 37.9545
+std  dev : 38.1069
+std  dev : 38.2275
+std  dev : 38.301
+std  dev : 38.4283
+std  dev : 38.4876
+std  dev : 38.477
+std  dev : 38.6359
+std  dev : 38.7329
+std  dev : 38.9531
+std  dev : 38.8997
+std  dev : 38.8633
+std  dev : 39.0092
+std  dev : 39.0823
+std  dev : 39.1148
+std  dev : 38.3504
+fade in frames[2, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:28:30 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 15
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:28:49 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:29:40 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:30:56 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 15
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+std  dev : 0.0128283
+std  dev : 0.0222124
+std  dev : 0.0222124
+std  dev : 0.0128283
+std  dev : 0.0128283
+std  dev : 0.0128283
+std  dev : 0
+std  dev : 0
+std  dev : 0.0128283
+std  dev : 0.124406
+std  dev : 0.443068
+std  dev : 1.63477
+std  dev : 3.63318
+std  dev : 6.37119
+std  dev : 9.85552
+std  dev : 13.9392
+std  dev : 19.1708
+std  dev : 24.9173
+std  dev : 32.4733
+std  dev : 40.602
+std  dev : 41.1399
+std  dev : 41.763
+std  dev : 41.9112
+std  dev : 42.1685
+std  dev : 42.4604
+std  dev : 42.6878
+std  dev : 42.7029
+std  dev : 42.8938
+std  dev : 42.9457
+std  dev : 43.0151
+std  dev : 43.2036
+std  dev : 43.2017
+std  dev : 43.1192
+std  dev : 36.3519
+std  dev : 31.0816
+std  dev : 25.7736
+std  dev : 21.3385
+std  dev : 17.4039
+std  dev : 13.7246
+std  dev : 10.1978
+std  dev : 7.43364
+std  dev : 4.72455
+std  dev : 2.52716
+std  dev : 0.81131
+std  dev : 0.241821
+std  dev : 0.142476
+std  dev : 0.0361056
+std  dev : 0.0311545
+std  dev : 0.0311545
+std  dev : 0.207202
+std  dev : 1.21422
+std  dev : 3.4267
+std  dev : 5.71079
+std  dev : 8.24846
+std  dev : 10.9969
+std  dev : 13.6592
+std  dev : 16.6532
+std  dev : 20.0506
+std  dev : 24.0791
+std  dev : 30.1545
+std  dev : 30.8644
+std  dev : 31.5594
+std  dev : 31.7718
+std  dev : 31.9772
+std  dev : 31.9571
+std  dev : 32.0971
+std  dev : 32.0893
+std  dev : 32.172
+std  dev : 32.2125
+std  dev : 31.9668
+std  dev : 28.4863
+std  dev : 24.814
+std  dev : 21.328
+std  dev : 18.3722
+std  dev : 15.896
+std  dev : 13.258
+std  dev : 10.8358
+std  dev : 8.35635
+std  dev : 6.13642
+std  dev : 4.07452
+std  dev : 2.06989
+std  dev : 0.843896
+std  dev : 0.453018
+std  dev : 0.237945
+std  dev : 0.133223
+std  dev : 0.131966
+std  dev : 0.0692574
+std  dev : 0.084863
+std  dev : 0.484758
+std  dev : 1.53708
+std  dev : 3.59097
+std  dev : 6.28458
+std  dev : 9.67591
+std  dev : 13.8174
+std  dev : 18.8056
+std  dev : 23.9934
+std  dev : 28.2858
+std  dev : 32.4191
+std  dev : 36.8915
+std  dev : 36.8612
+std  dev : 36.7295
+std  dev : 36.7337
+std  dev : 36.5991
+std  dev : 36.4085
+std  dev : 36.3189
+std  dev : 36.1104
+std  dev : 35.8845
+std  dev : 35.9297
+std  dev : 35.7129
+std  dev : 35.516
+std  dev : 32.2725
+std  dev : 29.1693
+std  dev : 26.0043
+std  dev : 22.6426
+std  dev : 18.6929
+std  dev : 15.1577
+std  dev : 11.841
+std  dev : 8.94018
+std  dev : 6.02127
+std  dev : 4.08945
+std  dev : 2.49095
+std  dev : 1.25495
+std  dev : 0.601358
+std  dev : 0.496834
+std  dev : 0.421476
+std  dev : 0.123489
+std  dev : 0.0475976
+std  dev : 0.0452839
+std  dev : 0.0951344
+std  dev : 0.387671
+std  dev : 0.87444
+std  dev : 1.98961
+std  dev : 3.9101
+std  dev : 6.18625
+std  dev : 8.78408
+std  dev : 11.6257
+std  dev : 15.1804
+std  dev : 18.2192
+std  dev : 21.9669
+std  dev : 25.6561
+std  dev : 25.6554
+std  dev : 30.3229
+std  dev : 35.5388
+std  dev : 40.8974
+std  dev : 41.1759
+std  dev : 41.3884
+std  dev : 41.5232
+std  dev : 41.6663
+std  dev : 41.9996
+std  dev : 42.2393
+std  dev : 42.489
+std  dev : 42.651
+std  dev : 42.8812
+std  dev : 43.0608
+std  dev : 43.2362
+std  dev : 43.2468
+std  dev : 43.6028
+std  dev : 43.8927
+std  dev : 44.1055
+std  dev : 44.1229
+std  dev : 44.4474
+std  dev : 44.6198
+std  dev : 44.8926
+std  dev : 44.9505
+std  dev : 45.3097
+std  dev : 45.4456
+std  dev : 45.6958
+std  dev : 45.7266
+std  dev : 45.8665
+std  dev : 45.8109
+std  dev : 45.8334
+std  dev : 45.7293
+std  dev : 45.866
+std  dev : 45.73
+std  dev : 45.6711
+std  dev : 45.2994
+std  dev : 45.2813
+std  dev : 45.0511
+std  dev : 44.8836
+std  dev : 44.5821
+std  dev : 44.4526
+std  dev : 44.2156
+std  dev : 44.0544
+std  dev : 43.6124
+std  dev : 43.5909
+std  dev : 43.2971
+std  dev : 43.1278
+std  dev : 42.8746
+std  dev : 43.0614
+std  dev : 43.0784
+std  dev : 43.3051
+std  dev : 43.2599
+std  dev : 43.488
+std  dev : 43.414
+std  dev : 43.497
+std  dev : 43.341
+std  dev : 43.3375
+std  dev : 40.1909
+std  dev : 37.3562
+std  dev : 35.0886
+std  dev : 33.1841
+std  dev : 31.5258
+std  dev : 30.2765
+std  dev : 29.1503
+std  dev : 28.4574
+std  dev : 28.9915
+std  dev : 29.6095
+std  dev : 30.7487
+std  dev : 32.5956
+std  dev : 35.1443
+std  dev : 37.9188
+std  dev : 38.0855
+std  dev : 38.2043
+std  dev : 38.4899
+std  dev : 38.5733
+std  dev : 38.8118
+std  dev : 39.0547
+std  dev : 39.6155
+std  dev : 40.3942
+std  dev : 41.4703
+std  dev : 43.0655
+std  dev : 44.9263
+std  dev : 46.5976
+std  dev : 46.5981
+std  dev : 45.8075
+std  dev : 45.2094
+std  dev : 44.5953
+std  dev : 43.9704
+std  dev : 43.7166
+std  dev : 43.7107
+std  dev : 43.6742
+std  dev : 43.7122
+std  dev : 43.6336
+std  dev : 43.5998
+std  dev : 43.5686
+std  dev : 43.5441
+std  dev : 43.4832
+std  dev : 43.4356
+std  dev : 43.3274
+std  dev : 43.4311
+std  dev : 43.3872
+std  dev : 43.3161
+std  dev : 43.2714
+std  dev : 43.1968
+std  dev : 43.1354
+std  dev : 43.2078
+std  dev : 43.2693
+std  dev : 43.3888
+std  dev : 43.6607
+std  dev : 43.9662
+std  dev : 44.3071
+std  dev : 44.3106
+std  dev : 44.7562
+std  dev : 45.3929
+std  dev : 45.6615
+std  dev : 46.0587
+std  dev : 46.2628
+std  dev : 46.95
+std  dev : 47.3509
+std  dev : 47.6593
+std  dev : 47.9015
+std  dev : 48.371
+std  dev : 48.6674
+std  dev : 48.9322
+std  dev : 49.0776
+std  dev : 49.384
+std  dev : 49.6753
+std  dev : 49.8976
+std  dev : 50.0052
+std  dev : 50.1192
+std  dev : 50.1912
+std  dev : 50.3865
+std  dev : 50.3363
+std  dev : 50.3809
+std  dev : 50.6744
+std  dev : 50.7293
+std  dev : 50.659
+std  dev : 50.612
+std  dev : 50.5878
+std  dev : 50.6502
+std  dev : 50.5985
+std  dev : 50.7911
+std  dev : 50.7288
+std  dev : 50.7777
+std  dev : 50.8798
+std  dev : 51.1848
+std  dev : 51.2627
+std  dev : 51.4469
+std  dev : 51.5982
+std  dev : 51.5123
+std  dev : 51.6758
+std  dev : 51.684
+std  dev : 51.6865
+std  dev : 51.7804
+std  dev : 51.734
+std  dev : 51.6714
+std  dev : 51.6811
+std  dev : 51.6413
+std  dev : 51.6069
+std  dev : 51.7532
+std  dev : 51.6849
+std  dev : 51.4614
+std  dev : 51.2917
+std  dev : 51.2288
+std  dev : 51.1148
+std  dev : 51.1937
+std  dev : 51.2556
+std  dev : 51.2322
+std  dev : 51.2432
+std  dev : 51.2319
+std  dev : 51.366
+std  dev : 51.6692
+std  dev : 51.7424
+std  dev : 51.4185
+std  dev : 51.0754
+std  dev : 51.4677
+std  dev : 51.489
+std  dev : 51.7324
+std  dev : 51.445
+std  dev : 51.8596
+std  dev : 51.4485
+std  dev : 51.1371
+std  dev : 50.5217
+std  dev : 50.3406
+std  dev : 50.2045
+std  dev : 49.8297
+std  dev : 49.7544
+std  dev : 49.5942
+std  dev : 49.3726
+std  dev : 49.1468
+std  dev : 49.1185
+std  dev : 48.6306
+std  dev : 48.2614
+std  dev : 48.8293
+std  dev : 48.1923
+std  dev : 47.7322
+std  dev : 47.2961
+std  dev : 46.9248
+std  dev : 46.5544
+std  dev : 30.0565
+std  dev : 30.1266
+std  dev : 27.0502
+std  dev : 32.002
+std  dev : 27.1978
+std  dev : 27.4194
+std  dev : 26.6962
+std  dev : 26.9287
+std  dev : 25.6467
+std  dev : 25.7832
+std  dev : 25.788
+std  dev : 25.9425
+std  dev : 26.049
+std  dev : 26.2711
+std  dev : 26.5763
+std  dev : 26.9332
+std  dev : 27.1011
+std  dev : 27.3762
+std  dev : 27.4813
+std  dev : 27.5884
+std  dev : 27.5333
+std  dev : 27.5932
+std  dev : 27.5336
+std  dev : 27.5921
+std  dev : 27.5353
+std  dev : 27.6393
+std  dev : 27.608
+std  dev : 27.5712
+std  dev : 27.4408
+std  dev : 27.469
+std  dev : 27.3365
+std  dev : 27.2546
+std  dev : 26.9686
+std  dev : 26.6862
+std  dev : 26.5413
+std  dev : 27.946
+std  dev : 28.0152
+std  dev : 28.0449
+std  dev : 28.0936
+std  dev : 27.9932
+std  dev : 28.0457
+std  dev : 28.1031
+std  dev : 28.0499
+std  dev : 28.044
+std  dev : 28.061
+std  dev : 28.0676
+std  dev : 28.0951
+std  dev : 28.046
+std  dev : 27.9638
+std  dev : 27.8585
+std  dev : 27.9319
+std  dev : 27.7854
+std  dev : 27.9103
+std  dev : 27.9058
+std  dev : 27.9336
+std  dev : 27.9479
+std  dev : 27.9595
+std  dev : 27.8862
+std  dev : 27.854
+std  dev : 27.8493
+std  dev : 27.9143
+std  dev : 27.9087
+std  dev : 27.9113
+std  dev : 27.9787
+std  dev : 28.2075
+std  dev : 28.3602
+std  dev : 28.4532
+std  dev : 28.4871
+std  dev : 28.6189
+std  dev : 28.6092
+std  dev : 28.6349
+std  dev : 0.0848418
+std  dev : 0.0259444
+std  dev : 0.0259444
+std  dev : 0.240737
+std  dev : 0.56475
+std  dev : 0.834107
+std  dev : 0.835653
+std  dev : 1.46673
+std  dev : 2.43252
+std  dev : 3.59523
+std  dev : 4.98408
+std  dev : 6.8467
+std  dev : 8.65063
+std  dev : 10.9105
+std  dev : 13.3082
+std  dev : 15.7385
+std  dev : 18.2802
+std  dev : 21.2275
+std  dev : 24.2252
+std  dev : 27.5196
+std  dev : 30.8313
+std  dev : 34.4851
+std  dev : 37.949
+std  dev : 41.7695
+std  dev : 45.6336
+std  dev : 45.8136
+std  dev : 45.7875
+std  dev : 45.8857
+std  dev : 45.8797
+std  dev : 46.0114
+std  dev : 46.0254
+std  dev : 46.0669
+std  dev : 46.0422
+std  dev : 46.2222
+std  dev : 46.2191
+std  dev : 46.2257
+std  dev : 46.1426
+std  dev : 46.243
+std  dev : 46.119
+std  dev : 46.1275
+std  dev : 46.0979
+std  dev : 46.1894
+std  dev : 46.2731
+std  dev : 46.3137
+std  dev : 46.2722
+std  dev : 46.3541
+std  dev : 46.3606
+std  dev : 46.3492
+std  dev : 46.2924
+std  dev : 46.3005
+std  dev : 46.2726
+std  dev : 46.2884
+std  dev : 46.2547
+std  dev : 46.2569
+std  dev : 42.9379
+std  dev : 39.476
+std  dev : 36.4046
+std  dev : 33.1564
+std  dev : 30.38
+std  dev : 27.8493
+std  dev : 24.8328
+std  dev : 24.8408
+std  dev : 22.0196
+std  dev : 19.9151
+std  dev : 17.4604
+std  dev : 15.4199
+std  dev : 13.41
+std  dev : 11.2742
+std  dev : 9.37709
+std  dev : 7.71993
+std  dev : 5.81812
+std  dev : 4.39672
+std  dev : 3.03644
+std  dev : 2.12667
+std  dev : 1.26833
+std  dev : 0.842285
+std  dev : 0.581154
+std  dev : 0.505899
+std  dev : 0.407148
+std  dev : 0.0705346
+std  dev : 0.0658942
+std  dev : 0.0637318
+std  dev : 0.109828
+std  dev : 0.119723
+std  dev : 0.060046
+std  dev : 0.0310704
+std  dev : 0.0450555
+std  dev : 0.0197653
+std  dev : 0.0197653
+std  dev : 0.0283071
+std  dev : 0.0336058
+std  dev : 0.0654918
+std  dev : 0.136355
+std  dev : 0.199591
+std  dev : 0.39896
+std  dev : 0.797801
+std  dev : 1.10179
+std  dev : 1.60377
+std  dev : 2.15566
+std  dev : 2.53989
+std  dev : 3.1518
+std  dev : 3.71027
+std  dev : 4.15111
+std  dev : 4.85244
+std  dev : 5.82714
+std  dev : 7.17284
+std  dev : 8.0325
+std  dev : 9.09457
+std  dev : 10.0761
+std  dev : 11.3311
+std  dev : 12.6314
+std  dev : 13.659
+std  dev : 14.7918
+std  dev : 15.8956
+std  dev : 17.5995
+std  dev : 17.5978
+std  dev : 19.779
+std  dev : 21.3949
+std  dev : 22.7242
+std  dev : 23.455
+std  dev : 24.6464
+std  dev : 26.3378
+std  dev : 28.3356
+std  dev : 30.0715
+std  dev : 31.5204
+std  dev : 32.6081
+std  dev : 33.4945
+std  dev : 34.4079
+std  dev : 35.5438
+std  dev : 35.4447
+std  dev : 35.3542
+std  dev : 35.2578
+std  dev : 34.7781
+std  dev : 34.5125
+std  dev : 34.3304
+std  dev : 34.354
+std  dev : 34.2606
+std  dev : 34.3404
+std  dev : 34.4471
+std  dev : 33.831
+std  dev : 34.0219
+std  dev : 33.7042
+std  dev : 33.5901
+std  dev : 33.5484
+std  dev : 33.2577
+std  dev : 32.6576
+std  dev : 32.4536
+std  dev : 32.3063
+std  dev : 32.0681
+std  dev : 32.2031
+std  dev : 32.1614
+std  dev : 32.0741
+std  dev : 31.994
+std  dev : 31.9792
+std  dev : 31.8605
+std  dev : 31.7515
+std  dev : 31.5313
+std  dev : 31.4476
+std  dev : 31.3881
+std  dev : 31.1172
+std  dev : 30.857
+std  dev : 30.6889
+std  dev : 30.3978
+std  dev : 30.511
+std  dev : 30.5596
+std  dev : 30.476
+std  dev : 30.4838
+std  dev : 30.5765
+std  dev : 30.5373
+std  dev : 30.3919
+std  dev : 30.4296
+std  dev : 30.0768
+std  dev : 29.8173
+std  dev : 29.6423
+std  dev : 29.5513
+std  dev : 29.2362
+std  dev : 29.0996
+std  dev : 29.0208
+std  dev : 28.9812
+std  dev : 28.9975
+std  dev : 29.0558
+std  dev : 28.951
+std  dev : 29.1872
+std  dev : 28.9789
+std  dev : 29.1473
+std  dev : 29.1919
+std  dev : 29.2596
+std  dev : 29.0899
+std  dev : 28.9967
+std  dev : 28.8384
+std  dev : 28.9083
+std  dev : 28.8912
+std  dev : 28.8849
+std  dev : 28.782
+std  dev : 28.7444
+std  dev : 28.5752
+std  dev : 28.5359
+std  dev : 28.5105
+std  dev : 28.8178
+std  dev : 28.8852
+std  dev : 29.0481
+std  dev : 29.1461
+std  dev : 29.5197
+std  dev : 29.5567
+std  dev : 29.8041
+std  dev : 29.8909
+std  dev : 30.0221
+std  dev : 29.957
+std  dev : 30.0204
+std  dev : 29.9309
+std  dev : 30.1953
+std  dev : 30.1419
+std  dev : 30.1708
+std  dev : 30.1047
+std  dev : 30.1691
+std  dev : 30.0726
+std  dev : 30.0488
+std  dev : 30.0423
+std  dev : 29.9512
+std  dev : 30.0426
+std  dev : 29.9648
+std  dev : 29.8958
+std  dev : 29.8777
+std  dev : 29.9171
+std  dev : 29.9028
+std  dev : 29.7724
+std  dev : 29.7721
+std  dev : 29.8454
+std  dev : 29.7168
+std  dev : 29.7413
+std  dev : 29.6685
+std  dev : 29.7238
+std  dev : 29.6757
+std  dev : 29.6897
+std  dev : 29.4503
+std  dev : 29.5708
+std  dev : 29.4312
+std  dev : 29.5311
+std  dev : 29.4082
+std  dev : 29.4404
+std  dev : 29.3265
+std  dev : 29.4033
+std  dev : 29.2101
+std  dev : 29.2675
+std  dev : 29.1037
+std  dev : 29.0873
+std  dev : 28.9065
+std  dev : 28.9542
+std  dev : 28.846
+std  dev : 28.8211
+std  dev : 28.6742
+std  dev : 28.7057
+std  dev : 28.6594
+std  dev : 28.7033
+std  dev : 28.5744
+std  dev : 28.6136
+std  dev : 28.471
+std  dev : 28.3798
+std  dev : 28.1551
+std  dev : 28.2501
+std  dev : 28.1398
+std  dev : 28.0543
+std  dev : 27.927
+std  dev : 27.9552
+std  dev : 27.8635
+std  dev : 27.8734
+std  dev : 27.6686
+std  dev : 27.7244
+std  dev : 27.5297
+std  dev : 27.484
+std  dev : 26.9027
+std  dev : 26.434
+std  dev : 25.9814
+std  dev : 25.4595
+std  dev : 25.0327
+std  dev : 24.5431
+std  dev : 24.0917
+std  dev : 23.7853
+std  dev : 23.5579
+std  dev : 23.3135
+std  dev : 22.9802
+std  dev : 22.9615
+std  dev : 22.7831
+std  dev : 22.7186
+std  dev : 23.0164
+std  dev : 23.2751
+std  dev : 23.6817
+std  dev : 24.3438
+std  dev : 24.9728
+std  dev : 25.9376
+std  dev : 26.2158
+std  dev : 26.6145
+std  dev : 27.2854
+std  dev : 28.4815
+std  dev : 29.5202
+std  dev : 30.6985
+std  dev : 30.93
+std  dev : 31.3405
+std  dev : 31.4455
+std  dev : 31.4998
+std  dev : 31.7272
+std  dev : 31.6847
+std  dev : 31.7742
+std  dev : 31.7793
+std  dev : 31.9802
+std  dev : 32.1841
+std  dev : 32.4019
+std  dev : 32.4964
+std  dev : 32.7371
+std  dev : 32.9075
+std  dev : 33.0976
+std  dev : 33.2855
+std  dev : 33.5337
+std  dev : 33.5996
+std  dev : 33.7858
+std  dev : 33.8012
+std  dev : 33.8371
+std  dev : 33.9265
+std  dev : 34.0844
+std  dev : 34.229
+std  dev : 34.6061
+std  dev : 34.8512
+std  dev : 34.9656
+std  dev : 34.9549
+std  dev : 34.8879
+std  dev : 34.7453
+std  dev : 34.6464
+std  dev : 34.4991
+std  dev : 34.1757
+std  dev : 34.1113
+std  dev : 33.9117
+std  dev : 33.576
+std  dev : 32.5928
+std  dev : 31.7451
+std  dev : 30.7997
+std  dev : 30.7778
+std  dev : 29.8019
+std  dev : 29.0645
+std  dev : 28.6127
+std  dev : 28.0029
+std  dev : 27.4417
+std  dev : 27.4403
+std  dev : 27.2772
+std  dev : 27.448
+std  dev : 27.6005
+std  dev : 27.7133
+std  dev : 27.9429
+std  dev : 28.0753
+std  dev : 28.0174
+std  dev : 28.3908
+std  dev : 28.6889
+std  dev : 29.2458
+std  dev : 29.6228
+std  dev : 29.8127
+std  dev : 29.8684
+std  dev : 30.2512
+std  dev : 30.7059
+std  dev : 31.2798
+std  dev : 31.5122
+std  dev : 31.7798
+std  dev : 31.8556
+std  dev : 31.9168
+std  dev : 31.7399
+std  dev : 32.0547
+std  dev : 31.6365
+std  dev : 31.6618
+std  dev : 31.5934
+std  dev : 31.7928
+std  dev : 31.9663
+std  dev : 32.2122
+std  dev : 32.29
+std  dev : 32.4228
+std  dev : 32.6135
+std  dev : 32.7315
+std  dev : 32.6067
+std  dev : 32.5585
+std  dev : 32.5629
+std  dev : 32.6045
+std  dev : 32.5941
+std  dev : 32.8571
+std  dev : 33.0038
+std  dev : 33.1985
+std  dev : 33.323
+std  dev : 33.4687
+std  dev : 33.4077
+std  dev : 33.508
+std  dev : 33.5386
+std  dev : 33.6928
+std  dev : 33.9215
+std  dev : 34.083
+std  dev : 34.086
+std  dev : 34.2482
+std  dev : 34.3474
+std  dev : 34.3997
+std  dev : 34.5644
+std  dev : 34.6795
+std  dev : 34.9092
+std  dev : 35.1362
+std  dev : 35.4111
+std  dev : 35.6605
+std  dev : 35.8838
+std  dev : 36.0337
+std  dev : 36.1098
+std  dev : 36.2604
+std  dev : 36.3385
+std  dev : 36.3351
+std  dev : 36.3794
+std  dev : 36.5072
+std  dev : 36.601
+std  dev : 36.7566
+std  dev : 36.6571
+std  dev : 36.7097
+std  dev : 36.7555
+std  dev : 36.7665
+std  dev : 36.856
+std  dev : 36.9325
+std  dev : 36.9892
+std  dev : 36.9997
+std  dev : 37.0616
+std  dev : 37.1748
+std  dev : 37.0696
+std  dev : 37.1524
+std  dev : 37.3596
+std  dev : 37.5054
+std  dev : 37.6534
+std  dev : 37.9421
+std  dev : 37.9545
+std  dev : 38.1069
+std  dev : 38.2275
+std  dev : 38.301
+std  dev : 38.4283
+std  dev : 38.4876
+std  dev : 38.477
+std  dev : 38.6359
+std  dev : 38.7329
+std  dev : 38.9531
+std  dev : 38.8997
+std  dev : 38.8633
+std  dev : 39.0092
+std  dev : 39.0823
+std  dev : 39.1148
+std  dev : 38.3504
+fade in frames[0, 852]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 16:15:49 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on Mean and Standard Deviation):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+std  dev : 0.0128283
+std  dev : 0.0222124
+std  dev : 0.0222124
+std  dev : 0.0128283
+std  dev : 0.0128283
+std  dev : 0.0128283
+std  dev : 0
+std  dev : 0
+std  dev : 0.0128283
+std  dev : 0.124406
+std  dev : 0.443068
+std  dev : 1.63477
+std  dev : 3.63318
+std  dev : 6.37119
+std  dev : 9.85552
+std  dev : 13.9392
+std  dev : 19.1708
+std  dev : 24.9173
+std  dev : 32.4733
+std  dev : 40.602
+std  dev : 41.1399
+std  dev : 41.763
+std  dev : 41.9112
+std  dev : 42.1685
+std  dev : 42.4604
+std  dev : 42.6878
+std  dev : 42.7029
+std  dev : 42.8938
+std  dev : 42.9457
+std  dev : 43.0151
+std  dev : 43.2036
+std  dev : 43.2017
+std  dev : 43.1192
+std  dev : 36.3519
+std  dev : 31.0816
+std  dev : 25.7736
+std  dev : 21.3385
+std  dev : 17.4039
+std  dev : 13.7246
+std  dev : 10.1978
+std  dev : 7.43364
+std  dev : 4.72455
+std  dev : 2.52716
+std  dev : 0.81131
+std  dev : 0.241821
+std  dev : 0.142476
+std  dev : 0.0361056
+std  dev : 0.0311545
+std  dev : 0.0311545
+std  dev : 0.207202
+std  dev : 1.21422
+std  dev : 3.4267
+std  dev : 5.71079
+std  dev : 8.24846
+std  dev : 10.9969
+std  dev : 13.6592
+std  dev : 16.6532
+std  dev : 20.0506
+std  dev : 24.0791
+std  dev : 30.1545
+std  dev : 30.8644
+std  dev : 31.5594
+std  dev : 31.7718
+std  dev : 31.9772
+std  dev : 31.9571
+std  dev : 32.0971
+std  dev : 32.0893
+std  dev : 32.172
+std  dev : 32.2125
+std  dev : 31.9668
+std  dev : 28.4863
+std  dev : 24.814
+std  dev : 21.328
+std  dev : 18.3722
+std  dev : 15.896
+std  dev : 13.258
+std  dev : 10.8358
+std  dev : 8.35635
+std  dev : 6.13642
+std  dev : 4.07452
+std  dev : 2.06989
+std  dev : 0.843896
+std  dev : 0.453018
+std  dev : 0.237945
+std  dev : 0.133223
+std  dev : 0.131966
+std  dev : 0.0692574
+std  dev : 0.084863
+std  dev : 0.484758
+std  dev : 1.53708
+std  dev : 3.59097
+std  dev : 6.28458
+std  dev : 9.67591
+std  dev : 13.8174
+std  dev : 18.8056
+std  dev : 23.9934
+std  dev : 28.2858
+std  dev : 32.4191
+std  dev : 36.8915
+std  dev : 36.8612
+std  dev : 36.7295
+std  dev : 36.7337
+std  dev : 36.5991
+std  dev : 36.4085
+std  dev : 36.3189
+std  dev : 36.1104
+std  dev : 35.8845
+std  dev : 35.9297
+std  dev : 35.7129
+std  dev : 35.516
+std  dev : 32.2725
+std  dev : 29.1693
+std  dev : 26.0043
+std  dev : 22.6426
+std  dev : 18.6929
+std  dev : 15.1577
+std  dev : 11.841
+std  dev : 8.94018
+std  dev : 6.02127
+std  dev : 4.08945
+std  dev : 2.49095
+std  dev : 1.25495
+std  dev : 0.601358
+std  dev : 0.496834
+std  dev : 0.421476
+std  dev : 0.123489
+std  dev : 0.0475976
+std  dev : 0.0452839
+std  dev : 0.0951344
+std  dev : 0.387671
+std  dev : 0.87444
+std  dev : 1.98961
+std  dev : 3.9101
+std  dev : 6.18625
+std  dev : 8.78408
+std  dev : 11.6257
+std  dev : 15.1804
+std  dev : 18.2192
+std  dev : 21.9669
+std  dev : 25.6561
+std  dev : 25.6554
+std  dev : 30.3229
+std  dev : 35.5388
+std  dev : 40.8974
+std  dev : 41.1759
+std  dev : 41.3884
+std  dev : 41.5232
+std  dev : 41.6663
+std  dev : 41.9996
+std  dev : 42.2393
+std  dev : 42.489
+std  dev : 42.651
+std  dev : 42.8812
+std  dev : 43.0608
+std  dev : 43.2362
+std  dev : 43.2468
+std  dev : 43.6028
+std  dev : 43.8927
+std  dev : 44.1055
+std  dev : 44.1229
+std  dev : 44.4474
+std  dev : 44.6198
+std  dev : 44.8926
+std  dev : 44.9505
+std  dev : 45.3097
+std  dev : 45.4456
+std  dev : 45.6958
+std  dev : 45.7266
+std  dev : 45.8665
+std  dev : 45.8109
+std  dev : 45.8334
+std  dev : 45.7293
+std  dev : 45.866
+std  dev : 45.73
+std  dev : 45.6711
+std  dev : 45.2994
+std  dev : 45.2813
+std  dev : 45.0511
+std  dev : 44.8836
+std  dev : 44.5821
+std  dev : 44.4526
+std  dev : 44.2156
+std  dev : 44.0544
+std  dev : 43.6124
+std  dev : 43.5909
+std  dev : 43.2971
+std  dev : 43.1278
+std  dev : 42.8746
+std  dev : 43.0614
+std  dev : 43.0784
+std  dev : 43.3051
+std  dev : 43.2599
+std  dev : 43.488
+std  dev : 43.414
+std  dev : 43.497
+std  dev : 43.341
+std  dev : 43.3375
+std  dev : 40.1909
+std  dev : 37.3562
+std  dev : 35.0886
+std  dev : 33.1841
+std  dev : 31.5258
+std  dev : 30.2765
+std  dev : 29.1503
+std  dev : 28.4574
+std  dev : 28.9915
+std  dev : 29.6095
+std  dev : 30.7487
+std  dev : 32.5956
+std  dev : 35.1443
+std  dev : 37.9188
+std  dev : 38.0855
+std  dev : 38.2043
+std  dev : 38.4899
+std  dev : 38.5733
+std  dev : 38.8118
+std  dev : 39.0547
+std  dev : 39.6155
+std  dev : 40.3942
+std  dev : 41.4703
+std  dev : 43.0655
+std  dev : 44.9263
+std  dev : 46.5976
+std  dev : 46.5981
+std  dev : 45.8075
+std  dev : 45.2094
+std  dev : 44.5953
+std  dev : 43.9704
+std  dev : 43.7166
+std  dev : 43.7107
+std  dev : 43.6742
+std  dev : 43.7122
+std  dev : 43.6336
+std  dev : 43.5998
+std  dev : 43.5686
+std  dev : 43.5441
+std  dev : 43.4832
+std  dev : 43.4356
+std  dev : 43.3274
+std  dev : 43.4311
+std  dev : 43.3872
+std  dev : 43.3161
+std  dev : 43.2714
+std  dev : 43.1968
+std  dev : 43.1354
+std  dev : 43.2078
+std  dev : 43.2693
+std  dev : 43.3888
+std  dev : 43.6607
+std  dev : 43.9662
+std  dev : 44.3071
+std  dev : 44.3106
+std  dev : 44.7562
+std  dev : 45.3929
+std  dev : 45.6615
+std  dev : 46.0587
+std  dev : 46.2628
+std  dev : 46.95
+std  dev : 47.3509
+std  dev : 47.6593
+std  dev : 47.9015
+std  dev : 48.371
+std  dev : 48.6674
+std  dev : 48.9322
+std  dev : 49.0776
+std  dev : 49.384
+std  dev : 49.6753
+std  dev : 49.8976
+std  dev : 50.0052
+std  dev : 50.1192
+std  dev : 50.1912
+std  dev : 50.3865
+std  dev : 50.3363
+std  dev : 50.3809
+std  dev : 50.6744
+std  dev : 50.7293
+std  dev : 50.659
+std  dev : 50.612
+std  dev : 50.5878
+std  dev : 50.6502
+std  dev : 50.5985
+std  dev : 50.7911
+std  dev : 50.7288
+std  dev : 50.7777
+std  dev : 50.8798
+std  dev : 51.1848
+std  dev : 51.2627
+std  dev : 51.4469
+std  dev : 51.5982
+std  dev : 51.5123
+std  dev : 51.6758
+std  dev : 51.684
+std  dev : 51.6865
+std  dev : 51.7804
+std  dev : 51.734
+std  dev : 51.6714
+std  dev : 51.6811
+std  dev : 51.6413
+std  dev : 51.6069
+std  dev : 51.7532
+std  dev : 51.6849
+std  dev : 51.4614
+std  dev : 51.2917
+std  dev : 51.2288
+std  dev : 51.1148
+std  dev : 51.1937
+std  dev : 51.2556
+std  dev : 51.2322
+std  dev : 51.2432
+std  dev : 51.2319
+std  dev : 51.366
+std  dev : 51.6692
+std  dev : 51.7424
+std  dev : 51.4185
+std  dev : 51.0754
+std  dev : 51.4677
+std  dev : 51.489
+std  dev : 51.7324
+std  dev : 51.445
+std  dev : 51.8596
+std  dev : 51.4485
+std  dev : 51.1371
+std  dev : 50.5217
+std  dev : 50.3406
+std  dev : 50.2045
+std  dev : 49.8297
+std  dev : 49.7544
+std  dev : 49.5942
+std  dev : 49.3726
+std  dev : 49.1468
+std  dev : 49.1185
+std  dev : 48.6306
+std  dev : 48.2614
+std  dev : 48.8293
+std  dev : 48.1923
+std  dev : 47.7322
+std  dev : 47.2961
+std  dev : 46.9248
+std  dev : 46.5544
+std  dev : 30.0565
+std  dev : 30.1266
+std  dev : 27.0502
+std  dev : 32.002
+std  dev : 27.1978
+std  dev : 27.4194
+std  dev : 26.6962
+std  dev : 26.9287
+std  dev : 25.6467
+std  dev : 25.7832
+std  dev : 25.788
+std  dev : 25.9425
+std  dev : 26.049
+std  dev : 26.2711
+std  dev : 26.5763
+std  dev : 26.9332
+std  dev : 27.1011
+std  dev : 27.3762
+std  dev : 27.4813
+std  dev : 27.5884
+std  dev : 27.5333
+std  dev : 27.5932
+std  dev : 27.5336
+std  dev : 27.5921
+std  dev : 27.5353
+std  dev : 27.6393
+std  dev : 27.608
+std  dev : 27.5712
+std  dev : 27.4408
+std  dev : 27.469
+std  dev : 27.3365
+std  dev : 27.2546
+std  dev : 26.9686
+std  dev : 26.6862
+std  dev : 26.5413
+std  dev : 27.946
+std  dev : 28.0152
+std  dev : 28.0449
+std  dev : 28.0936
+std  dev : 27.9932
+std  dev : 28.0457
+std  dev : 28.1031
+std  dev : 28.0499
+std  dev : 28.044
+std  dev : 28.061
+std  dev : 28.0676
+std  dev : 28.0951
+std  dev : 28.046
+std  dev : 27.9638
+std  dev : 27.8585
+std  dev : 27.9319
+std  dev : 27.7854
+std  dev : 27.9103
+std  dev : 27.9058
+std  dev : 27.9336
+std  dev : 27.9479
+std  dev : 27.9595
+std  dev : 27.8862
+std  dev : 27.854
+std  dev : 27.8493
+std  dev : 27.9143
+std  dev : 27.9087
+std  dev : 27.9113
+std  dev : 27.9787
+std  dev : 28.2075
+std  dev : 28.3602
+std  dev : 28.4532
+std  dev : 28.4871
+std  dev : 28.6189
+std  dev : 28.6092
+std  dev : 28.6349
+std  dev : 0.0848418
+std  dev : 0.0259444
+std  dev : 0.0259444
+std  dev : 0.240737
+std  dev : 0.56475
+std  dev : 0.834107
+std  dev : 0.835653
+std  dev : 1.46673
+std  dev : 2.43252
+std  dev : 3.59523
+std  dev : 4.98408
+std  dev : 6.8467
+std  dev : 8.65063
+std  dev : 10.9105
+std  dev : 13.3082
+std  dev : 15.7385
+std  dev : 18.2802
+std  dev : 21.2275
+std  dev : 24.2252
+std  dev : 27.5196
+std  dev : 30.8313
+std  dev : 34.4851
+std  dev : 37.949
+std  dev : 41.7695
+std  dev : 45.6336
+std  dev : 45.8136
+std  dev : 45.7875
+std  dev : 45.8857
+std  dev : 45.8797
+std  dev : 46.0114
+std  dev : 46.0254
+std  dev : 46.0669
+std  dev : 46.0422
+std  dev : 46.2222
+std  dev : 46.2191
+std  dev : 46.2257
+std  dev : 46.1426
+std  dev : 46.243
+std  dev : 46.119
+std  dev : 46.1275
+std  dev : 46.0979
+std  dev : 46.1894
+std  dev : 46.2731
+std  dev : 46.3137
+std  dev : 46.2722
+std  dev : 46.3541
+std  dev : 46.3606
+std  dev : 46.3492
+std  dev : 46.2924
+std  dev : 46.3005
+std  dev : 46.2726
+std  dev : 46.2884
+std  dev : 46.2547
+std  dev : 46.2569
+std  dev : 42.9379
+std  dev : 39.476
+std  dev : 36.4046
+std  dev : 33.1564
+std  dev : 30.38
+std  dev : 27.8493
+std  dev : 24.8328
+std  dev : 24.8408
+std  dev : 22.0196
+std  dev : 19.9151
+std  dev : 17.4604
+std  dev : 15.4199
+std  dev : 13.41
+std  dev : 11.2742
+std  dev : 9.37709
+std  dev : 7.71993
+std  dev : 5.81812
+std  dev : 4.39672
+std  dev : 3.03644
+std  dev : 2.12667
+std  dev : 1.26833
+std  dev : 0.842285
+std  dev : 0.581154
+std  dev : 0.505899
+std  dev : 0.407148
+std  dev : 0.0705346
+std  dev : 0.0658942
+std  dev : 0.0637318
+std  dev : 0.109828
+std  dev : 0.119723
+std  dev : 0.060046
+std  dev : 0.0310704
+std  dev : 0.0450555
+std  dev : 0.0197653
+std  dev : 0.0197653
+std  dev : 0.0283071
+std  dev : 0.0336058
+std  dev : 0.0654918
+std  dev : 0.136355
+std  dev : 0.199591
+std  dev : 0.39896
+std  dev : 0.797801
+std  dev : 1.10179
+std  dev : 1.60377
+std  dev : 2.15566
+std  dev : 2.53989
+std  dev : 3.1518
+std  dev : 3.71027
+std  dev : 4.15111
+std  dev : 4.85244
+std  dev : 5.82714
+std  dev : 7.17284
+std  dev : 8.0325
+std  dev : 9.09457
+std  dev : 10.0761
+std  dev : 11.3311
+std  dev : 12.6314
+std  dev : 13.659
+std  dev : 14.7918
+std  dev : 15.8956
+std  dev : 17.5995
+std  dev : 17.5978
+std  dev : 19.779
+std  dev : 21.3949
+std  dev : 22.7242
+std  dev : 23.455
+std  dev : 24.6464
+std  dev : 26.3378
+std  dev : 28.3356
+std  dev : 30.0715
+std  dev : 31.5204
+std  dev : 32.6081
+std  dev : 33.4945
+std  dev : 34.4079
+std  dev : 35.5438
+std  dev : 35.4447
+std  dev : 35.3542
+std  dev : 35.2578
+std  dev : 34.7781
+std  dev : 34.5125
+std  dev : 34.3304
+std  dev : 34.354
+std  dev : 34.2606
+std  dev : 34.3404
+std  dev : 34.4471
+std  dev : 33.831
+std  dev : 34.0219
+std  dev : 33.7042
+std  dev : 33.5901
+std  dev : 33.5484
+std  dev : 33.2577
+std  dev : 32.6576
+std  dev : 32.4536
+std  dev : 32.3063
+std  dev : 32.0681
+std  dev : 32.2031
+std  dev : 32.1614
+std  dev : 32.0741
+std  dev : 31.994
+std  dev : 31.9792
+std  dev : 31.8605
+std  dev : 31.7515
+std  dev : 31.5313
+std  dev : 31.4476
+std  dev : 31.3881
+std  dev : 31.1172
+std  dev : 30.857
+std  dev : 30.6889
+std  dev : 30.3978
+std  dev : 30.511
+std  dev : 30.5596
+std  dev : 30.476
+std  dev : 30.4838
+std  dev : 30.5765
+std  dev : 30.5373
+std  dev : 30.3919
+std  dev : 30.4296
+std  dev : 30.0768
+std  dev : 29.8173
+std  dev : 29.6423
+std  dev : 29.5513
+std  dev : 29.2362
+std  dev : 29.0996
+std  dev : 29.0208
+std  dev : 28.9812
+std  dev : 28.9975
+std  dev : 29.0558
+std  dev : 28.951
+std  dev : 29.1872
+std  dev : 28.9789
+std  dev : 29.1473
+std  dev : 29.1919
+std  dev : 29.2596
+std  dev : 29.0899
+std  dev : 28.9967
+std  dev : 28.8384
+std  dev : 28.9083
+std  dev : 28.8912
+std  dev : 28.8849
+std  dev : 28.782
+std  dev : 28.7444
+std  dev : 28.5752
+std  dev : 28.5359
+std  dev : 28.5105
+std  dev : 28.8178
+std  dev : 28.8852
+std  dev : 29.0481
+std  dev : 29.1461
+std  dev : 29.5197
+std  dev : 29.5567
+std  dev : 29.8041
+std  dev : 29.8909
+std  dev : 30.0221
+std  dev : 29.957
+std  dev : 30.0204
+std  dev : 29.9309
+std  dev : 30.1953
+std  dev : 30.1419
+std  dev : 30.1708
+std  dev : 30.1047
+std  dev : 30.1691
+std  dev : 30.0726
+std  dev : 30.0488
+std  dev : 30.0423
+std  dev : 29.9512
+std  dev : 30.0426
+std  dev : 29.9648
+std  dev : 29.8958
+std  dev : 29.8777
+std  dev : 29.9171
+std  dev : 29.9028
+std  dev : 29.7724
+std  dev : 29.7721
+std  dev : 29.8454
+std  dev : 29.7168
+std  dev : 29.7413
+std  dev : 29.6685
+std  dev : 29.7238
+std  dev : 29.6757
+std  dev : 29.6897
+std  dev : 29.4503
+std  dev : 29.5708
+std  dev : 29.4312
+std  dev : 29.5311
+std  dev : 29.4082
+std  dev : 29.4404
+std  dev : 29.3265
+std  dev : 29.4033
+std  dev : 29.2101
+std  dev : 29.2675
+std  dev : 29.1037
+std  dev : 29.0873
+std  dev : 28.9065
+std  dev : 28.9542
+std  dev : 28.846
+std  dev : 28.8211
+std  dev : 28.6742
+std  dev : 28.7057
+std  dev : 28.6594
+std  dev : 28.7033
+std  dev : 28.5744
+std  dev : 28.6136
+std  dev : 28.471
+std  dev : 28.3798
+std  dev : 28.1551
+std  dev : 28.2501
+std  dev : 28.1398
+std  dev : 28.0543
+std  dev : 27.927
+std  dev : 27.9552
+std  dev : 27.8635
+std  dev : 27.8734
+std  dev : 27.6686
+std  dev : 27.7244
+std  dev : 27.5297
+std  dev : 27.484
+std  dev : 26.9027
+std  dev : 26.434
+std  dev : 25.9814
+std  dev : 25.4595
+std  dev : 25.0327
+std  dev : 24.5431
+std  dev : 24.0917
+std  dev : 23.7853
+std  dev : 23.5579
+std  dev : 23.3135
+std  dev : 22.9802
+std  dev : 22.9615
+std  dev : 22.7831
+std  dev : 22.7186
+std  dev : 23.0164
+std  dev : 23.2751
+std  dev : 23.6817
+std  dev : 24.3438
+std  dev : 24.9728
+std  dev : 25.9376
+std  dev : 26.2158
+std  dev : 26.6145
+std  dev : 27.2854
+std  dev : 28.4815
+std  dev : 29.5202
+std  dev : 30.6985
+std  dev : 30.93
+std  dev : 31.3405
+std  dev : 31.4455
+std  dev : 31.4998
+std  dev : 31.7272
+std  dev : 31.6847
+std  dev : 31.7742
+std  dev : 31.7793
+std  dev : 31.9802
+std  dev : 32.1841
+std  dev : 32.4019
+std  dev : 32.4964
+std  dev : 32.7371
+std  dev : 32.9075
+std  dev : 33.0976
+std  dev : 33.2855
+std  dev : 33.5337
+std  dev : 33.5996
+std  dev : 33.7858
+std  dev : 33.8012
+std  dev : 33.8371
+std  dev : 33.9265
+std  dev : 34.0844
+std  dev : 34.229
+std  dev : 34.6061
+std  dev : 34.8512
+std  dev : 34.9656
+std  dev : 34.9549
+std  dev : 34.8879
+std  dev : 34.7453
+std  dev : 34.6464
+std  dev : 34.4991
+std  dev : 34.1757
+std  dev : 34.1113
+std  dev : 33.9117
+std  dev : 33.576
+std  dev : 32.5928
+std  dev : 31.7451
+std  dev : 30.7997
+std  dev : 30.7778
+std  dev : 29.8019
+std  dev : 29.0645
+std  dev : 28.6127
+std  dev : 28.0029
+std  dev : 27.4417
+std  dev : 27.4403
+std  dev : 27.2772
+std  dev : 27.448
+std  dev : 27.6005
+std  dev : 27.7133
+std  dev : 27.9429
+std  dev : 28.0753
+std  dev : 28.0174
+std  dev : 28.3908
+std  dev : 28.6889
+std  dev : 29.2458
+std  dev : 29.6228
+std  dev : 29.8127
+std  dev : 29.8684
+std  dev : 30.2512
+std  dev : 30.7059
+std  dev : 31.2798
+std  dev : 31.5122
+std  dev : 31.7798
+std  dev : 31.8556
+std  dev : 31.9168
+std  dev : 31.7399
+std  dev : 32.0547
+std  dev : 31.6365
+std  dev : 31.6618
+std  dev : 31.5934
+std  dev : 31.7928
+std  dev : 31.9663
+std  dev : 32.2122
+std  dev : 32.29
+std  dev : 32.4228
+std  dev : 32.6135
+std  dev : 32.7315
+std  dev : 32.6067
+std  dev : 32.5585
+std  dev : 32.5629
+std  dev : 32.6045
+std  dev : 32.5941
+std  dev : 32.8571
+std  dev : 33.0038
+std  dev : 33.1985
+std  dev : 33.323
+std  dev : 33.4687
+std  dev : 33.4077
+std  dev : 33.508
+std  dev : 33.5386
+std  dev : 33.6928
+std  dev : 33.9215
+std  dev : 34.083
+std  dev : 34.086
+std  dev : 34.2482
+std  dev : 34.3474
+std  dev : 34.3997
+std  dev : 34.5644
+std  dev : 34.6795
+std  dev : 34.9092
+std  dev : 35.1362
+std  dev : 35.4111
+std  dev : 35.6605
+std  dev : 35.8838
+std  dev : 36.0337
+std  dev : 36.1098
+std  dev : 36.2604
+std  dev : 36.3385
+std  dev : 36.3351
+std  dev : 36.3794
+std  dev : 36.5072
+std  dev : 36.601
+std  dev : 36.7566
+std  dev : 36.6571
+std  dev : 36.7097
+std  dev : 36.7555
+std  dev : 36.7665
+std  dev : 36.856
+std  dev : 36.9325
+std  dev : 36.9892
+std  dev : 36.9997
+std  dev : 37.0616
+std  dev : 37.1748
+std  dev : 37.0696
+std  dev : 37.1524
+std  dev : 37.3596
+std  dev : 37.5054
+std  dev : 37.6534
+std  dev : 37.9421
+std  dev : 37.9545
+std  dev : 38.1069
+std  dev : 38.2275
+std  dev : 38.301
+std  dev : 38.4283
+std  dev : 38.4876
+std  dev : 38.477
+std  dev : 38.6359
+std  dev : 38.7329
+std  dev : 38.9531
+std  dev : 38.8997
+std  dev : 38.8633
+std  dev : 39.0092
+std  dev : 39.0823
+std  dev : 39.1148
+std  dev : 38.3504
+fade in frames[0, 852]
+ --------------------------------------------------------------------------------------

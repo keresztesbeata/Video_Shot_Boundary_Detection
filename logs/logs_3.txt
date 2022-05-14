@@ -1,0 +1,24 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May  6 08:25:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> PBA with multiple thresholds and noise filtering: 
+	T1 = 15
+	T2 = 0.5
+Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Fri May  6 08:53:00 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> PBA with multiple thresholds and noise filtering: 
+	T1 = 15
+	T2 = 0.5
+Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------

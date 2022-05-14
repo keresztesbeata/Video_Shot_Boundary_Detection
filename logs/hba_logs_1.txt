@@ -1,0 +1,1443 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:08:36 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:09:09 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:10:52 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:11:05 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:13:38 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:14:24 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:14:33 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:18:08 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:21:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:22:13 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:23:26 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:23:47 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:24:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:27:23 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:27:37 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:28:45 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:30:18 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v1 (bin-to-bin-difference): T = 20
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:31:07 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.3
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #1
+Key frame #3
+Key frame #4
+Key frame #6
+Key frame #7
+Key frame #8
+Key frame #9
+Key frame #10
+Key frame #12
+Key frame #13
+Key frame #15
+Key frame #18
+Key frame #19
+Key frame #21
+Key frame #22
+Key frame #23
+Key frame #24
+Key frame #25
+Key frame #26
+Key frame #27
+Key frame #28
+Key frame #30
+Key frame #31
+Key frame #33
+Key frame #34
+Key frame #36
+Key frame #37
+Key frame #39
+Key frame #40
+Key frame #42
+Key frame #43
+Key frame #45
+Key frame #46
+Key frame #48
+Key frame #49
+Key frame #51
+Key frame #52
+Key frame #54
+Key frame #55
+Key frame #57
+Key frame #58
+Key frame #60
+Key frame #61
+Key frame #63
+Key frame #66
+Key frame #67
+Key frame #69
+Key frame #70
+Key frame #71
+Key frame #72
+Key frame #73
+Key frame #74
+Key frame #75
+Key frame #76
+Key frame #78
+Key frame #79
+Key frame #81
+Key frame #82
+Key frame #84
+Key frame #85
+Key frame #87
+Key frame #88
+Key frame #89
+Key frame #90
+Key frame #91
+Key frame #93
+Key frame #94
+Key frame #96
+Key frame #97
+Key frame #98
+Key frame #101
+Key frame #103
+Key frame #104
+Key frame #105
+Key frame #106
+Key frame #107
+Key frame #109
+Key frame #110
+Key frame #112
+Key frame #113
+Key frame #115
+Key frame #116
+Key frame #118
+Key frame #119
+Key frame #121
+Key frame #122
+Key frame #124
+Key frame #125
+Key frame #127
+Key frame #128
+Key frame #130
+Key frame #133
+Key frame #134
+Key frame #136
+Key frame #137
+Key frame #139
+Key frame #140
+Key frame #141
+Key frame #142
+Key frame #143
+Key frame #145
+Key frame #146
+Key frame #147
+Key frame #148
+Key frame #149
+Key frame #151
+Key frame #153
+Key frame #154
+Key frame #156
+Key frame #157
+Key frame #158
+Key frame #159
+Key frame #160
+Key frame #161
+Key frame #162
+Key frame #163
+Key frame #165
+Key frame #166
+Key frame #169
+Key frame #171
+Key frame #172
+Key frame #173
+Key frame #174
+Key frame #175
+Key frame #176
+Key frame #177
+Key frame #178
+Key frame #179
+Key frame #180
+Key frame #181
+Key frame #182
+Key frame #183
+Key frame #184
+Key frame #185
+Key frame #186
+Key frame #187
+Key frame #189
+Key frame #190
+Key frame #193
+Key frame #195
+Key frame #196
+Key frame #199
+Key frame #200
+Key frame #202
+Key frame #205
+Key frame #206
+Key frame #211
+Key frame #212
+Key frame #217
+Key frame #218
+Key frame #223
+Key frame #224
+Key frame #226
+Key frame #227
+Key frame #228
+Key frame #229
+Key frame #230
+Key frame #231
+Key frame #232
+Key frame #233
+Key frame #234
+Key frame #235
+Key frame #236
+Key frame #238
+Key frame #239
+Key frame #240
+Key frame #241
+Key frame #242
+Key frame #243
+Key frame #244
+Key frame #245
+Key frame #246
+Key frame #247
+Key frame #248
+Key frame #250
+Key frame #251
+Key frame #253
+Key frame #254
+Key frame #255
+Key frame #256
+Key frame #257
+Key frame #258
+Key frame #259
+Key frame #260
+Key frame #262
+Key frame #263
+Key frame #265
+Key frame #266
+ -> HBA_v1 (bin-to-bin-difference): T = 0.02
+	Nr of all frames / nr of key frames (269,189)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:33:40 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.3
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #1
+Key frame #3
+Key frame #4
+Key frame #6
+Key frame #7
+Key frame #9
+Key frame #10
+Key frame #12
+Key frame #13
+Key frame #18
+Key frame #19
+Key frame #24
+Key frame #25
+Key frame #26
+Key frame #27
+Key frame #28
+Key frame #30
+Key frame #31
+Key frame #36
+Key frame #37
+Key frame #39
+Key frame #42
+Key frame #43
+Key frame #48
+Key frame #49
+Key frame #51
+Key frame #52
+Key frame #54
+Key frame #55
+Key frame #57
+Key frame #58
+Key frame #60
+Key frame #61
+Key frame #66
+Key frame #67
+Key frame #69
+Key frame #70
+Key frame #72
+Key frame #73
+Key frame #74
+Key frame #75
+Key frame #76
+Key frame #78
+Key frame #79
+Key frame #84
+Key frame #85
+Key frame #87
+Key frame #88
+Key frame #90
+Key frame #91
+Key frame #96
+Key frame #97
+Key frame #98
+Key frame #103
+Key frame #104
+Key frame #106
+Key frame #107
+Key frame #109
+Key frame #110
+Key frame #115
+Key frame #116
+Key frame #118
+Key frame #121
+Key frame #122
+Key frame #127
+Key frame #128
+Key frame #133
+Key frame #134
+Key frame #139
+Key frame #140
+Key frame #142
+Key frame #143
+Key frame #145
+Key frame #146
+Key frame #149
+Key frame #151
+Key frame #153
+Key frame #154
+Key frame #157
+Key frame #158
+Key frame #159
+Key frame #160
+Key frame #163
+Key frame #165
+Key frame #166
+Key frame #171
+Key frame #172
+Key frame #173
+Key frame #175
+Key frame #176
+Key frame #177
+Key frame #178
+Key frame #180
+Key frame #181
+Key frame #183
+Key frame #184
+Key frame #187
+Key frame #189
+Key frame #190
+Key frame #195
+Key frame #196
+Key frame #199
+Key frame #200
+Key frame #205
+Key frame #206
+Key frame #211
+Key frame #212
+Key frame #217
+Key frame #218
+Key frame #223
+Key frame #224
+Key frame #227
+Key frame #228
+Key frame #229
+Key frame #230
+Key frame #231
+Key frame #232
+Key frame #233
+Key frame #234
+Key frame #235
+Key frame #236
+Key frame #238
+Key frame #239
+Key frame #240
+Key frame #241
+Key frame #242
+Key frame #243
+Key frame #244
+Key frame #245
+Key frame #246
+Key frame #247
+Key frame #248
+Key frame #253
+Key frame #254
+Key frame #257
+Key frame #259
+Key frame #260
+Key frame #263
+Key frame #265
+Key frame #266
+ -> HBA_v1 (bin-to-bin-difference): T = 0.025
+	Nr of all frames / nr of key frames (269,141)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:46:02 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #1
+Key frame #3
+Key frame #4
+Key frame #6
+Key frame #7
+Key frame #8
+Key frame #9
+Key frame #10
+Key frame #12
+Key frame #13
+Key frame #15
+Key frame #18
+Key frame #19
+Key frame #21
+Key frame #22
+Key frame #23
+Key frame #24
+Key frame #25
+Key frame #26
+Key frame #27
+Key frame #28
+Key frame #30
+Key frame #31
+Key frame #33
+Key frame #34
+Key frame #36
+Key frame #37
+Key frame #39
+Key frame #40
+Key frame #42
+Key frame #43
+Key frame #45
+Key frame #46
+Key frame #48
+Key frame #49
+Key frame #51
+Key frame #52
+Key frame #54
+Key frame #55
+Key frame #57
+Key frame #58
+Key frame #60
+Key frame #61
+Key frame #63
+Key frame #66
+Key frame #67
+Key frame #69
+Key frame #70
+Key frame #71
+Key frame #72
+Key frame #73
+Key frame #74
+Key frame #75
+Key frame #76
+Key frame #78
+Key frame #79
+Key frame #81
+Key frame #82
+Key frame #84
+Key frame #85
+Key frame #87
+Key frame #88
+Key frame #89
+Key frame #90
+Key frame #91
+Key frame #93
+Key frame #94
+Key frame #96
+Key frame #97
+Key frame #98
+Key frame #101
+Key frame #103
+Key frame #104
+Key frame #105
+Key frame #106
+Key frame #107
+Key frame #109
+Key frame #110
+Key frame #112
+Key frame #113
+Key frame #115
+Key frame #116
+Key frame #118
+Key frame #119
+Key frame #121
+Key frame #122
+Key frame #124
+Key frame #125
+Key frame #127
+Key frame #128
+Key frame #130
+Key frame #133
+Key frame #134
+Key frame #136
+Key frame #137
+Key frame #139
+Key frame #140
+Key frame #141
+Key frame #142
+Key frame #143
+Key frame #145
+Key frame #146
+Key frame #147
+Key frame #148
+Key frame #149
+Key frame #151
+Key frame #153
+Key frame #154
+Key frame #156
+Key frame #157
+Key frame #158
+Key frame #159
+Key frame #160
+Key frame #161
+Key frame #162
+Key frame #163
+Key frame #165
+Key frame #166
+Key frame #169
+Key frame #171
+Key frame #172
+Key frame #173
+Key frame #174
+Key frame #175
+Key frame #176
+Key frame #177
+Key frame #178
+Key frame #179
+Key frame #180
+Key frame #181
+Key frame #182
+Key frame #183
+Key frame #184
+Key frame #185
+Key frame #186
+Key frame #187
+Key frame #189
+Key frame #190
+Key frame #193
+Key frame #195
+Key frame #196
+Key frame #199
+Key frame #200
+Key frame #202
+Key frame #205
+Key frame #206
+Key frame #211
+Key frame #212
+Key frame #217
+Key frame #218
+Key frame #223
+Key frame #224
+Key frame #226
+Key frame #227
+Key frame #228
+Key frame #229
+Key frame #230
+Key frame #231
+Key frame #232
+Key frame #233
+Key frame #234
+Key frame #235
+Key frame #236
+Key frame #238
+Key frame #239
+Key frame #240
+Key frame #241
+Key frame #242
+Key frame #243
+Key frame #244
+Key frame #245
+Key frame #246
+Key frame #247
+Key frame #248
+Key frame #250
+Key frame #251
+Key frame #253
+Key frame #254
+Key frame #255
+Key frame #256
+Key frame #257
+Key frame #258
+Key frame #259
+Key frame #260
+Key frame #262
+Key frame #263
+Key frame #265
+Key frame #266
+ -> HBA_v1 (bin-to-bin-difference): T = 0.02
+	Nr of all frames / nr of key frames (269,189)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:52:55 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:53:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:53:55 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:55:25 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 09:57:43 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.1
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #1
+Key frame #3
+Key frame #4
+Key frame #6
+Key frame #7
+Key frame #8
+Key frame #9
+Key frame #10
+Key frame #12
+Key frame #13
+Key frame #15
+Key frame #18
+Key frame #19
+Key frame #21
+Key frame #22
+Key frame #23
+Key frame #24
+Key frame #25
+Key frame #26
+Key frame #27
+Key frame #28
+Key frame #30
+Key frame #31
+Key frame #33
+Key frame #34
+Key frame #36
+Key frame #37
+Key frame #39
+Key frame #40
+Key frame #42
+Key frame #43
+Key frame #45
+Key frame #46
+Key frame #48
+Key frame #49
+Key frame #51
+Key frame #52
+Key frame #54
+Key frame #55
+Key frame #57
+Key frame #58
+Key frame #60
+Key frame #61
+Key frame #63
+Key frame #66
+Key frame #67
+Key frame #69
+Key frame #70
+Key frame #71
+Key frame #72
+Key frame #73
+Key frame #74
+Key frame #75
+Key frame #76
+Key frame #78
+Key frame #79
+Key frame #81
+Key frame #82
+Key frame #84
+Key frame #85
+Key frame #87
+Key frame #88
+Key frame #89
+Key frame #90
+Key frame #91
+Key frame #93
+Key frame #94
+Key frame #96
+Key frame #97
+Key frame #98
+Key frame #101
+Key frame #103
+Key frame #104
+Key frame #105
+Key frame #106
+Key frame #107
+Key frame #109
+Key frame #110
+Key frame #112
+Key frame #113
+Key frame #115
+Key frame #116
+Key frame #118
+Key frame #119
+Key frame #121
+Key frame #122
+Key frame #124
+Key frame #125
+Key frame #127
+Key frame #128
+Key frame #130
+Key frame #133
+Key frame #134
+Key frame #136
+Key frame #137
+Key frame #139
+Key frame #140
+Key frame #141
+Key frame #142
+Key frame #143
+Key frame #145
+Key frame #146
+Key frame #147
+Key frame #148
+Key frame #149
+Key frame #151
+Key frame #153
+Key frame #154
+Key frame #156
+Key frame #157
+Key frame #158
+Key frame #159
+Key frame #160
+Key frame #161
+Key frame #162
+Key frame #163
+Key frame #165
+Key frame #166
+Key frame #169
+Key frame #171
+Key frame #172
+Key frame #173
+Key frame #174
+Key frame #175
+Key frame #176
+Key frame #177
+Key frame #178
+Key frame #179
+Key frame #180
+Key frame #181
+Key frame #182
+Key frame #183
+Key frame #184
+Key frame #185
+Key frame #186
+Key frame #187
+Key frame #189
+Key frame #190
+Key frame #193
+Key frame #195
+Key frame #196
+Key frame #199
+Key frame #200
+Key frame #202
+Key frame #205
+Key frame #206
+Key frame #211
+Key frame #212
+Key frame #217
+Key frame #218
+Key frame #223
+Key frame #224
+Key frame #226
+Key frame #227
+Key frame #228
+Key frame #229
+Key frame #230
+Key frame #231
+Key frame #232
+Key frame #233
+Key frame #234
+Key frame #235
+Key frame #236
+Key frame #238
+Key frame #239
+Key frame #240
+Key frame #241
+Key frame #242
+Key frame #243
+Key frame #244
+Key frame #245
+Key frame #246
+Key frame #247
+Key frame #248
+Key frame #250
+Key frame #251
+Key frame #253
+Key frame #254
+Key frame #255
+Key frame #256
+Key frame #257
+Key frame #258
+Key frame #259
+Key frame #260
+Key frame #262
+Key frame #263
+Key frame #265
+Key frame #266
+ -> HBA_v1 (bin-to-bin-difference): T = 0.02
+	Nr of all frames / nr of key frames (269,189)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:01:22 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:02:31 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #1
+Key frame #3
+Key frame #4
+Key frame #6
+Key frame #7
+Key frame #8
+Key frame #9
+Key frame #10
+Key frame #12
+Key frame #13
+Key frame #15
+Key frame #18
+Key frame #19
+Key frame #21
+Key frame #22
+Key frame #23
+Key frame #24
+Key frame #25
+Key frame #26
+Key frame #27
+Key frame #28
+Key frame #30
+Key frame #31
+Key frame #33
+Key frame #34
+Key frame #36
+Key frame #37
+Key frame #39
+Key frame #40
+Key frame #42
+Key frame #43
+Key frame #45
+Key frame #46
+Key frame #48
+Key frame #49
+Key frame #51
+Key frame #52
+Key frame #54
+Key frame #55
+Key frame #57
+Key frame #58
+Key frame #60
+Key frame #61
+Key frame #63
+Key frame #66
+Key frame #67
+Key frame #69
+Key frame #70
+Key frame #71
+Key frame #72
+Key frame #73
+Key frame #74
+Key frame #75
+Key frame #76
+Key frame #78
+Key frame #79
+Key frame #81
+Key frame #82
+Key frame #84
+Key frame #85
+Key frame #87
+Key frame #88
+Key frame #89
+Key frame #90
+Key frame #91
+Key frame #93
+Key frame #94
+Key frame #96
+Key frame #97
+Key frame #98
+Key frame #101
+Key frame #103
+Key frame #104
+Key frame #105
+Key frame #106
+Key frame #107
+Key frame #109
+Key frame #110
+Key frame #112
+Key frame #113
+Key frame #115
+Key frame #116
+Key frame #118
+Key frame #119
+Key frame #121
+Key frame #122
+Key frame #124
+Key frame #125
+Key frame #127
+Key frame #128
+Key frame #130
+Key frame #133
+Key frame #134
+Key frame #136
+Key frame #137
+Key frame #139
+Key frame #140
+Key frame #141
+Key frame #142
+Key frame #143
+Key frame #145
+Key frame #146
+Key frame #147
+Key frame #148
+Key frame #149
+Key frame #151
+Key frame #153
+Key frame #154
+Key frame #156
+Key frame #157
+Key frame #158
+Key frame #159
+Key frame #160
+Key frame #161
+Key frame #162
+Key frame #163
+Key frame #165
+Key frame #166
+Key frame #169
+Key frame #171
+Key frame #172
+Key frame #173
+Key frame #174
+Key frame #175
+Key frame #176
+Key frame #177
+Key frame #178
+Key frame #179
+Key frame #180
+Key frame #181
+Key frame #182
+Key frame #183
+Key frame #184
+Key frame #185
+Key frame #186
+Key frame #187
+Key frame #189
+Key frame #190
+Key frame #193
+Key frame #195
+Key frame #196
+Key frame #199
+Key frame #200
+Key frame #202
+Key frame #205
+Key frame #206
+Key frame #211
+Key frame #212
+Key frame #217
+Key frame #218
+Key frame #223
+Key frame #224
+Key frame #226
+Key frame #227
+Key frame #228
+Key frame #229
+Key frame #230
+Key frame #231
+Key frame #232
+Key frame #233
+Key frame #234
+Key frame #235
+Key frame #236
+Key frame #238
+Key frame #239
+Key frame #240
+Key frame #241
+Key frame #242
+Key frame #243
+Key frame #244
+Key frame #245
+Key frame #246
+Key frame #247
+Key frame #248
+Key frame #250
+Key frame #251
+Key frame #253
+Key frame #254
+Key frame #255
+Key frame #256
+Key frame #257
+Key frame #258
+Key frame #259
+Key frame #260
+Key frame #262
+Key frame #263
+Key frame #265
+Key frame #266
+ -> HBA_v1 (bin-to-bin-difference): T = 0.02
+	Nr of all frames / nr of key frames (269,189)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:03:46 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:05:22 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Key frame #0
+Key frame #1
+Key frame #3
+Key frame #4
+Key frame #6
+Key frame #7
+Key frame #8
+Key frame #9
+Key frame #10
+Key frame #12
+Key frame #13
+Key frame #15
+Key frame #18
+Key frame #19
+Key frame #21
+Key frame #22
+Key frame #23
+Key frame #24
+Key frame #25
+Key frame #26
+Key frame #27
+Key frame #28
+Key frame #30
+Key frame #31
+Key frame #33
+Key frame #34
+Key frame #36
+Key frame #37
+Key frame #39
+Key frame #40
+Key frame #42
+Key frame #43
+Key frame #45
+Key frame #46
+Key frame #48
+Key frame #49
+Key frame #51
+Key frame #52
+Key frame #54
+Key frame #55
+Key frame #57
+Key frame #58
+Key frame #60
+Key frame #61
+Key frame #63
+Key frame #66
+Key frame #67
+Key frame #69
+Key frame #70
+Key frame #71
+Key frame #72
+Key frame #73
+Key frame #74
+Key frame #75
+Key frame #76
+Key frame #78
+Key frame #79
+Key frame #81
+Key frame #82
+Key frame #84
+Key frame #85
+Key frame #87
+Key frame #88
+Key frame #89
+Key frame #90
+Key frame #91
+Key frame #93
+Key frame #94
+Key frame #96
+Key frame #97
+Key frame #98
+Key frame #101
+Key frame #103
+Key frame #104
+Key frame #105
+Key frame #106
+Key frame #107
+Key frame #109
+Key frame #110
+Key frame #112
+Key frame #113
+Key frame #115
+Key frame #116
+Key frame #118
+Key frame #119
+Key frame #121
+Key frame #122
+Key frame #124
+Key frame #125
+Key frame #127
+Key frame #128
+Key frame #130
+Key frame #133
+Key frame #134
+Key frame #136
+Key frame #137
+Key frame #139
+Key frame #140
+Key frame #141
+Key frame #142
+Key frame #143
+Key frame #145
+Key frame #146
+Key frame #147
+Key frame #148
+Key frame #149
+Key frame #151
+Key frame #153
+Key frame #154
+Key frame #156
+Key frame #157
+Key frame #158
+Key frame #159
+Key frame #160
+Key frame #161
+Key frame #162
+Key frame #163
+Key frame #165
+Key frame #166
+Key frame #169
+Key frame #171
+Key frame #172
+Key frame #173
+Key frame #174
+Key frame #175
+Key frame #176
+Key frame #177
+Key frame #178
+Key frame #179
+Key frame #180
+Key frame #181
+Key frame #182
+Key frame #183
+Key frame #184
+Key frame #185
+Key frame #186
+Key frame #187
+Key frame #189
+Key frame #190
+Key frame #193
+Key frame #195
+Key frame #196
+Key frame #199
+Key frame #200
+Key frame #202
+Key frame #205
+Key frame #206
+Key frame #211
+Key frame #212
+Key frame #217
+Key frame #218
+Key frame #223
+Key frame #224
+Key frame #226
+Key frame #227
+Key frame #228
+Key frame #229
+Key frame #230
+Key frame #231
+Key frame #232
+Key frame #233
+Key frame #234
+Key frame #235
+Key frame #236
+Key frame #238
+Key frame #239
+Key frame #240
+Key frame #241
+Key frame #242
+Key frame #243
+Key frame #244
+Key frame #245
+Key frame #246
+Key frame #247
+Key frame #248
+Key frame #250
+Key frame #251
+Key frame #253
+Key frame #254
+Key frame #255
+Key frame #256
+Key frame #257
+Key frame #258
+Key frame #259
+Key frame #260
+Key frame #262
+Key frame #263
+Key frame #265
+Key frame #266
+ -> HBA_v1 (bin-to-bin-difference): T = 0.02
+	Nr of all frames / nr of key frames (269,189)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:07:48 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+ -> HBA_v2 (chi-square test): T = 0.002
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:09:14 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.001
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:09:40 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:10:54 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:11:12 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:12:19 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:19:43 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.3
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:22:34 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v1 (bin-to-bin-difference): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+Key frame #0
+Key frame #97
+Key frame #153
+Key frame #199
+ -> HBA_v3 (histogram intersection): T = 0.2
+	Nr of all frames / nr of key frames (269,4)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:23:39 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:25:22 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:26:22 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:27:34 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 18 10:28:44 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:15:35 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:17:21 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:17:36 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:19:26 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:20:27 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:21:23 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:22:34 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:27:25 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.02
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:28:25 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.2
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Mon Apr 25 08:28:45 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> HBA_v2 (chi-square test): T = 0.0002
+	Nr of all frames / nr of key frames (269,0)
+ --------------------------------------------------------------------------------------

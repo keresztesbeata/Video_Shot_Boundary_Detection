@@ -1,0 +1,663 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 12:57:28 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min ecr = 0.05
+ min transition length = 8
+ --------------------------------------------------------------------------------------
+dissolve frames[6, 41]
+dissolve frames[47, 78]
+fade in frames[88, 120]
+ecr:0.602884 0.557601
+ecr:0.575388 0.536528
+ecr:0.435983 0.381567
+ecr:0.404284 0.341326
+ecr:0.421314 0.362711
+ecr:0.482387 0.442748
+ecr:0.452555 0.397147
+ecr:0.470327 0.427973
+ecr:0.505742 0.465002
+ecr:0.510402 0.470111
+ecr:0.549827 0.511618
+dissolve frames[126, 412]
+dissolve frames[415, 484]
+fade in frames[499, 853]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:02:39 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[10, 41]
+fade in frames[51, 78]
+fade in frames[89, 120]
+ecr:0.602884 0.557601
+ecr:0.575388 0.536528
+ecr:0.435983 0.381567
+ecr:0.404284 0.341326
+ecr:0.421314 0.362711
+ecr:0.482387 0.442748
+ecr:0.452555 0.397147
+ecr:0.470327 0.427973
+ecr:0.505742 0.465002
+ecr:0.510402 0.470111
+ecr:0.549827 0.511618
+fade in frames[130, 412]
+dissolve frames[415, 484]
+fade in frames[499, 853]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:04:03 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+fade in frames[10, 41]
+fade in frames[51, 78]
+fade in frames[89, 120]
+126 end -> ecr:0.602884 0.557601
+126 end -> ecr:0.575388 0.536528
+126 end -> ecr:0.435983 0.381567
+126 end -> ecr:0.404284 0.341326
+126 end -> ecr:0.421314 0.362711
+126 end -> ecr:0.482387 0.442748
+126 end -> ecr:0.452555 0.397147
+126 end -> ecr:0.470327 0.427973
+126 end -> ecr:0.505742 0.465002
+126 end -> ecr:0.510402 0.470111
+126 end -> ecr:0.549827 0.511618
+fade in frames[130, 412]
+dissolve frames[415, 484]
+fade in frames[499, 853]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:13:17 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min ecr = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[10, 41]
+dissolve frames[47, 78]
+fade in frames[88, 120]
+126 end -> ecr:0.602884 0.557601
+126 end -> ecr:0.575388 0.536528
+126 end -> ecr:0.435983 0.381567
+126 end -> ecr:0.404284 0.341326
+126 end -> ecr:0.421314 0.362711
+126 end -> ecr:0.482387 0.442748
+126 end -> ecr:0.452555 0.397147
+126 end -> ecr:0.470327 0.427973
+126 end -> ecr:0.505742 0.465002
+126 end -> ecr:0.510402 0.470111
+126 end -> ecr:0.549827 0.511618
+dissolve frames[126, 412]
+dissolve frames[415, 484]
+fade in frames[499, 853]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:19:38 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[10, 41]
+fade in frames[51, 78]
+fade in frames[89, 120]
+fade in frames[130, 412]
+fade in frames[423, 484]
+fade in frames[499, 853]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:33:28 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 15
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:35:48 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 20
+ --------------------------------------------------------------------------------------
+fade in frames[499, 524]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:36:43 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[49, 60]
+fade in frames[87, 98]
+fade in frames[128, 141]
+fade in frames[499, 524]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:39:06 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0
+ min transition length = 8
+ --------------------------------------------------------------------------------------
+fade out frames[6, 14]
+fade in frames[49, 60]
+fade in frames[87, 98]
+fade in frames[128, 141]
+fade in frames[499, 524]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:42:08 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0.5
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[10, 21]
+fade in frames[49, 62]
+fade in frames[87, 98]
+fade in frames[128, 141]
+fade in frames[417, 431]
+fade in frames[499, 527]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:42:26 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min ecr = 0
+ min transition length = 5
+ --------------------------------------------------------------------------------------
+fade in frames[10, 21]
+fade in frames[49, 62]
+fade in frames[87, 98]
+fade in frames[128, 141]
+fade in frames[413, 418]
+fade in frames[490, 496]
+dissolve frames[497, 527]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:44:11 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[49, 62]
+fade in frames[87, 98]
+fade in frames[128, 141]
+fade in frames[417, 431]
+fade in frames[499, 527]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:45:00 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[10, 21]
+fade in frames[49, 62]
+fade in frames[87, 98]
+fade in frames[128, 141]
+fade in frames[417, 431]
+fade in frames[499, 527]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:55:40 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min ecr = 0
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 13:56:59 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min ecr = 0
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade in frames[49, 61]
+fade in frames[87, 97]
+fade in frames[128, 140]
+fade in frames[417, 430]
+fade in frames[499, 526]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 14:06:50 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min ecr = 0
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade out frames[36, 46]
+fade out frames[36, 47]
+fade out frames[36, 48]
+dissolve frames[36, 61]
+fade out frames[71, 81]
+fade out frames[71, 82]
+fade out frames[71, 83]
+fade out frames[71, 84]
+fade out frames[71, 85]
+fade out frames[71, 86]
+dissolve frames[71, 97]
+fade out frames[113, 123]
+fade out frames[113, 124]
+fade out frames[113, 125]
+fade out frames[113, 126]
+fade out frames[113, 127]
+dissolve frames[113, 140]
+fade out frames[480, 490]
+fade out frames[480, 491]
+fade in frames[499, 523]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 14:11:56 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min ecr = 0
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+disregarded:1
+fade in frames[8, 20]
+disregarded:10
+disregarded:12
+disregarded:14
+disregarded:41
+fade out frames[36, 46]
+fade out frames[36, 47]
+fade out frames[36, 48]
+dissolve frames[36, 61]
+disregarded:51
+disregarded:53
+disregarded:78
+fade out frames[71, 81]
+fade out frames[71, 82]
+fade out frames[71, 83]
+fade out frames[71, 84]
+fade out frames[71, 85]
+fade out frames[71, 86]
+dissolve frames[71, 97]
+disregarded:89
+disregarded:91
+disregarded:93
+fade out frames[113, 123]
+fade out frames[113, 124]
+fade out frames[113, 125]
+fade out frames[113, 126]
+fade out frames[113, 127]
+dissolve frames[113, 140]
+disregarded:130
+disregarded:132
+disregarded:134
+disregarded:411
+fade out frames[480, 490]
+fade out frames[480, 491]
+fade in frames[499, 523]
+disregarded:501
+disregarded:503
+disregarded:505
+disregarded:507
+disregarded:509
+disregarded:511
+disregarded:513
+disregarded:515
+disregarded:517
+disregarded:0
+ --------------------------------------------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 14:51:02 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+dissolve frames[36, 61]
+dissolve frames[71, 97]
+dissolve frames[113, 140]
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 14:53:39 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+disregarded:1
+fade in frames[8, 20]
+disregarded:10
+disregarded:12
+disregarded:14
+disregarded:41
+fade out frames[36, 46]
+fade out frames[36, 47]
+fade out frames[36, 48]
+fade out frames[36, 49]
+fade in frames[50, 61]
+disregarded:52
+disregarded:54
+fade out frames[71, 81]
+fade out frames[71, 82]
+fade out frames[71, 83]
+fade out frames[71, 84]
+fade out frames[71, 85]
+fade out frames[71, 86]
+fade out frames[71, 87]
+fade out frames[113, 123]
+fade out frames[113, 124]
+fade out frames[113, 125]
+fade out frames[113, 126]
+fade out frames[113, 127]
+fade out frames[113, 128]
+fade in frames[129, 140]
+disregarded:131
+disregarded:133
+disregarded:135
+fade out frames[480, 490]
+fade out frames[480, 491]
+fade in frames[499, 523]
+disregarded:501
+disregarded:503
+disregarded:505
+disregarded:507
+disregarded:509
+disregarded:511
+disregarded:513
+disregarded:515
+disregarded:517
+disregarded:0
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 15:08:59 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade out frames[36, 46]
+fade in frames[50, 61]
+fade out frames[71, 81]
+fade out frames[113, 123]
+fade in frames[129, 140]
+fade out frames[480, 490]
+fade in frames[499, 523]
+ --------------------------------------------------------------------------------------
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 16:53:34 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[7, 20]
+fade in frames[89, 99]
+fade in frames[127, 140]
+fade in frames[521, 531]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 16:55:17 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[7, 20]
+fade in frames[89, 99]
+fade in frames[127, 140]
+fade in frames[521, 531]
+ --------------------------------------------------------------------------------------
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:00:47 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade in frames[89, 99]
+fade in frames[127, 140]
+fade in frames[521, 531]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:04:16 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade in frames[89, 99]
+fade in frames[127, 140]
+fade in frames[521, 531]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:06:01 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade in frames[89, 99]
+fade out frames[115, 124]
+fade out frames[115, 127]
+fade in frames[130, 140]
+fade in frames[521, 531]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:07:36 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[7, 20]
+fade out frames[40, 49]
+fade out frames[68, 77]
+fade in frames[89, 98]
+fade out frames[115, 124]
+fade out frames[115, 127]
+fade in frames[130, 140]
+fade in frames[412, 425]
+fade in frames[498, 507]
+fade in frames[513, 531]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:14:38 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[7, 20]
+fade out frames[40, 49]
+fade out frames[68, 77]
+fade in frames[89, 98]
+fade out frames[115, 124]
+fade in frames[128, 140]
+fade in frames[412, 425]
+fade in frames[498, 507]
+fade in frames[513, 531]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:19:49 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 21]
+fade out frames[39, 49]
+fade out frames[67, 77]
+fade in frames[89, 99]
+fade out frames[114, 124]
+fade in frames[128, 141]
+fade in frames[413, 426]
+fade in frames[513, 527]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:21:30 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade out frames[40, 49]
+fade out frames[68, 77]
+fade in frames[89, 98]
+fade out frames[115, 124]
+fade in frames[128, 140]
+fade in frames[413, 425]
+fade in frames[513, 526]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:22:42 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 20]
+fade out frames[40, 49]
+fade out frames[68, 77]
+fade in frames[89, 98]
+fade out frames[115, 124]
+fade in frames[128, 140]
+fade in frames[413, 425]
+fade in frames[513, 526]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:25:00 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 18]
+fade out frames[36, 45]
+fade out frames[77, 86]
+fade in frames[89, 98]
+fade in frames[128, 138]
+fade in frames[413, 425]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:26:08 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[7, 18]
+fade out frames[36, 45]
+fade out frames[77, 86]
+fade in frames[89, 98]
+fade in frames[128, 138]
+fade in frames[412, 425]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:28:01 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 18]
+fade out frames[36, 45]
+fade out frames[77, 86]
+fade in frames[89, 98]
+fade in frames[128, 138]
+fade in frames[413, 425]
+ --------------------------------------------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:36:41 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 18]
+fade out frames[36, 45]
+fade out frames[77, 86]
+fade in frames[128, 138]
+fade in frames[413, 425]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:38:01 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 18]
+fade out frames[36, 45]
+fade out frames[77, 86]
+fade in frames[89, 98]
+fade in frames[128, 138]
+fade in frames[413, 425]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:38:35 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 10
+ min transition length = 10
+ --------------------------------------------------------------------------------------
+fade in frames[8, 18]
+fade out frames[36, 45]
+fade out frames[77, 86]
+fade in frames[89, 98]
+fade in frames[128, 138]
+fade in frames[413, 425]
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:39:08 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 15
+ min transition length = 20
+ --------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<< Sat May 14 17:39:52 2022
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -> Detect gradual transitions (Based on ECR):
+ max std dev = 20
+ min transition length = 8
+ --------------------------------------------------------------------------------------
+fade in frames[8, 18]
+fade out frames[36, 43]
+fade out frames[77, 84]
+fade in frames[89, 98]
+fade out frames[118, 125]
+fade in frames[128, 138]
+fade in frames[413, 425]
+fade out frames[482, 489]
+fade in frames[513, 521]
+ --------------------------------------------------------------------------------------
