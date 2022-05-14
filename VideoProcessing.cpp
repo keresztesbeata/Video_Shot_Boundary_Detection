@@ -38,22 +38,23 @@ void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* outputDirPa
 
 void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, char* outputDirPath) {
 	char genericFileName[] = "/kf#%ld_%s_%ld.jpg";
-	
-	int nr = 0;
-	for (auto kf : keyFrames) {
-		int i = kf.start;
-		const char* type = transitionToString(kf.type);
-		while (i <= kf.end) {
+
+	int totalNrFrames = allFrames.size();
+
+	int N = keyFrames.size();
+	for (int n = 0; n < N; n++) {
+		int i = keyFrames[n].start;
+		const char* type = transitionToString(keyFrames[n].type);
+		while (i <= keyFrames[n].end && i<totalNrFrames) {
 			// compute the output path for the current frame transitions
 			char outputFile[MAX_PATH], outputFileName[MAX_PATH];
 
 			strcpy(outputFile, outputDirPath);
 			strcat(outputFile, genericFileName);
-			sprintf(outputFileName, outputFile, nr, type, i);
+			sprintf(outputFileName, outputFile, n, type, i);
 			// save the current frame
 			imwrite(outputFileName, allFrames[i]);
 			i++;
 		}
-		nr++;
 	}
 }

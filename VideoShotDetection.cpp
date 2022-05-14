@@ -16,7 +16,7 @@
 
 namespace fs = std::filesystem;
 
-#define NR_SHOT_DETECTION_ALG 9
+#define NR_SHOT_DETECTION_ALG 10
 
 char parentDir[] = "Videos/gradual_transitions/tests/";
 char videoFilePath[] = "Videos/movie_trailers/harry_potter_1_trailer.mp4";
@@ -35,8 +35,9 @@ char outputDirPaths[][MAX_PATH] = {
 	// MBA test results
 	"/MBA_bma",
 	// FADE in/out
-	"/fade_ecr",
-	"/fade"
+	"/fade_luminence",
+	"/GT_contrast",
+	"/GT_ecr",
 };
 
 vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile);
@@ -47,7 +48,7 @@ int main() {
 	vector<Mat> allFrames = readAllFrames(videoFilePath);
 
 	// extract and save all frames from the video sequence
-	saveAllFrames(allFrames, videoFilePath, videoAllFrames);
+	//saveAllFrames(allFrames, videoFilePath, videoAllFrames);
 
 	int op;
 
@@ -65,8 +66,9 @@ int main() {
 		cout << " 6 - EBA: edge change ratio" << endl;
 		cout << " 7 - MBA: block matching" << endl;
 		cout << " --------------- Gradual Transition Detection -------------- " << endl;
-		cout << " 8 - GT: Detect Fade in/out with Std deviation" << endl;
-		cout << " 9 - GT: Detect Fade in/out based on varying luminance" << endl;
+		cout << " 8 - GT: Detect Fade in/out based on Histogram difference and varying luminence" << endl;
+		cout << " 9 - GT: Detect Gradual Transitions based on variance in image contrast" << endl;
+		cout << " 10 - GT: Detect Gradual Transitions based on edge change ratio" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
@@ -184,20 +186,28 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 			return MBA(videoFilePath, T, N, M, B, logFile);
 		}
 		case 8: {
-			float maxStdDev, minLength, maxChange;
+			float maxStdDev, minLength;
 
 			cout << "Max standard deviation = ";
 			cin >> maxStdDev;
 
-			cout << "Max intensity level change between frames = ";
-			cin >> maxChange;
+			cout << "Min length of transition = ";
+			cin >> minLength;
+
+			return detectGradualTransitions_v1(allFrames, maxStdDev, minLength, logFile);
+		}
+		case 9: {
+			float maxStdDev, minLength, maxChange;
+
+			cout << "Threshold for maxStdDev = ";
+			cin >> maxStdDev;
 
 			cout << "Min length of transition = ";
 			cin >> minLength;
 
-			return detectFadeTransitions_v1(allFrames, maxStdDev, maxChange, minLength, logFile);
+			return detectGradualTransitions_v2(allFrames, maxStdDev, minLength, logFile);
 		}
-		case 9: {
+		case 10: {
 			float maxStdDev, minLength;
 
 			cout << "Threshold for maxStdDev = ";
@@ -206,21 +216,8 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 			cout << "Min length of transition = ";
 			cin >> minLength;
 
-			return detectFadeTransitions_v3(allFrames, maxStdDev, minLength, logFile);
+			return detectGradualTransitions_v3(allFrames, maxStdDev, minLength, logFile);
 		}
-		/*
-		case 10: {
-			float T, minLength;
-
-			cout << "Threshold for ECR = ";
-			cin >> T;
-
-			cout << "Min length of transition = ";
-			cin >> minLength;
-
-			return detectFadeTransitions_v2(allFrames, T, minLength, logFile);
-		}
-		*/
 		default: {
 			return vector<FrameTransition>();
 		}

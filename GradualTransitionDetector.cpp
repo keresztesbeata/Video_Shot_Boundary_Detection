@@ -32,182 +32,15 @@ vector<int> findMonochromeFrames(vector<Mat> frames, float T) {
 }
 
 
-
-vector<FrameTransition> detectFadeTransitions_v1(vector<Mat> frames, float maxStdDev, float maxChange, int minLength, ofstream& logFile) {
-	
-	logFile << " -> Detect fade in/out (Based on Mean and Standard Deviation):"<<endl;
-	logFile << " max std dev = " << maxStdDev << endl;
-	logFile << " max intensity change = " << maxChange << endl;
-	logFile << " min transition length = " << minLength << endl;
-	logFile << " --------------------------------------------------------------------------------------" << endl;
-
-	int nrFrames = frames.size();
-	Mat previousFrame, currentFrame;
-	vector<FrameTransition> fades;
-
-	vector<int> monochromes = findMonochromeFrames(frames, maxStdDev);
-	int nrPotentialFades = monochromes.size();
-
-	for (int i = 0; i < nrPotentialFades; i++) {
-		logFile << "monochrome #" << monochromes[i] << endl;
-		// detect fade-in (the image gradually appears) => monotonically increasing luminance
-
-		int start = monochromes[i];
-		int end = start;
-		Vec3f refMean = computeMeanIntensitiyValueColor(frames[start]);
-		float totalRefMean = refMean[0] + refMean[1] + refMean[2];
-		for (int u = start + 1; u < nrFrames; u++) {
-			Vec3f currMean = computeMeanIntensitiyValueColor(frames[u]);
-			float totalCurrMean = currMean[0] + currMean[1] + currMean[2];
-			float diff_r = currMean[0] - refMean[0];
-			float diff_g = currMean[1] - refMean[1];
-			float diff_b = currMean[2] - refMean[2];
-			//logFile << "fade out"<< diff_r << " " << diff_g << " " << diff_b << endl;
-			/*
-			if ((diff_r >= 0 && diff_b >= 0 && diff_g >= 0) || (abs(diff_r) > maxChange && abs(diff_g) > maxChange && abs(diff_b) > maxChange)) {
-				// if the luminance doesn't change monotonically anymore or the change in luminance is not gradual, then stop and mark the end of the fade transition
-				end = u;
-				break;
-			}
-			*/
-
-			// std dev is increasing, mean is descreasing
-			if (totalCurrMean > totalRefMean && (totalCurrMean - totalRefMean > maxChange)) {
-				// if the luminance doesn't change monotonically anymore or the change in luminance is not gradual, then stop and mark the end of the fade transition
-				end = u;
-				break;
-			}
-
-		}
-
-		if ((end - start) >= minLength) {
-			FrameTransition gt = { start, end, FADE_IN };
-			fades.push_back(gt);
-			logFile <<"fade in frames[" << start << ", " << end << "]" << endl;
-		}
-
-		// detect fade-out (the new image gradually disappears) => monotonically decreasing luminance
-
-		end = monochromes[i];
-		for (int u = end - 1; u >= 0; u--) {
-			Vec3f currMean = computeMeanIntensitiyValue(frames[u]);
-			float totalCurrMean = currMean[0] + currMean[1] + currMean[2];
-			float diff_r = currMean[0] - refMean[0];
-			float diff_g = currMean[1] - refMean[1];
-			float diff_b = currMean[2] - refMean[2];
-			// std dev is decreasing, mean is increasing
-			//logFile << "fade in" << diff_r << " " << diff_g << " " << diff_b << endl;
-			if (totalCurrMean > totalRefMean && (abs(diff_r) > maxChange || abs(diff_g) > maxChange || abs(diff_b) > maxChange)) {
-				// if the luminance doesn't change monotonically anymore or the change in luminance is not gradual, then stop and mark the end of the fade transition
-				start = u;
-				break;
-			}
-		}
-
-		if ((end-start) >= minLength) {
-			FrameTransition gt = { start, end, FADE_OUT };
-			fades.push_back(gt);
-			logFile << "fade out frames [" << start << ", " << end << "]" << endl;
-		}
-	}
-	logFile << " --------------------------------------------------------------------------------------" << endl;
-
-	return fades;
-}
-
-
-
-vector<FrameTransition> detectFadeTransitions_v2(vector<Mat> frames, float maxStdDev, float maxChange, int minLength, ofstream& logFile) {
-
-	logFile << " -> Detect fade in/out (Based on Mean and Standard Deviation):" << endl;
-	logFile << " max std dev = " << maxStdDev << endl;
-	logFile << " max intensity change = " << maxChange << endl;
-	logFile << " min transition length = " << minLength << endl;
-	logFile << " --------------------------------------------------------------------------------------" << endl;
-
-	int nrFrames = frames.size();
-	Mat previousFrame, currentFrame;
-	vector<FrameTransition> fades;
-
-	vector<int> monochromes = findMonochromeFrames(frames, maxStdDev);
-	int nrPotentialFades = monochromes.size();
-
-	for (int i = 0; i < nrPotentialFades; i++) {
-		logFile << "monochrome #" << monochromes[i] << endl;
-		// detect fade-in (the image gradually appears) => monotonically increasing luminance
-
-		int start = monochromes[i];
-		int end = start;
-		Vec3f refMean = computeMeanIntensitiyValueColor(frames[start]);
-		float totalRefMean = refMean[0] + refMean[1] + refMean[2];
-		for (int u = start + 1; u < nrFrames; u++) {
-			Vec3f currMean = computeMeanIntensitiyValueColor(frames[u]);
-			float totalCurrMean = currMean[0] + currMean[1] + currMean[2];
-			float diff_r = currMean[0] - refMean[0];
-			float diff_g = currMean[1] - refMean[1];
-			float diff_b = currMean[2] - refMean[2];
-			//logFile << "fade out"<< diff_r << " " << diff_g << " " << diff_b << endl;
-			/*
-			if ((diff_r >= 0 && diff_b >= 0 && diff_g >= 0) || (abs(diff_r) > maxChange && abs(diff_g) > maxChange && abs(diff_b) > maxChange)) {
-				// if the luminance doesn't change monotonically anymore or the change in luminance is not gradual, then stop and mark the end of the fade transition
-				end = u;
-				break;
-			}
-			*/
-
-			// std dev is increasing, mean is descreasing
-			if (totalCurrMean > totalRefMean && (totalCurrMean - totalRefMean > maxChange)) {
-				// if the luminance doesn't change monotonically anymore or the change in luminance is not gradual, then stop and mark the end of the fade transition
-				end = u;
-				break;
-			}
-
-		}
-
-		if ((end - start) >= minLength) {
-			FrameTransition gt = { start, end, FADE_IN };
-			fades.push_back(gt);
-			logFile << "fade in frames[" << start << ", " << end << "]" << endl;
-		}
-
-		// detect fade-out (the new image gradually disappears) => monotonically decreasing luminance
-
-		end = monochromes[i];
-		for (int u = end - 1; u >= 0; u--) {
-			Vec3f currMean = computeMeanIntensitiyValue(frames[u]);
-			float totalCurrMean = currMean[0] + currMean[1] + currMean[2];
-			float diff_r = currMean[0] - refMean[0];
-			float diff_g = currMean[1] - refMean[1];
-			float diff_b = currMean[2] - refMean[2];
-			// std dev is decreasing, mean is increasing
-			//logFile << "fade in" << diff_r << " " << diff_g << " " << diff_b << endl;
-			if (totalCurrMean > totalRefMean && (abs(diff_r) > maxChange || abs(diff_g) > maxChange || abs(diff_b) > maxChange)) {
-				// if the luminance doesn't change monotonically anymore or the change in luminance is not gradual, then stop and mark the end of the fade transition
-				start = u;
-				break;
-			}
-		}
-
-		if ((end - start) >= minLength) {
-			FrameTransition gt = { start, end, FADE_OUT };
-			fades.push_back(gt);
-			logFile << "fade out frames [" << start << ", " << end << "]" << endl;
-		}
-	}
-	logFile << " --------------------------------------------------------------------------------------" << endl;
-
-	return fades;
-}
-
-
-// check if it is fading to/from black
 bool isFading(int minPrev, int maxPrev, int minCurr, int maxCurr) {
+	// check if it is fading to/from black (or a darker monochrome colour)
 	return maxPrev <= maxCurr && minPrev <= minCurr;
 }
 
-vector<FrameTransition> detectFadeTransitions_v3(vector<Mat> frames, float maxStdDev, int minLength, ofstream& logFile) {
+vector<FrameTransition> detectGradualTransitions_v1(vector<Mat> frames, float maxStdDev, int minLength, ofstream& logFile) {
 
-	logFile << " -> Detect fade in/out (Based on histogram difference):"<<endl;
+	logFile << " -> Detect gradual transitions (Based on histogram difference):"<<endl;
+	logFile << " max standard deviation = " << maxStdDev << endl;
 	logFile << " min transition length = " << minLength << endl;
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
@@ -217,8 +50,10 @@ vector<FrameTransition> detectFadeTransitions_v3(vector<Mat> frames, float maxSt
 
 	vector<int> gmin;
 	vector<int> gmax;
+	vector<int> AHD; // accumulative histogram difference
 	vector<int> monochromes;
 
+	AHD.push_back(0);
 	for (int i = 0; i < nrFrames; i++) {
 		Mat_<uchar> currFrame = convertRgbToGrayscale(frames[i]);
 		float stdDev = computeStandardDeviation(currFrame);
@@ -226,48 +61,225 @@ vector<FrameTransition> detectFadeTransitions_v3(vector<Mat> frames, float maxSt
 		gmax.push_back(max);
 		int min = getMinIntensityLevel(currFrame);
 		gmin.push_back(min);
+		if (i > 0) {
+			AHD.push_back(getHistDifference(frames[i - 1], frames[i], 64));
+		}
 		if (stdDev < maxStdDev) {
 			monochromes.push_back(i);
 		}
 	}
 
 	int nrPotentialFades = monochromes.size();
-	int lastTransitionFrameIdx = 0;
+	int prevTransitionStart = -1;
+	int prevTransitionLength = 0;
 
 	for (int i = 0; i < nrPotentialFades; i++) {
 		int monoChromeIdx = monochromes[i];
-		if (monoChromeIdx <= lastTransitionFrameIdx) {
+		if (monochromes[i] >= prevTransitionStart && monochromes[i] <= prevTransitionStart + prevTransitionLength) {
 			i++;
 			continue;
 		}
-		
 		// analyze frames on the left to detect start of a fade out
 		int j = monoChromeIdx;
-		while (j > 0 && isFading(gmin[j], gmax[j], gmin[j - 1], gmax[j - 1])) {
+		while (j > 0 && isFading(gmin[j], gmax[j], gmin[j - 1], gmax[j - 1]) && AHD[j] <= 0) {
 			j--;
 		}
 
 		if (abs(monoChromeIdx - j) > minLength) {
-			FrameTransition ft = { j, monoChromeIdx, FADE_OUT };
-			fades.push_back(ft);
-			logFile << "fade out frames [" << j << ", " << monoChromeIdx << "]" << endl;
-			lastTransitionFrameIdx = monoChromeIdx;
+			if (j > prevTransitionStart) {
+				FrameTransition ft = { j, monoChromeIdx, FADE_OUT };
+				fades.push_back(ft);
+				logFile << "fade out frames [" << j << ", " << monoChromeIdx << "]" << endl;
+				prevTransitionStart = j;
+				prevTransitionLength = monoChromeIdx - j + 1;
+			}
 		}
 		
 		// analyze frames on the right to detect start of a fade in
 		j = monoChromeIdx;
-		while (j < nrFrames-1 && isFading(gmin[j], gmax[j], gmin[j + 1], gmax[j + 1])) {
+		while (j < nrFrames-1 && isFading(gmin[j], gmax[j], gmin[j + 1], gmax[j + 1]) && AHD[j] >= 0) {
 			j++;
 		}
 
-		if (abs(monoChromeIdx - j) > minLength) {
-			FrameTransition ft = { monoChromeIdx, j, FADE_IN };
-			fades.push_back(ft);
-			logFile << "fade in frames [" << monoChromeIdx << ", " << j << "]" << endl;
-			lastTransitionFrameIdx = j;
+		if (abs(j - monoChromeIdx) > minLength) {
+			if (monoChromeIdx > prevTransitionStart + prevTransitionLength) {
+				// do not overlap with previous fade-in transition
+				FrameTransition ft = { monoChromeIdx, j, FADE_IN };
+				fades.push_back(ft);
+				logFile << "fade in frames [" << monoChromeIdx << ", " << j << "]" << endl;
+				prevTransitionStart = monoChromeIdx;
+				prevTransitionLength = j - monoChromeIdx + 1;
+			}
 		}
 	}
 
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+	return fades;
+}
+
+vector<FrameTransition> detectGradualTransitions_v2(vector<Mat> frames, float maxStdDev, int minLength, ofstream& logFile) {
+
+	logFile << " -> Detect gradual transitions (Based on Mean and Standard Deviation):" << endl;
+	logFile << " max std dev = " << maxStdDev << endl;
+	logFile << " min transition length = " << minLength << endl;
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+	int nrFrames = frames.size();
+	Mat previousFrame, currentFrame;
+	vector<FrameTransition> fades;
+
+	vector<int> monochromes = findMonochromeFrames(frames, maxStdDev);
+	int nrPotentialFades = monochromes.size();
+	int prevTransitionStart = -1;
+	int prevTransitionLength = 0;
+
+	for (int i = 0; i < nrPotentialFades; i++) {
+
+		int interm = monochromes[i];
+		int start, end;
+		Mat_<uchar> monoChromeFrame = convertRgbToGrayscale(frames[interm]);
+		float refStdDev = computeStandardDeviation(monoChromeFrame);
+		float currStdDev, prevStdDev;
+
+		// the standard deviation (= "contrast") gradually decreases in the first half of a dissolve transition and in case of a fade-out transition
+		start = interm - 1;
+		currStdDev = refStdDev;
+		prevStdDev = currStdDev;
+		while (start >= 0 && prevStdDev - currStdDev >= 0) {
+			Mat_<uchar> currFrame = convertRgbToGrayscale(frames[start]);
+			currStdDev = computeStandardDeviation(currFrame);
+			start--;
+			prevStdDev = currStdDev;
+		}
+
+		// the standard deviation (= "contrast") gradually increases in the second half of a dissolve transition and in case of a fade-in transition
+		end = interm + 1;
+		currStdDev = refStdDev;
+		prevStdDev = currStdDev;
+		while (end < nrFrames && currStdDev - prevStdDev <= 0) {
+			Mat_<uchar> currFrame = convertRgbToGrayscale(frames[end]);
+			currStdDev = computeStandardDeviation(currFrame);
+			end++;
+			prevStdDev = currStdDev;
+			logFile << "std  dev : "<<prevStdDev << endl;
+		}
+
+		if (abs(end - interm) >= minLength / 2 && abs(interm - start) >= minLength / 2) {
+			// dissolve
+			start = start + 1;
+			end = end - 1;
+			FrameTransition ft = { start , end, DISSOLVE };
+			fades.push_back(ft);
+			logFile << "dissolve frames[" << start << ", " << end << "]" << endl;
+			prevTransitionStart = start;
+			prevTransitionLength = end - start + 1;
+		}
+		else {
+			if (abs(interm - start) >= minLength) {
+				// fade-out to black
+				if (start > prevTransitionStart) {
+					// do not overlap with previous fade-out transition
+					end = interm;
+					start = start + 1;
+					FrameTransition ft = { start , end,  FADE_OUT };
+					fades.push_back(ft);
+					logFile << "fade out frames[" << start << ", " << end << "]" << endl;
+					prevTransitionStart = start;
+					prevTransitionLength = end - start + 1;
+				}
+			}
+			else if (abs(end - interm) >= minLength) {
+				// fade-in from black
+				start = interm;
+				end = end - 1;
+				if (start > prevTransitionStart + prevTransitionLength) {
+					// do not overlap with previous fade-in transition
+					FrameTransition ft = { start , end,  FADE_IN };
+					fades.push_back(ft);
+					logFile << "fade in frames[" << start << ", " << end << "]" << endl;
+					prevTransitionStart = start;
+					prevTransitionLength = end - start + 1;
+				}
+			}
+		}
+	}
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+	return fades;
+}
+
+vector<FrameTransition> detectGradualTransitions_v3(vector<Mat> frames, float maxStdDev, int minLength,  ofstream& logFile) {
+
+	logFile << " -> Detect gradual transitions (Based on ECR):" << endl;
+	logFile << " max std dev = " << maxStdDev << endl;
+	logFile << " min transition length = " << minLength << endl;
+	logFile << " --------------------------------------------------------------------------------------" << endl;
+
+	int nrFrames = frames.size();
+	Mat previousFrame, currentFrame;
+	vector<FrameTransition> fades;
+
+	vector<int> monochromes = findMonochromeFrames(frames, maxStdDev);
+	int nrPotentialFades = monochromes.size();
+	int prevTransitionStart = 0;
+	int prevTransitionLength = 0;
+
+	for (int i = 0; i < nrPotentialFades; i++) {
+		int interm = monochromes[i];
+		int start = interm, end = interm;
+		Mat prevFrame, currFrame;
+		float ecr_in=-1, ecr_out = 0;
+
+		// in the first part of a dissolve transition ecr_out > ecr_in (more edges vanish), same for the fade-out transition
+		prevFrame = frames[interm];
+		start = interm - 1;
+		while (start >= 0 && ecr_out > ecr_in) {
+			currFrame = frames[start];
+			computeECR(currFrame, prevFrame, ecr_in, ecr_out);
+			prevFrame = currFrame;
+			start--;
+		}
+
+		ecr_in = 0;
+		ecr_out = -1;
+		// in the second part of a dissolve transition ecr_out < ecr_in (more edges appear), same for the fade-in transition
+		prevFrame = frames[interm];
+		end = interm + 1;
+		while (end < nrFrames && ecr_out < ecr_in) {
+			currFrame = frames[end];
+			computeECR(prevFrame, currFrame, ecr_in, ecr_out);
+			prevFrame = currFrame;
+			end++;
+		} 
+
+		if (abs(interm - start) >= minLength) {
+			// fade-out
+			end = interm;
+			start = start + 1;
+			if (start > prevTransitionStart) {
+				// do not overlap with previous fade-out transition
+				FrameTransition ft = { start, end, FADE_OUT };
+				fades.push_back(ft);
+				logFile << "fade out frames[" << start << ", " << end << "]" << endl;
+				prevTransitionStart = start;
+				prevTransitionLength = end - start;
+			}
+		}
+		else if (abs(end - interm) >= minLength) {
+			// fade-in 
+			start = interm;
+			end = end - 1;
+			if (start > prevTransitionStart + prevTransitionLength) {
+				// do not overlap with previous fade-in transition
+				FrameTransition ft = { start, end, FADE_IN };
+				fades.push_back(ft);
+				logFile << "fade in frames[" << start << ", " << end << "]" << endl;
+				prevTransitionStart = start;
+				prevTransitionLength = end - start;
+			}
+		}
+	}
 	logFile << " --------------------------------------------------------------------------------------" << endl;
 
 	return fades;

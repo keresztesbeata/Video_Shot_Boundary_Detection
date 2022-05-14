@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "EBAalgorithms.h"
 
+
 void computeECR(Mat previousFrame, Mat currentFrame, float& ecr_in, float& ecr_out) {
 	int height = previousFrame.rows;
 	int width = previousFrame.cols;
@@ -18,7 +19,7 @@ void computeECR(Mat previousFrame, Mat currentFrame, float& ecr_in, float& ecr_o
 	int currTotalEdgeCount = 1;
 	// count only the incoming edge pixels: missing from previous frame, but present in the current frame
 	int incomingEdgeCount = 0;
-	// ocunt only the outgoing edge pixels: present in the previous frame, but missing from current frame
+	// count only the outgoing edge pixels: present in the previous frame, but missing from current frame
 	int outgoingEdgeCount = 0;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
@@ -31,10 +32,10 @@ void computeECR(Mat previousFrame, Mat currentFrame, float& ecr_in, float& ecr_o
 				currTotalEdgeCount++;
 			}
 
-			if (!prev && curr) {
+			if (curr && !isPointInNeighbourhood(previousFrame, i, j, r)) {
 				incomingEdgeCount++;
 			}
-			if (prev && !curr) {
+			if (prev && !isPointInNeighbourhood(currentFrame, i, j, r)) {
 				outgoingEdgeCount++;
 			}
 		}
@@ -54,7 +55,7 @@ float ECR(Mat previousFrame, Mat currentFrame) {
 	currEdges = cannyEdgeDetector(currentFrame);
 	
 	// max distance between edge pixels of 2 consecutive frames considered as part of the same edge
-	float r = 5;
+	float r = 1;
 
 	// count total edge pixels in prev and current frames
 	int prevTotalEdgeCount = 1;
@@ -74,10 +75,10 @@ float ECR(Mat previousFrame, Mat currentFrame) {
 				currTotalEdgeCount++;
 			}
 			
-			if (!prev && curr) {
+			if (curr && !isPointInNeighbourhood(previousFrame, i, j, r)) {
 				incomingEdgeCount++;
 			}
-			if (prev && !curr) {
+			if (prev && !isPointInNeighbourhood(currentFrame, i, j, r)) {
 				outgoingEdgeCount++;
 			}
 		}
@@ -90,21 +91,15 @@ float ECR(Mat previousFrame, Mat currentFrame) {
 	return ecr;
 }
 
-float getDistanceToClosestEdgePixel(Mat img, int x, int y, int w) {
-	int height = img.rows;
-	int width = img.cols;
-	float minDist = height + width;
-	for (int i = x - w; i <= x + w; i++) {
-		for (int j = y - w; j <= y + w; j++) {
-			if ((i != x || j != y) && isInside(img, i, j) && isEdgePixel(img, i, j)) {
-				float dist = sqrt((x - i) * (x - i) + (y - j) * (y - j));
-				if (dist < minDist) {
-					minDist = dist;
-				}
+bool isPointInNeighbourhood(Mat img, int x, int y, int r) {
+	for (int i = x - r; i <= x + r; i++) {
+		for (int j = y - r; j <= y + r; j++) {
+			if (isInside(img, i, j) && isEdgePixel(img, i, j)) {
+				return true;
 			}
 		}
 	}
-	return minDist;
+	return false;
 }
 
 vector<FrameTransition> EBA(const char* fileName, float T, int N, int M, ofstream& logFile) {

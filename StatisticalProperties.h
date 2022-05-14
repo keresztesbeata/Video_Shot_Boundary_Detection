@@ -6,9 +6,5 @@
 float computeMeanIntensitiyValue(Mat_<uchar> img);
 float computeStandardDeviation(Mat_<uchar> img);
 Mat_<uchar> basicTresholding(Mat_<uchar> src);
-
-Vec3f computeMeanIntensitiyValueColor(Mat_<Vec3b> img);
-Vec3f computeStandardDeviationColor(Mat_<Vec3b> img);
-
 int getMinIntensityLevel(Mat_<uchar> src);
 int getMaxIntensityLevel(Mat_<uchar> src);
