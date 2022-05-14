@@ -12,6 +12,8 @@ typedef struct _metrics {
 	float f1Score;
 }Metrics;
 
-void filterResults(vector<FrameTransition>& results, TransitionType type);
 vector<int> extractFrameIndices(vector<FrameTransition> results, TransitionType transitionType);
 Metrics evaluateResults(vector<Mat> data, vector<FrameTransition> expectedPositives, vector<FrameTransition> actualPositives, TransitionType transitionType);
+
+void saveResults(Metrics metrics, char* outputDirPath, int op);
+vector<FrameTransition> readExpectedResults(char* expectedResultsFilePath);

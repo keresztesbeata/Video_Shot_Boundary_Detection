@@ -20,7 +20,11 @@ vector<Mat> readAllFrames(const char* fileName) {
 	return frames;
 }
 
-void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* outputDirPath) {
+void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* parentDirPath) {
+	char outputDirPath[MAX_PATH];
+	strcpy(outputDirPath, parentDirPath);
+	strcat(outputDirPath, "/all");
+
 	fs::remove_all(outputDirPath);
 	fs::create_directory(outputDirPath);
 
@@ -43,18 +47,28 @@ void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, cha
 
 	int N = keyFrames.size();
 	for (int n = 0; n < N; n++) {
-		int i = keyFrames[n].start;
 		const char* type = transitionToString(keyFrames[n].type);
-		while (i <= keyFrames[n].end && i<totalNrFrames) {
-			// compute the output path for the current frame transitions
+		if (keyFrames[n].type == CUT) {
 			char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-
 			strcpy(outputFile, outputDirPath);
 			strcat(outputFile, genericFileName);
-			sprintf(outputFileName, outputFile, n, type, i);
+			sprintf(outputFileName, outputFile, n, type, keyFrames[n].start);
 			// save the current frame
-			imwrite(outputFileName, allFrames[i]);
-			i++;
+			imwrite(outputFileName, allFrames[keyFrames[n].start]);
+		}
+		else {
+			int i = keyFrames[n].start;
+			while (i <= keyFrames[n].end && i < totalNrFrames) {
+				// compute the output path for the current frame transitions
+				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
+
+				strcpy(outputFile, outputDirPath);
+				strcat(outputFile, genericFileName);
+				sprintf(outputFileName, outputFile, n, type, i);
+				// save the current frame
+				imwrite(outputFileName, allFrames[i]);
+				i++;
+			}
 		}
 	}
 }

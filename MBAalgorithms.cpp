@@ -135,13 +135,13 @@ vector<FrameTransition> MBA(const char* fileName, float T, int N, int M, int B, 
 
 		if (diff >= max && diff > TH) {
 			// abrupt shot boundary
-			FrameTransition shot = { n, n, CUT };
+			FrameTransition shot = { n-1, n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}
 		else if (diff > TL) {
 			// gradual shot boundary
-			FrameTransition shot = { n, n, GRADUAL };
+			FrameTransition shot = { n-1, n, GRADUAL };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}

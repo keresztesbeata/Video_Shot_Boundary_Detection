@@ -148,7 +148,7 @@ vector<FrameTransition> EBA(const char* fileName, float T, int N, int M, ofstrea
 
 		if (ecr >= max && ecr > Ts) {
 			// cut shot boundary
-			FrameTransition shot = { n, n, CUT };
+			FrameTransition shot = { n-1, n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "keyFrame #" << n << endl;
 		}

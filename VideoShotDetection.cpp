@@ -5,6 +5,7 @@
 #include "MBAalgorithms.h"
 #include "GradualTransitionDetector.h"
 #include "VideoProcessing.h"
+#include "PerformanceEvaluation.h"
 
 #include <fstream>
 #include <ctime>
@@ -16,27 +17,28 @@
 
 namespace fs = std::filesystem;
 
-#define NR_SHOT_DETECTION_ALG 10
+#define NR_SHOT_DETECTION_ALG 9
 
-char parentDir[] = "Videos/gradual_transitions/tests/";
-char videoFilePath[] = "Videos/movie_trailers/harry_potter_1_trailer.mp4";
-char videoAllFrames[] = "Videos/gradual_transitions/tests/all";
+char parentDir[] = "tests/avatar/";
+char videoFilePath[] = "Videos/sample/avatar.mp4";
+char genericLogsFilePath[] = "logs/logs_%d.txt";
+char genericActualResultsFilePath[] = "tests/avatar/results/actual_%d.txt";
+char expectedResultsFilePath[] = "tests/avatar/results/expected.txt";
 
 char outputDirPaths[][MAX_PATH] = {
 	// PBA test results
 	"/PBA_noise_filt",
 	"/PBA_adapt_thresh",
 	// HBA test results
-	"/HBA_bin3bin",
+	"/HBA_bin2bin",
 	"/HBA_hist_int",
 	"/HBA_quick_search",
 	// EBA test results
 	"/EBA_ecr",
 	// MBA test results
 	"/MBA_bma",
-	// FADE in/out
-	"/fade_luminence",
-	"/GT_contrast",
+	// gradual transition detection
+	"/GT_luminance",
 	"/GT_ecr",
 };
 
@@ -48,7 +50,7 @@ int main() {
 	vector<Mat> allFrames = readAllFrames(videoFilePath);
 
 	// extract and save all frames from the video sequence
-	//saveAllFrames(allFrames, videoFilePath, videoAllFrames);
+	//saveAllFrames(allFrames, videoFilePath, parentDir);
 
 	int op;
 
@@ -67,8 +69,7 @@ int main() {
 		cout << " 7 - MBA: block matching" << endl;
 		cout << " --------------- Gradual Transition Detection -------------- " << endl;
 		cout << " 8 - GT: Detect Fade in/out based on Histogram difference and varying luminence" << endl;
-		cout << " 9 - GT: Detect Gradual Transitions based on variance in image contrast" << endl;
-		cout << " 10 - GT: Detect Gradual Transitions based on edge change ratio" << endl;
+		cout << " 9 - GT: Detect Gradual Transitions based on edge change ratio" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
 		cin >> op;
@@ -86,7 +87,9 @@ int main() {
 		// create a new output directory to store the detected keyframes
 		fs::create_directory(outputDir);
 
-		char logsFilePath[] = "logs/logs_%d.txt";
+		char logsFilePath[MAX_PATH];
+		strcpy(logsFilePath, parentDir);
+		strcat(logsFilePath, genericLogsFilePath);
 
 		// generate a logs file to store the run parameters
 		sprintf(logsFilePath, logsFilePath, op);
@@ -97,10 +100,24 @@ int main() {
 		logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 
 		// declare a vector of keyframes which will be populated by the selected shot detection method
-		vector<FrameTransition> keyFrames = selectAlgorithm(op, allFrames, logFile);
+		vector<FrameTransition> actual = selectAlgorithm(op, allFrames, logFile);
 		// save the results
-		saveKeyFrames(keyFrames, allFrames, outputDir);
-
+		saveKeyFrames(actual, allFrames, outputDir);
+		/*
+		vector<FrameTransition> expected = readExpectedResults(expectedResultsFilePath);
+		vector<Metrics> results;
+		if (op <= 7) {
+			results.push_back(evaluateResults(allFrames, expected, actual, CUT));
+			results.push_back(evaluateResults(allFrames, expected, actual, GRADUAL));
+		}
+		else {
+			results.push_back(evaluateResults(allFrames, expected, actual, FADE_IN));
+			results.push_back(evaluateResults(allFrames, expected, actual, FADE_OUT));
+		}
+		for (auto m : results) {
+			saveResults(m, genericActualResultsFilePath, op);
+		}
+		*/
 		logFile.close();
 		waitKey(0);
 
@@ -113,14 +130,14 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 	switch (op)
 	{
 		case 1: {
-			float threshold1, threshold2;
-			cout << "threshold1 = ";
-			cin >> threshold1;
+			float thresholdHigh, thresholdLow;
+			cout << "threshold High = ";
+			cin >> thresholdHigh;
 
-			cout << "threshold2 = ";
-			cin >> threshold2;
+			cout << "threshold Low = ";
+			cin >> thresholdLow;
 
-			return PBA_v3(videoFilePath, threshold1, threshold2, logFile);
+			return PBA_v3(videoFilePath, thresholdHigh, thresholdLow, logFile);
 		}
 		case 2: {
 			float M, N;
@@ -206,17 +223,6 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 			cin >> minLength;
 
 			return detectGradualTransitions_v2(allFrames, maxStdDev, minLength, logFile);
-		}
-		case 10: {
-			float maxStdDev, minLength;
-
-			cout << "Threshold for maxStdDev = ";
-			cin >> maxStdDev;
-
-			cout << "Min length of transition = ";
-			cin >> minLength;
-
-			return detectGradualTransitions_v3(allFrames, maxStdDev, minLength, logFile);
 		}
 		default: {
 			return vector<FrameTransition>();

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PerformanceEvaluation.h"
+#include <fstream>
 
 bool compareFrames(FrameTransition ft1, FrameTransition ft2)
 {
@@ -62,28 +63,36 @@ vector<int> extractFrameIndices(vector<FrameTransition> results, TransitionType 
 
 	return frameIndices;
 }
+void saveResults(Metrics metrics, char* outputDirPath, int op) {
+	char outputFile[MAX_PATH];
+	char genericFilePath[] = "results_%ld.csv";
 
-void filterResults(vector<FrameTransition>& results, TransitionType type) {
-	switch (type) {
-		case CUT: {
-			remove_if(results.begin(), results.end(), [](FrameTransition ft) {return ft.type == CUT; });
-			break; 
-		}
-		case GRADUAL: {
-			remove_if(results.begin(), results.end(), [](FrameTransition ft) {return ft.type == GRADUAL; });
-			break;
-			}
-		case FADE_IN: {
-			remove_if(results.begin(), results.end(), [](FrameTransition ft) {return ft.type == FADE_IN; });
-			break;
-			}
-		case FADE_OUT: {
-			remove_if(results.begin(), results.end(), [](FrameTransition ft) {return ft.type == FADE_OUT; });
-			break;
-			}
-		case DISSOLVE: {
-			remove_if(results.begin(), results.end(), [](FrameTransition ft) {return ft.type == DISSOLVE; });
-			break;
-		}
+	strcpy(outputFile, outputDirPath);
+	strcat(outputFile, genericFilePath);
+	sprintf(outputFile, outputFile, op);
+
+	fstream f(outputFile, fstream::out | fstream::app);
+
+	if (!f.good()) {
+		// first time creating the file
+		f << "accuracy,precision,recall,f1Score" << endl;
 	}
+	f << metrics.accuracy << "," << metrics.precision << "," << metrics.recall << "," << metrics.f1Score << endl;
+	
+	f.close();
+}
+
+vector<FrameTransition> readExpectedResults(char* expectedResultsFilePath) {
+	fstream f(expectedResultsFilePath, fstream::in);
+
+	vector<FrameTransition> frames;
+
+	while (f.good()) {
+		int start, end, type;
+		f >> start >> end >> type;
+		frames.push_back({ start, end, (TransitionType)type });
+	}
+	f.close();
+
+	return frames;
 }

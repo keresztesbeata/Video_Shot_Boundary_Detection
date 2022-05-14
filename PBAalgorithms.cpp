@@ -117,7 +117,7 @@ vector<FrameTransition> PBA_v2(const char* fileName, float T1, float T2, ofstrea
 			;
 
 		if (d > T2) {
-			FrameTransition shot = { frameNr, frameNr, CUT };
+			FrameTransition shot = { frameNr-1, frameNr, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << frameNr << endl;
 		}
@@ -269,7 +269,7 @@ vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstrea
 		}
 
 		if (d > T2) {
-			FrameTransition shot = { frameNr,frameNr, CUT };
+			FrameTransition shot = { frameNr-1,frameNr, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << frameNr << endl;
 		}
@@ -351,7 +351,7 @@ vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& log
 
 		if (max > T1) {
 			// cut shot boundary
-			FrameTransition shot = { n,n, CUT };
+			FrameTransition shot = { n-1,n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "HT (cut) shot #" << n << endl;
 		}

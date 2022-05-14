@@ -49,7 +49,7 @@ vector<FrameTransition> HBA(const char* fileName, float T, ofstream& logFile, HD
 		}
 
 		if (d > T) {
-			FrameTransition shot = { frameNr, frameNr, CUT };
+			FrameTransition shot = { frameNr-1, frameNr, CUT };
 			keyFrames.push_back(shot);
 			logFile << "Key frame #" << frameNr << endl;
 		}
@@ -173,7 +173,7 @@ void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep,
 	shotDetector(frames.data(), midIdx, minPartLen, shotLoc, leftMidRep, rightMidRep);
 	
 	if (shotLoc > 0) {
-		FrameTransition shot = { shotLoc, shotLoc, CUT };
+		FrameTransition shot = { shotLoc-1, shotLoc, CUT };
 		shots.push_back(shot);
 		logFile << "Key frame #" << shotLoc << endl;
 	}

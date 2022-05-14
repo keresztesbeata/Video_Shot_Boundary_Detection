@@ -55,8 +55,8 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 *
 * Params:
 *	fileName = the name of the video file to be processed
-*	threshold1 = the threshold value which is used for computing the partial differences
-* *	threshold2 = the threshold value which is used to select the key frames from the frame sequence
+*	T1 = the threshold value which is used for computing the partial differences, T1 should be in [0,255]
+* *	T2 = the threshold value which is used to select the key frames from the frame sequence (based on the dissimilarity coefficient), T2 should be in [0,1]
 * Return value:
 *	key frames representing the cuts
 */
@@ -87,8 +87,12 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src);
 * PBA = Pixel Based Approach with noise filtering and multiple thresholds
 * Pre-processing step:
 *	Replace each pixel in the original image with the average of their neighbours in a 3x3 kernel filter.
-* 
 * Steps: (same as for the multiple thresholding)
+* 
+* Params:
+* *	T1 = the threshold value which is used for computing the partial differences, T1 should be in [0,255]
+* *	T2 = the threshold value which is used to select the key frames from the frame sequence (based on the dissimilarity coefficient), T2 should be in [0,1]
+*
 */
 vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile);
 
@@ -101,6 +105,7 @@ vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstrea
 * Remark:
 *	- N < M!
 *	- the smaller window is inside the bigger one!
+*	- typical window sizes would be M = 20, N = 16
 *
 * Steps: (same as for the multiple thresholding)
 *	- T1 = 5 * mean
