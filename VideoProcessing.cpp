@@ -50,7 +50,7 @@ void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, str
 			int i = keyFrames[n].start;
 			while (i <= keyFrames[n].end && i < totalNrFrames) {
 				// compute the output path for the current frame transitions
-				string outputFilePath = outputDirPath + "/kf#" + to_string(n) + "_" + transitionToString(keyFrames[n].type) + "_" + to_string(keyFrames[n].end) + ".jpg";
+				string outputFilePath = outputDirPath + "/kf#" + to_string(n) + "_" + transitionToString(keyFrames[n].type) + "_" + to_string(i) + ".jpg";
 				// save the current frame
 				imwrite(outputFilePath, allFrames[i]);
 				i++;
