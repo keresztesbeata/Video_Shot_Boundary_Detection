@@ -15,7 +15,7 @@ using namespace std;
 * 
 * For picture-in-picture transitions, change in small region (CSR), the histograms of two consecutive frames are expected to show similarities because of the minimal change in the frames.
 */
-vector<FrameTransition> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric);
+vector<FrameTransition> HBA(string fileName, float T, ofstream& logFile, HDmetric metric);
 
 double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame, int nrBins, HDmetric metric);
 
@@ -36,7 +36,7 @@ double getBinToBinDifference(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame
 double getHistogramIntersection(Mat_<uchar> previousFrame, Mat_<uchar> currentFrame, int nrBins);
 
 /*---------------------------------- version 3: HBA with Quick Search Algorithm -----------------------------------------*/
-vector<FrameTransition> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile);
+vector<FrameTransition> HBA_quickShotSearch(string fileName, float T, ofstream& logFile);
 void quickShotSearch(vector<Mat> frames, Mat leftRep, int leftIdx, Mat rightRep, int rightIdx, int minPartLen, vector<FrameTransition>& shots, double farDissimilarityThreshold, ofstream& logFile);
 
 /**

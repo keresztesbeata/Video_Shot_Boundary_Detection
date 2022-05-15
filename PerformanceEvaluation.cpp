@@ -18,13 +18,13 @@ Metrics evaluateResults(vector<Mat> data, vector<FrameTransition> expectedPositi
 	float f1Score = 0;
 	float precision = 0;
 
-	vector<int> expected = extractFrameIndices(expectedPositives, transitionType);
 	vector<int> actual = extractFrameIndices(actualPositives, transitionType);
+	vector<int> expected = extractFrameIndices(expectedPositives, transitionType);
 
 	// find matches i.e. "True positives"
-	
-	int ne = expectedPositives.size();
-	int na = actualPositives.size();
+	int ne = expected.size();
+	int na = actual.size();
+
 	int e = 0, a = 0;
 	while (e < ne && a < na) {
 		if (expected[e] == actual[a]) {
@@ -32,67 +32,122 @@ Metrics evaluateResults(vector<Mat> data, vector<FrameTransition> expectedPositi
 			e++;
 			a++;
 		}
+		else if (expected[e] < actual[a]) {
+			e++;
+			falsePositives++;
+		}
+		else {
+			a++;
+			falseNegatives++;
+		}
 	}
-	
+
+	while (e < ne) {
+		falsePositives++;
+		e++;
+	}
+	while (a < na) {
+		falseNegatives++;
+		a++;
+	}
+
+	if (a == 0 && e == 0) {
+		goto FINISH;
+	}
+
 	int total = data.size();
-	falsePositives = (na - truePositives);
-	falseNegatives = (ne - na);
 	trueNegatives = total - truePositives - falsePositives - falseNegatives;
 
-	precision = (float)truePositives / (float)(truePositives + falsePositives);
-	recall = (float)truePositives / (float)(truePositives + falseNegatives);
-	accuracy = (float)(truePositives + trueNegatives) / (float)(truePositives + trueNegatives + falsePositives + falseNegatives);
-	f1Score = (float) 2 * precision * recall / (float)(precision + recall);
+	if (truePositives > 0 || falsePositives > 0) {
+		precision = (float)truePositives / (float)(truePositives + falsePositives);
+	}
+	if (truePositives > 0 || falseNegatives > 0) {
+		recall = (float)truePositives / (float)(truePositives + falseNegatives);
+	}
+	if (total > 0) {
+		accuracy = (float)(truePositives + trueNegatives) / (float)total;
+	}
+	if (precision > 0 || recall > 0) {
+		f1Score = (float)2 * precision * recall / (float)(precision + recall);
+	}
 
-	return { accuracy, precision, recall, f1Score };
+FINISH:
+	return { transitionType, accuracy, precision, recall, f1Score };
 }
 
 vector<int> extractFrameIndices(vector<FrameTransition> results, TransitionType transitionType) {
 	vector<int> frameIndices;
-	int n = results.size();
-	for (int i = 0; i < n; i++) {
-		if (results[i].type == transitionType) {
-			for (int s = results[i].start; s <= results[i].end; s++) {
+	for (auto r:results) {
+		if (r.type == transitionType) {
+			for (int s = r.start; s <= r.end; s++) {
 				frameIndices.push_back(s);
 			}
 		}
 	}
-	// remove duplicates before sorting
-	frameIndices.erase(unique(frameIndices.begin(), frameIndices.end()), frameIndices.end());
-	sort(frameIndices.begin(), frameIndices.end());
+	if (frameIndices.size() > 0) {
+		// remove duplicates before sorting
+		frameIndices.erase(unique(frameIndices.begin(), frameIndices.end()), frameIndices.end());
+		sort(frameIndices.begin(), frameIndices.end());
+	}
 
 	return frameIndices;
 }
-void saveResults(Metrics metrics, char* outputDirPath, int op) {
-	char outputFile[MAX_PATH];
-	char genericFilePath[] = "results_%ld.csv";
 
-	strcpy(outputFile, outputDirPath);
-	strcat(outputFile, genericFilePath);
-	sprintf(outputFile, outputFile, op);
+void saveResults(vector<Metrics> metrics, string outputDirPath, int op, vector<pair<string, float>> params) {
+	string outputFilePath = outputDirPath + "/results/results_" + to_string(op) +".csv";
 
-	fstream f(outputFile, fstream::out | fstream::app);
+	fstream f(outputFilePath, fstream::out | fstream::app);
 
-	if (!f.good()) {
-		// first time creating the file
-		f << "accuracy,precision,recall,f1Score" << endl;
+	for (auto p : params) {
+		f << p.first << ",";
 	}
-	f << metrics.accuracy << "," << metrics.precision << "," << metrics.recall << "," << metrics.f1Score << endl;
-	
+	f << "type,accuracy,precision,recall,f1Score" << endl;
+
+	for (auto m : metrics) {
+
+		for (auto p : params) {
+			f << p.second << ",";
+		}
+		f << transitionToString((TransitionType)m.type) << ","<< m.accuracy << "," << m.precision << "," << m.recall << "," << m.f1Score << endl;
+	}
 	f.close();
 }
 
-vector<FrameTransition> readExpectedResults(char* expectedResultsFilePath) {
-	fstream f(expectedResultsFilePath, fstream::in);
-
-	vector<FrameTransition> frames;
-
-	while (f.good()) {
-		int start, end, type;
-		f >> start >> end >> type;
-		frames.push_back({ start, end, (TransitionType)type });
+string readFileIntoString(const string& path) {
+	auto ss = ostringstream{};
+	ifstream input_file(path);
+	if (!input_file.is_open()) {
+		cerr << "Could not open the file - '"
+			<< path << "'" << endl;
+		exit(EXIT_FAILURE);
 	}
-	f.close();
+	ss << input_file.rdbuf();
+	return ss.str();
+}
+
+vector<FrameTransition> readExpectedResults(string expectedResultsFilePath) {
+	vector<FrameTransition> frames;
+	
+	char delimiter = ',';
+	string file_contents = readFileIntoString(expectedResultsFilePath);
+	istringstream sstream(file_contents);
+	std::vector<string> items;
+	string record;
+
+	// read the header first
+	getline(sstream, record);
+
+	while (getline(sstream, record)) {
+		istringstream line(record);
+		while (std::getline(line, record, delimiter)) {
+			items.push_back(record);
+		}
+		int start = stoi(items[0]);
+		int end = stoi(items[1]);
+		int type = stoi(items[2]);
+		frames.push_back({ start, end, (TransitionType)type });
+		items.clear();
+	}
 
 	return frames;
 }

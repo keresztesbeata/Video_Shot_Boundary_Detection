@@ -9,7 +9,7 @@ double GDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 Mat_<uchar> computeRepresentativeFrameGrayScale(Mat_<uchar>* frames, int start, int end);
 Mat_<Vec3b> computeRepresentativeFrameColour(Mat_<Vec3b>* frames, int start, int end);
 
-vector<FrameTransition> HBA(const char* fileName, float T, ofstream& logFile, HDmetric metric) {
+vector<FrameTransition> HBA(string fileName, float T, ofstream& logFile, HDmetric metric) {
 	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
 	int frameNr = 0;
@@ -144,7 +144,7 @@ double getHDMetricForColourFrames(Mat_<Vec3b> previousFrame, Mat_<Vec3b> current
 	return d_r + d_g + d_b;
 }
 
-vector<FrameTransition> HBA_quickShotSearch(const char* fileName, float T, ofstream& logFile) {
+vector<FrameTransition> HBA_quickShotSearch(string fileName, float T, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	
 	vector<Mat> frames = readAllFrames(fileName);

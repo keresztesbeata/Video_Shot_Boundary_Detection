@@ -87,7 +87,7 @@ int selectShot_BMA(Mat* frames, int start, int end, int N) {
 	return maxIdx;
 }
 
-vector<FrameTransition> MBA(const char* fileName, float T, int N, int M, int B, ofstream& logFile) {
+vector<FrameTransition> MBA(string fileName, float T, int N, int M, int B, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;

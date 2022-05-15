@@ -4,7 +4,7 @@
 
 namespace fs = std::filesystem;
 
-vector<Mat> readAllFrames(const char* fileName) {
+vector<Mat> readAllFrames(string fileName) {
 	vector<Mat> frames;
 	Mat currentFrame;
 
@@ -20,53 +20,39 @@ vector<Mat> readAllFrames(const char* fileName) {
 	return frames;
 }
 
-void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* parentDirPath) {
-	char outputDirPath[MAX_PATH];
-	strcpy(outputDirPath, parentDirPath);
-	strcat(outputDirPath, "/all");
+void saveAllFrames(vector<Mat> allFrames, string parentDirPath) {
+	string outputDirPath = parentDirPath + "/all";
 
 	fs::remove_all(outputDirPath);
 	fs::create_directory(outputDirPath);
 
 	int n = allFrames.size();
 	for (int i = 0; i < n; i++) {
-		char outputFile[MAX_PATH];
-		strcpy(outputFile, outputDirPath);
-		strcat(outputFile,"/frame_%ld.jpg");
-		sprintf(outputFile, outputFile, i);
-
-		imwrite(outputFile, allFrames[i]);
+		string outputFilePath = outputDirPath + "/frame_" + to_string(i) + ".jpg";
+		
+		imwrite(outputFilePath, allFrames[i]);
 	}
 }
 
 
-void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, char* outputDirPath) {
-	char genericFileName[] = "/kf#%ld_%s_%ld.jpg";
-
+void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, string outputDirPath) {
 	int totalNrFrames = allFrames.size();
 
 	int N = keyFrames.size();
 	for (int n = 0; n < N; n++) {
 		const char* type = transitionToString(keyFrames[n].type);
 		if (keyFrames[n].type == CUT) {
-			char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-			strcpy(outputFile, outputDirPath);
-			strcat(outputFile, genericFileName);
-			sprintf(outputFileName, outputFile, n, type, keyFrames[n].start);
+			string outputFilePath = outputDirPath + "/kf#"+ to_string(n) + "_" + transitionToString(keyFrames[n].type) + "_" + to_string(keyFrames[n].end) + ".jpg";
 			// save the current frame
-			imwrite(outputFileName, allFrames[keyFrames[n].start]);
+			imwrite(outputFilePath, allFrames[keyFrames[n].end]);
 		}
 		else {
 			int i = keyFrames[n].start;
 			while (i <= keyFrames[n].end && i < totalNrFrames) {
 				// compute the output path for the current frame transitions
-				char outputFile[MAX_PATH], outputFileName[MAX_PATH];
-
-				strcpy(outputFile, outputDirPath);
-				strcat(outputFile, genericFileName);
-				sprintf(outputFileName, outputFile, n, type, i);
+				string outputFilePath = outputDirPath + "/kf#" + to_string(n) + "_" + transitionToString(keyFrames[n].type) + "_" + to_string(keyFrames[n].end) + ".jpg";
 				// save the current frame
-				imwrite(outputFileName, allFrames[i]);
+				imwrite(outputFilePath, allFrames[i]);
 				i++;
 			}
 		}

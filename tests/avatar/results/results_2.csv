@@ -1,0 +1,9 @@
+M,N,type,accuracy,precision,recall,f1Score
+25,20,cut,0.866272,0.916667,0.0894309,0.162963
+25,20,gradual,0.736095,0,0,0
+M,N,type,accuracy,precision,recall,f1Score
+20,10,cut,0.91716,0.75,0.118421,0.204545
+20,10,gradual,0.795266,0,0,0
+M,N,type,accuracy,precision,recall,f1Score
+15,15,cut,0.898225,0.666667,0.0888889,0.156863
+15,15,gradual,0.757396,0.0222222,0.0168067,0.0191388

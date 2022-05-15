@@ -60,7 +60,7 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame);
 * Return value:
 *	key frames representing the cuts
 */
-vector<FrameTransition> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile);
+vector<FrameTransition> PBA_v2(string fileName, float T1, float T2, ofstream& logFile);
 
 /**
 * Count the pixels which have a dissimilarity factor greater than a given local threshold, applied on GRAYSCALE images.
@@ -94,7 +94,7 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src);
 * *	T2 = the threshold value which is used to select the key frames from the frame sequence (based on the dissimilarity coefficient), T2 should be in [0,1]
 *
 */
-vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile);
+vector<FrameTransition> PBA_v3(string fileName, float T1, float T2, ofstream& logFile);
 
 /*------------------------------------------------ version 4: adaptive threshold ---------------------------------------------------------*/
 /**
@@ -111,6 +111,6 @@ vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstrea
 *	- T1 = 5 * mean
 *	- T2 = 1.5 * mean
 */
-vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& logFile);
+vector<FrameTransition> PBA_v4(string fileName, int M, int N, ofstream& logFile);
 float getAverageDFFromSlidingWindow(vector<float> difference, int n, int windowSize);
 float getMaxDFFromSlidingWindow(vector<float> difference, int n, int windowSize);

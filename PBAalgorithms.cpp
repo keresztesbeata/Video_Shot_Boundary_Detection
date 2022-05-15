@@ -2,7 +2,7 @@
 #include "PBAalgorithms.h"
 #include "Utils.h"
 
-vector<FrameTransition> PBA_v1(const char * fileName, float T, ofstream& logFile) {
+vector<FrameTransition> PBA_v1(string fileName, float T, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
 	int frameNr = 0;
@@ -86,7 +86,7 @@ float getDFColour(Mat_<Vec3b> previousFrame, Mat_<Vec3b> currentFrame) {
 	return d_r + d_g + d_b;
 }
 
-vector<FrameTransition> PBA_v2(const char* fileName, float T1, float T2, ofstream& logFile) {
+vector<FrameTransition> PBA_v2(string fileName, float T1, float T2, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
 	int frameNr = 0;
@@ -225,10 +225,9 @@ Mat_<Vec3b> applyAveragingFilterOnColourImage(Mat_<Vec3b> src) {
 	return dst;
 }
 
-vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstream& logFile) {
+vector<FrameTransition> PBA_v3(string fileName, float T1, float T2, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	Mat previousFrame, currentFrame;
-	int frameNr = 0;
 
 	// open video file for reading
 	VideoCapture videoCapture(fileName);
@@ -244,6 +243,8 @@ vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstrea
 
 	// get the nr of channels to determine if it is a grayscale/colour video
 	int nrChannels = previousFrame.channels();
+
+	int frameNr = 1;
 
 	while (videoCapture.read(currentFrame))
 	{
@@ -269,9 +270,9 @@ vector<FrameTransition> PBA_v3(const char* fileName, float T1, float T2, ofstrea
 		}
 
 		if (d > T2) {
-			FrameTransition shot = { frameNr-1,frameNr, CUT };
+			FrameTransition shot = { frameNr-1, frameNr, CUT };
 			keyFrames.push_back(shot);
-			logFile << "Key frame #" << frameNr << endl;
+			logFile << "Cut #" << frameNr << endl;
 		}
 
 		previousFrame = currentFrame.clone();
@@ -289,11 +290,10 @@ FINISH:
 	return keyFrames;
 }
 
-vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& logFile) {
+vector<FrameTransition> PBA_v4(string fileName, int M, int N, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;
-	int n = 0;
 
 	logFile << "---------------------------" << endl;
 	logFile << "	M = " << M << endl;
@@ -317,6 +317,7 @@ vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& log
 
 	logFile << " -> PBA with adaptive thresholding: " << endl;
 
+	int n = 1;
 	while (videoCapture.read(currentFrame))
 	{
 		float d = 0;
@@ -351,13 +352,13 @@ vector<FrameTransition> PBA_v4(const char* fileName, int M, int N, ofstream& log
 
 		if (max > T1) {
 			// cut shot boundary
-			FrameTransition shot = { n-1,n, CUT };
+			FrameTransition shot = { n-1, n, CUT };
 			keyFrames.push_back(shot);
 			logFile << "HT (cut) shot #" << n << endl;
 		}
 		else if(max > T2){
 			// start of a frame or the middle of a gradual transition
-			FrameTransition shot = { n,n, GRADUAL };
+			FrameTransition shot = { n-1, n, GRADUAL };
 			keyFrames.push_back(shot);
 			logFile << "ST (gradual transition) shot #" << n << endl;
 		}

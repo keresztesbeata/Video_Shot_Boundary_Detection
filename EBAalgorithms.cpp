@@ -102,7 +102,7 @@ bool isPointInNeighbourhood(Mat img, int x, int y, int r) {
 	return false;
 }
 
-vector<FrameTransition> EBA(const char* fileName, float T, int N, int M, ofstream& logFile) {
+vector<FrameTransition> EBA(string fileName, float T, int N, int M, ofstream& logFile) {
 	vector<FrameTransition> keyFrames;
 	vector<float> difference;
 	Mat previousFrame, currentFrame;

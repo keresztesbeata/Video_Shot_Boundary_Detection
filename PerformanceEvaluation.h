@@ -6,6 +6,7 @@
 using namespace std;
 
 typedef struct _metrics {
+	TransitionType type;
 	float accuracy;
 	float precision;
 	float recall;
@@ -15,5 +16,5 @@ typedef struct _metrics {
 vector<int> extractFrameIndices(vector<FrameTransition> results, TransitionType transitionType);
 Metrics evaluateResults(vector<Mat> data, vector<FrameTransition> expectedPositives, vector<FrameTransition> actualPositives, TransitionType transitionType);
 
-void saveResults(Metrics metrics, char* outputDirPath, int op);
-vector<FrameTransition> readExpectedResults(char* expectedResultsFilePath);
+vector<FrameTransition> readExpectedResults(string expectedResultsFilePath);
+void saveResults(vector<Metrics> metrics, string outputDirPath, int op, vector<pair<string, float>> params);

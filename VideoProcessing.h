@@ -11,6 +11,6 @@
 #include "Utils.h"
 #include "GradualTransitionDetector.h"
 
-vector<Mat> readAllFrames(const char* fileName);
-void saveAllFrames(vector<Mat> allFrames, char* videoFilePath, char* outputDirPath);
-void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, char* outputDirPath);
+vector<Mat> readAllFrames(string fileName);
+void saveAllFrames(vector<Mat> allFrames, string parentDirPath);
+void saveKeyFrames(vector<FrameTransition> keyFrames, vector<Mat> allFrames, string  outputDirPath);

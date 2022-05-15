@@ -19,13 +19,11 @@ namespace fs = std::filesystem;
 
 #define NR_SHOT_DETECTION_ALG 9
 
-char parentDir[] = "tests/avatar/";
-char videoFilePath[] = "Videos/sample/avatar.mp4";
-char genericLogsFilePath[] = "logs/logs_%d.txt";
-char genericActualResultsFilePath[] = "tests/avatar/results/actual_%d.txt";
-char expectedResultsFilePath[] = "tests/avatar/results/expected.txt";
+string parentDir = "tests/avatar";
+string videoFilePath = "Videos/sample/avatar.mp4";
+string expectedResultsFilePath = "tests/avatar/results/expected_results.csv";
 
-char outputDirPaths[][MAX_PATH] = {
+string outputDirPaths[] = {
 	// PBA test results
 	"/PBA_noise_filt",
 	"/PBA_adapt_thresh",
@@ -42,7 +40,7 @@ char outputDirPaths[][MAX_PATH] = {
 	"/GT_ecr",
 };
 
-vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile);
+vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile, vector<pair<string, float>>& params);
 
 int main() {
 
@@ -68,7 +66,7 @@ int main() {
 		cout << " 6 - EBA: edge change ratio" << endl;
 		cout << " 7 - MBA: block matching" << endl;
 		cout << " --------------- Gradual Transition Detection -------------- " << endl;
-		cout << " 8 - GT: Detect Fade in/out based on Histogram difference and varying luminence" << endl;
+		cout << " 8 - GT: Detect Fade in/out based on Histogram difference and varying luminance" << endl;
 		cout << " 9 - GT: Detect Gradual Transitions based on edge change ratio" << endl;
 		cout << " 0 - Exit" << endl;
 		cout << "Option: " << endl;
@@ -78,33 +76,29 @@ int main() {
 			continue;
 		}
 
-		char outputDir[MAX_PATH];
-		strcpy(outputDir, parentDir);
-		strcat(outputDir, outputDirPaths[op - 1]);
+		string outputDir = parentDir + outputDirPaths[op - 1];
 
 		// clean and remove the output directory
 		fs::remove_all(outputDir);
 		// create a new output directory to store the detected keyframes
 		fs::create_directory(outputDir);
 
-		char logsFilePath[MAX_PATH];
-		strcpy(logsFilePath, parentDir);
-		strcat(logsFilePath, genericLogsFilePath);
-
+		string logsFilePath = parentDir + "/logs/logs_"+ to_string(op) +".txt";
 		// generate a logs file to store the run parameters
-		sprintf(logsFilePath, logsFilePath, op);
 		ofstream logFile(logsFilePath, ofstream::out | ofstream::app);
 		time_t now = time(0);
 		logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 		logFile << "<<<< " << ctime(&now);
 		logFile << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 
+		vector<pair<string, float>> params;
 		// declare a vector of keyframes which will be populated by the selected shot detection method
-		vector<FrameTransition> actual = selectAlgorithm(op, allFrames, logFile);
+		vector<FrameTransition> actual = selectAlgorithm(op, allFrames, logFile,params);
 		// save the results
 		saveKeyFrames(actual, allFrames, outputDir);
-		/*
+
 		vector<FrameTransition> expected = readExpectedResults(expectedResultsFilePath);
+		
 		vector<Metrics> results;
 		if (op <= 7) {
 			results.push_back(evaluateResults(allFrames, expected, actual, CUT));
@@ -114,10 +108,9 @@ int main() {
 			results.push_back(evaluateResults(allFrames, expected, actual, FADE_IN));
 			results.push_back(evaluateResults(allFrames, expected, actual, FADE_OUT));
 		}
-		for (auto m : results) {
-			saveResults(m, genericActualResultsFilePath, op);
-		}
-		*/
+		
+		saveResults(results, parentDir, op, params);
+		
 		logFile.close();
 		waitKey(0);
 
@@ -126,16 +119,18 @@ int main() {
 	return 0;
 }
 
-vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile) {
+vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream& logFile, vector<pair<string, float>>& params) {
 	switch (op)
 	{
 		case 1: {
 			float thresholdHigh, thresholdLow;
 			cout << "threshold High = ";
 			cin >> thresholdHigh;
+			params.push_back(make_pair("TH", thresholdHigh));
 
 			cout << "threshold Low = ";
 			cin >> thresholdLow;
+			params.push_back(make_pair("TL", thresholdLow));
 
 			return PBA_v3(videoFilePath, thresholdHigh, thresholdLow, logFile);
 		}
@@ -144,9 +139,11 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 
 			cout << "Bigger sliding window size = ";
 			cin >> M;
+			params.push_back(make_pair("M", M));
 
 			cout << "Smaller sliding window size = ";
 			cin >> N;
+			params.push_back(make_pair("N", N));
 
 			return PBA_v4(videoFilePath, M, N, logFile);
 		}
@@ -154,6 +151,7 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 			float threshold;
 			cout << "threshold = ";
 			cin >> threshold;
+			params.push_back(make_pair("T", threshold));
 
 			return HBA(videoFilePath, threshold, logFile, BIN_TO_BIN_DIFFERENCE);
 		}
@@ -161,6 +159,7 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 			float threshold;
 			cout << "threshold = ";
 			cin >> threshold;
+			params.push_back(make_pair("T", threshold));
 
 			return HBA(videoFilePath, threshold, logFile, HIST_INTERSECTION);
 		}
@@ -168,6 +167,7 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 			float threshold;
 			cout << "threshold = ";
 			cin >> threshold;
+			params.push_back(make_pair("T", threshold));
 
 			return HBA_quickShotSearch(videoFilePath, threshold, logFile);
 		}
@@ -176,12 +176,15 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 
 			cout << "Threshold = ";
 			cin >> T;
+			params.push_back(make_pair("T", T));
 
 			cout << "Bigger sliding window size = ";
 			cin >> M;
+			params.push_back(make_pair("M", M));
 
 			cout << "Smaller sliding window size = ";
 			cin >> N;
+			params.push_back(make_pair("N", N));
 
 			return EBA(videoFilePath, T, N, M, logFile);
 		}
@@ -190,15 +193,19 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 
 			cout << "Threshold = ";
 			cin >> T;
+			params.push_back(make_pair("T", T));
 
 			cout << "Bigger sliding window size = ";
 			cin >> M;
+			params.push_back(make_pair("M", M));
 
 			cout << "Smaller sliding window size = ";
 			cin >> N;
+			params.push_back(make_pair("N", N));
 
 			cout << "Size of macro block = ";
 			cin >> B;
+			params.push_back(make_pair("B", B));
 
 			return MBA(videoFilePath, T, N, M, B, logFile);
 		}
@@ -207,9 +214,11 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 
 			cout << "Max standard deviation = ";
 			cin >> maxStdDev;
+			params.push_back(make_pair("maxStdDeviation", maxStdDev));
 
 			cout << "Min length of transition = ";
 			cin >> minLength;
+			params.push_back(make_pair("minTransitionLength", minLength));
 
 			return detectGradualTransitions_v1(allFrames, maxStdDev, minLength, logFile);
 		}
@@ -218,9 +227,11 @@ vector<FrameTransition> selectAlgorithm(int op, vector<Mat> allFrames, ofstream&
 
 			cout << "Threshold for maxStdDev = ";
 			cin >> maxStdDev;
+			params.push_back(make_pair("maxStdDeviation", maxStdDev));
 
 			cout << "Min length of transition = ";
 			cin >> minLength;
+			params.push_back(make_pair("minTransitionLength", minLength));
 
 			return detectGradualTransitions_v2(allFrames, maxStdDev, minLength, logFile);
 		}
