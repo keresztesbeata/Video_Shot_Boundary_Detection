@@ -102,6 +102,7 @@ vector<FrameTransition> PBA_v3(string fileName, float T1, float T2, ofstream& lo
 * Use 2 sliding windows:
 *	Bigger sliding window (M frames): determine the average value of the frame difference within this window
 *	Smaller sliding window (N frames): detect shot segmentation point
+* 
 * Remark:
 *	- N < M!
 *	- the smaller window is inside the bigger one!

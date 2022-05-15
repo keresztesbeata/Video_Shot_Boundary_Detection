@@ -1,0 +1,6 @@
+T,type,accuracy,precision,recall,f1Score
+40000,cut,0.907692,0.166667,0.0285714,0.0487805
+40000,gradual,0.598817,0,0,0
+T,type,accuracy,precision,recall,f1Score
+35000,cut,0.902959,0.166667,0.027027,0.0465116
+35000,gradual,0.598817,0,0,0

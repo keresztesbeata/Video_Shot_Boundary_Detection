@@ -29,7 +29,7 @@ vector<FrameTransition> HBA(string fileName, float T, ofstream& logFile, HDmetri
 	// get the nr of channels to determine if it is a grayscale/image video
 	int nrChannels = previousFrame.channels();
 	const int nrBinsGrayscale = 256;
-	const int nrBinsColour = 256;
+	const int nrBinsColour = 64;
 
 	int i = 0;
 	while (videoCapture.read(currentFrame))
@@ -65,7 +65,7 @@ vector<FrameTransition> HBA(string fileName, float T, ofstream& logFile, HDmetri
 		break;
 	}
 	case HIST_INTERSECTION: {
-		logFile << " -> HBA_v3 (histogram intersection):";
+		logFile << " -> HBA_v2 (histogram intersection):";
 		break;
 	}
 	default: break;

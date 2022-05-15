@@ -1,0 +1,15 @@
+T,type,accuracy,precision,recall,f1Score,Nr bins
+40000,cut,0.985799,0,0,0,64
+40000,gradual,0.598817,0,0,0,64
+T,type,accuracy,precision,recall,f1Score,
+50000,cut,0.985799,0,0,0,64
+50000,gradual,0.598817,0,0,0,64
+T,type,accuracy,precision,recall,f1Score,
+0.2,cut,0.923077,0.5,0.0923077,0.155844,64
+0.2,gradual,0.598817,0,0,0,64
+T,type,accuracy,precision,recall,f1Score,
+0.15,cut,0.869823,0.5,0.0545455,0.0983607,64
+0.15,gradual,0.598817,0,0,0,64
+T,type,accuracy,precision,recall,f1Score,
+0.25,cut,0.933728,0.5,0.107143,0.176471,64
+0.25,gradual,0.598817,0,0,0,64
