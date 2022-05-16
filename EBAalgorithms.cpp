@@ -55,7 +55,7 @@ float ECR(Mat previousFrame, Mat currentFrame) {
 	currEdges = cannyEdgeDetector(currentFrame);
 	
 	// max distance between edge pixels of 2 consecutive frames considered as part of the same edge
-	float r = 1;
+	float r = 3;
 
 	// count total edge pixels in prev and current frames
 	int prevTotalEdgeCount = 1;

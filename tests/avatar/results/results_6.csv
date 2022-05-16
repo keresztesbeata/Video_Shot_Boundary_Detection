@@ -13,3 +13,9 @@ T,M,N,type,accuracy,precision,recall,f1Score
 T,M,N,type,accuracy,precision,recall,f1Score
 0.25,20,15,cut,0.976331,0.0833333,0.1,0.0909091
 0.25,20,15,gradual,0.598817,0,0,0
+T,M,N,type,accuracy,precision,recall,f1Score
+0.8,7,5,cut,0.973965,0,0,0
+0.8,7,5,gradual,0.598817,0,0,0
+T,M,N,type,accuracy,precision,recall,f1Score
+0.1,20,10,cut,0.959763,0.166667,0.0769231,0.105263
+0.1,20,10,gradual,0.598817,0,0,0

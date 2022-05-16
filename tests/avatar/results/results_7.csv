@@ -10,3 +10,12 @@ T,M,N,B,type,accuracy,precision,recall,f1Score
 T,M,N,B,type,accuracy,precision,recall,f1Score
 10,20,10,64,cut,0.945562,0.416667,0.113636,0.178571
 10,20,10,64,gradual,0.300592,0.666667,0.321023,0.433365
+T,M,N,B,type,accuracy,precision,recall,f1Score
+0.3,5,3,16,cut,0.846154,0.416667,0.0390625,0.0714286
+0.3,5,3,16,gradual,0.280473,0.734513,0.324641,0.450271
+T,M,N,B,type,accuracy,precision,recall,f1Score
+100,10,7,16,cut,0.928994,0.333333,0.0714286,0.117647
+100,10,7,16,gradual,0.293491,0.713864,0.326146,0.447734
+T,M,N,B,type,accuracy,precision,recall,f1Score
+0.5,30,15,16,cut,0.952663,0.333333,0.111111,0.166667
+0.5,30,15,16,gradual,0.28284,0.566372,0.294931,0.387879
